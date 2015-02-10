@@ -37,10 +37,18 @@ main {
   @extend .container;
   background-color: #eee;
   padding-bottom: 80px;
-  width: 100%;
+  width: 80%;
   margin-top: 51px; // accommodate the navbar
+  padding-bottom:51px;
   }
+
 section {
   @extend .row;
   margin-top: 20px;
   }
+
+footer {
+  position:absolute;
+  width: 100%;
+  background:black;
+}
