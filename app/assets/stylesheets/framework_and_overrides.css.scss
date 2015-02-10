@@ -37,7 +37,9 @@ main {
   @extend .container;
   background-color: #eee;
   padding-bottom: 80px;
-  width: 80%;
+  width: 100%;
+  max-width: 1000px;
+  min-height: 900px;
   margin-top: 51px; // accommodate the navbar
   padding-bottom:51px;
   }
