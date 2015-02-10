@@ -33,13 +33,15 @@ img {
 }
 // apply styles to HTML elements
 // to make views framework-neutral
+body {
+  background-color: #e7e7e7;
+}
 main {
   @extend .container;
-  background-color: #eee;
-  padding-bottom: 80px;
+  background-color: #FFF;
   width: 80%;
   //min-height: 900px;
-  margin-top: 51px; // accommodate the navbar
+  margin-top: 71px; // accommodate the navbar 51px and extra white space
   padding-bottom:60px; //the height of the footer
 }
 
