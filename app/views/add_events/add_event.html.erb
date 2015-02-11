@@ -1,0 +1,36 @@
+<div class="container-fluid">
+	<div class="row">
+		<h3>Add Event moo</h3>
+	</div>
+	<form>
+		<div class="row">
+			<button type="button" class="btn btn-block btn-lg" data-toggle="collapse" data-target="#general_settings">General Settings</button>
+		</div>
+		<div id="general_settings" class="collapse">
+		  <label>Start Time</label>
+		  <div class="two-digit-column">
+			  <div class="row">
+			  	<div class="col-xs-6">
+						<div class="two-digit-input">
+							<div class="form-group">
+								<label for="minutes1">Minute(s)</label>
+								<input type="number" class="form-control input-lg" id="minutes1" step="5" value="0" min="0" max="55" size="4">
+							</div>
+				  	</div>
+				  </div>
+				  <div class="col-xs-6">
+				  	<div class="two-digit-input">
+							<div class="form-group">
+								<label for="hours1">Hour(s)</label>
+								<input type="number" class="form-control input-lg" id="hours1" size="5">
+							</div>
+						</div>
+				  </div>
+			  </div>
+			</div>
+		</div>
+
+		<button type ="button" onclick="testFunction()">mootesttime</button>
+		<button type="submit" class="btn btn-lg">Submit</button>
+	</form>
+</div>
