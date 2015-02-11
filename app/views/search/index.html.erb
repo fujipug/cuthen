@@ -1,2 +1,41 @@
-<h1>Search#index</h1>
-<p>Find me in app/views/search/index.html.erb</p>
+<div class="container-fluid">
+  <div class="row">
+    <h1>Search</h1>
+  </div>
+  <form>
+<%# These are the mandatory search fields %>
+  <div class="form-group">
+    <label for="search_query">Search</label>
+	    <input type="text" class="form-control input-lg" id="search_query" placeholder="Enter event name">
+    <label for="item_type">Item Type</label>
+      <select class="form-control" id="item_type">
+        <option>All</option>
+        <option>Itinerary</option>
+        <option>Event</option>
+        <option>Group</option>
+        <option>User</option>
+      </select>
+  </div>
+
+<%# These are the optional search fields %>
+  <div class="form-group">
+    <button type="button" class="btn btn-block btn-lg" data-toggle="collapse" data-target="#advanced_options">Advanced Options</button>
+      <div id="advanced_options" class="collapse">
+        <div class="form-group">
+            <label for="search_range">Search Range</label>
+               <div id="search_range">
+                 <label for="start_date">Start</label>
+                 <input type="date" class="form-control input-md" id="start_date">
+                 <label for="end_date">End</label>
+                 <input type="date" class="form-control input-md" id="end_date">
+               </div>
+        </div>
+    </div>
+</div>
+
+<%# Submit query %>
+    <button type="submit" class="btn btn-block btn-info btn-lg">Submit</button>
+
+</form>    
+  
+  
