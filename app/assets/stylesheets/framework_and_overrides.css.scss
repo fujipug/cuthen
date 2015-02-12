@@ -40,6 +40,33 @@ img {
 .two-digit-input {
   width: 75px;
 }
+//mini calendar stuff
+.mini-calendar {
+  width: 280px;
+  height:340px;
+  span {
+    overflow:hidden;
+    //display: block;
+    text-align: center;
+    width: 100%;
+  }
+  table {
+    @extend .table;
+    width: 280px;
+    height: 280px;
+  }
+  th {
+    overflow: hidden;
+    width: 40px;
+    height: 40px;
+  }
+  td {
+    overflow: hidden;
+    width: 40px;
+    height: 40px;
+    border-right: 1px solid #dddddd;
+  }
+}
 // apply styles to HTML elements
 // to make views framework-neutral
 body {
