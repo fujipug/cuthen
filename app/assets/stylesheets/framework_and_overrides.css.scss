@@ -43,28 +43,31 @@ img {
 //mini calendar stuff
 .mini-calendar {
   width: 280px;
-  height:340px;
-  span {
-    overflow:hidden;
-    //display: block;
-    text-align: center;
-    width: 100%;
-  }
+  height: 280px;
   table {
     @extend .table;
     width: 280px;
     height: 280px;
+    text-align: center;
   }
   th {
+    text-align: center;
     overflow: hidden;
-    width: 40px;
-    height: 40px;
+    font-size: 16px;
+    //width: 40px;
+    //height: 40px;
   }
   td {
     overflow: hidden;
-    width: 40px;
-    height: 40px;
-    border-right: 1px solid #dddddd;
+    //width: 40px;
+    //height: 40px;
+    border: 1px solid #dddddd;
+    //border-right: 1px solid #dddddd;
+  }
+  .days {
+    font-weight: bold;
+    border-top: 2px solid #dddddd;
+    border-bottom: 2px solid #dddddd;
   }
 }
 // apply styles to HTML elements
