@@ -2,12 +2,10 @@
 // All this logic will automatically be available in application.js.
 //root = exports ? this
 
-//root.testFunction = -> 
-//	test = $("<p>")
-//	test.html "test"
-//	$("body").append $(test)
-
 function testFunction() {
+  
+	alert("moo")
+
 	var minicalendar = jQuery('<div class="mini-calendar"></div>');
 	var table = jQuery('<table></table>');
 	var tr1 = jQuery('<tr></tr>');
@@ -18,9 +16,7 @@ function testFunction() {
 	var th3 = jQuery('<th></th>');
 	var rightbutton = jQuery('<button type ="button" onclick="testFunction()">ri</button>');
 	jQuery($(th3).append(rightbutton));
-	jQuery($(tr1).append(th1));
-	jQuery($(tr1).append(th2));
-	jQuery($(tr1).append(th3));
+	jQuery($(tr1).append(th1, th2, th3));
 
 	var tr2 = jQuery('<tr></tr>');
 	var tdday1 = jQuery('<td class="days">S</td>');
@@ -30,13 +26,7 @@ function testFunction() {
 	var tdday5 = jQuery('<td class="days">H</td>');
 	var tdday6 = jQuery('<td class="days">F</td>');
 	var tdday7 = jQuery('<td class="days">S</td>');
-	jQuery($(tr2).append(tdday1));
-	jQuery($(tr2).append(tdday2));
-	jQuery($(tr2).append(tdday3));
-	jQuery($(tr2).append(tdday4));
-	jQuery($(tr2).append(tdday5));
-	jQuery($(tr2).append(tdday6));
-	jQuery($(tr2).append(tdday7));
+	jQuery($(tr2).append(tdday1, tdday2, tdday3, tdday4, tdday5, tdday6, tdday7));
 
 	var tr3 = jQuery('<tr></tr>');
 	var td1 = jQuery('<td>1</td>');
