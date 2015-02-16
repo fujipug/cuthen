@@ -46,17 +46,18 @@ img {
   //height: 280px;
   table {
     @extend .table;
+    table-layout: fixed;
     width: 280px;
     height: 280px;
     text-align: center;
   }
   th {
     text-align: center;
-    overflow: hidden;
+    //overflow: hidden;
     font-size: 16px;
     //width: 40px;
     //height: 40px;
-    padding: 0
+    padding: 0;
   }
   td {
     overflow: hidden;
@@ -64,6 +65,7 @@ img {
     //height: 40px;
     border: 1px solid #dddddd;
     //border-right: 1px solid #dddddd;
+    cursor: pointer; cursor: hand;
   }
   .days {
     font-weight: bold;
@@ -97,4 +99,12 @@ footer {
   height: 60px;
   width: 100%;
   background: black;
+}
+
+.welcome{
+  background-color: #39C0CF;
+  padding-top: 2%;
+  padding-bottom: 20%;
+  text-align: center;
+  color: #fff;
 }
