@@ -1,0 +1,109 @@
+// import the CSS framework
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+// make all images responsive by default
+img {
+  @extend .img-responsive;
+  margin: 0 auto;
+}
+// override for the 'Home' navigation link
+.navbar-brand {
+  font-size: inherit;
+}
+
+// THESE ARE EXAMPLES YOU CAN MODIFY
+// create your own classes
+// to make views framework-neutral
+.column {
+  @extend .col-md-6;
+  @extend .text-center;
+}
+.form {
+  @extend .col-md-6;
+}
+.form-centered {
+  @extend .col-md-6;
+  @extend .text-center;
+}
+.submit {
+  @extend .btn;
+  @extend .btn-primary;
+  @extend .btn-lg;
+}
+
+//used for add_event.html.erb
+//fixes the width of the input
+.two-digit-column {
+  width: 150px;
+}
+.two-digit-input {
+  width: 75px;
+}
+//mini calendar stuff
+.mini-calendar {
+  width: 280px;
+  //height: 280px;
+  table {
+    @extend .table;
+    table-layout: fixed;
+    width: 280px;
+    height: 280px;
+    text-align: center;
+  }
+  th {
+    text-align: center;
+    //overflow: hidden;
+    font-size: 16px;
+    //width: 40px;
+    //height: 40px;
+    padding: 0;
+  }
+  td {
+    overflow: hidden;
+    //width: 40px;
+    //height: 40px;
+    border: 1px solid #dddddd;
+    //border-right: 1px solid #dddddd;
+    cursor: pointer; cursor: hand;
+  }
+  .days {
+    font-weight: bold;
+    border-top: 2px solid #dddddd;
+    border-bottom: 2px solid #dddddd;
+  }
+}
+// apply styles to HTML elements
+// to make views framework-neutral
+body {
+  background-color: #e7e7e7;
+}
+main {
+  @extend .container;
+  background-color: #FFF;
+  width: 80%;
+  //min-height: 900px;
+  margin-top: 71px; // accommodate the navbar 51px and extra white space
+  padding-bottom:60px; //the height of the footer
+}
+
+section {
+  @extend .row;
+  margin-top: 20px;
+}
+
+footer {
+  position: absolute;
+  bottom: -60px;
+  left: 0;
+  height: 60px;
+  width: 100%;
+  background: black;
+}
+
+.welcome{
+  background-color: #39C0CF;
+  padding-top: 2%;
+  padding-bottom: 20%;
+  text-align: center;
+  color: #fff;
