@@ -11,29 +11,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150216031848) do
-
-  create_table "group_members", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "groups", force: true do |t|
-    t.string   "name"
-    t.integer  "user_id"
-    t.text     "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "groups", ["user_id"], name: "index_groups_on_user_id", using: :btree
-
-  create_table "users", force: true do |t|
-    t.string   "name",       null: false
-    t.string   "email",      null: false
-    t.string   "title"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+ActiveRecord::Schema.define(version: 0) do
 
 end
