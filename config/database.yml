@@ -3,7 +3,7 @@ default: &default
   encoding: utf8
   pool: 5
   username: root
-  password: 6214
+  password:
   host: 127.0.0.1
 
 development:
@@ -13,7 +13,7 @@ development:
   database: cuthen_development
   pool: 5
   username: root
-  password: 6214
+  password:
   host: 127.0.0.1
 
 # Warning: The database defined as "test" will be erased and
@@ -26,7 +26,7 @@ test:
   database: cuthen_test
   pool: 5
   username: root
-  password: 6214
+  password:
   host: 127.0.0.1
 
 production:
@@ -36,5 +36,5 @@ production:
   database: cuthen_production
   pool: 5
   username: root
-  password: 6214
+  password:
   host: 127.0.0.1
