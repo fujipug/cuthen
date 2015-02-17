@@ -51,8 +51,8 @@ function updateDateInfo(year) {
 	}
 }
 
-function updateMiniCalendar(calendarCurrentID, month, year) {
-	updateDateInfo(year);
+function updateMiniCalendar(calendarCurrentID, day, month, year) {
+	updateDateInfo(day, month, year);
 
 	if (month == 0) {
 		jQuery($('#leftBtn' + calendarCurrentID).attr('onclick','updateMiniCalendar(' + calendarCurrentID + ', ' + 11 + ', ' + (year - 1)  + ')'));
@@ -68,28 +68,41 @@ function updateMiniCalendar(calendarCurrentID, month, year) {
 	}
 
 	var j = 0;
-	for (i = monthStartDay[month]; i > 0; i--) {
-		jQuery($('#cal' + calendarCurrentID + 'day'+ j).attr('class','"dateGray"'));
-		jQuery($('#cal' + calendarCurrentID + 'day'+ j).html(daysInMonth[month - 1] - i + 1));
-		j++;
+	if (month == 0) {
+		for (i = monthStartDay[month]; i > 0; i--) {
+			jQuery($('#cal' + calendarCurrentID + 'day'+ j).attr('class','dateGray'));
+			jQuery($('#cal' + calendarCurrentID + 'day'+ j).html(daysInMonth[11] - i + 1));
+			j++;
+		}
+	}else{
+		for (i = monthStartDay[month]; i > 0; i--) {
+			jQuery($('#cal' + calendarCurrentID + 'day'+ j).attr('class','dateGray'));
+			jQuery($('#cal' + calendarCurrentID + 'day'+ j).html(daysInMonth[month - 1] - i + 1));
+			j++;
+		}
 	}
 	for (i = 0; i < daysInMonth[month]; i++) {
-		jQuery($('#cal' + calendarCurrentID + 'day'+ j).attr('class','""'));
+		if (i == currentTime.getDate() - 1 && year == currentTime.getFullYear() && month == currentTime.getMonth()) {
+			jQuery($('#cal' + calendarCurrentID + 'day'+ j).attr('class','dateCurrent'));
+		}else{
+			jQuery($('#cal' + calendarCurrentID + 'day'+ j).attr('class',''));
+		}
+		
 		jQuery($('#cal' + calendarCurrentID + 'day'+ j).html(i + 1));
 		j++;
 	}
 	for (i = 0; i < 6 * 7 - daysInMonth[month] - monthStartDay[month]; i++) {
-		jQuery($('#cal' + calendarCurrentID + 'day'+ j).attr('class','"dateGray"'));
+		jQuery($('#cal' + calendarCurrentID + 'day'+ j).attr('class','dateGray'));
 		jQuery($('#cal' + calendarCurrentID + 'day'+ j).html(i + 1));
 		j++;
 	}
 }
 
 function createMiniCalendar(label) {
+	var calendarCurrentID, i = 0, j = 0, month, year, minicalendar, table, tr = [], td = [];
 
-	var i = 0;
-	var calendarCurrentID;
-
+	//check for any available calendar IDs to pick from
+	//if it's the last one, create a spare ID for the next mini calendar
 	while(true) {
 		if (calendarID[i] == 0){
 			calendarCurrentID = i;
@@ -103,57 +116,166 @@ function createMiniCalendar(label) {
 	}
 
 	//default the month and year to what is current
-	var month = currentTime.getMonth();
-	var year = currentTime.getFullYear();
-
+	month = currentTime.getMonth();
+	year = currentTime.getFullYear();
 	updateDateInfo(year);
 
-	var minicalendar = jQuery('<div class="mini-calendar" id="mini-calendar'+calendarCurrentID+'"></div>');
-	var table = jQuery('<table></table>');
-
-	var tr = [];
+	//the mini-calendar div is the main container for a mini calendar.  Each has its own id
+	minicalendar = jQuery('<div class="mini-calendar" id="mini-calendar' + calendarCurrentID + '"></div>');
+	table = jQuery('<table></table>');
 	for (i = 0; i < 8; i++) {
 		tr.push(jQuery('<tr></tr>'));
 	}
 
+	//month label and navigation
 	if (month == 0) {
-		jQuery($(tr[0]).append('<th><button type="button" id="leftBtn' + calendarCurrentID + '" onclick="updateMiniCalendar(' + calendarCurrentID + ', '+ 11 + ','+ (year - 1)  +')">le</button></th>'));
+		jQuery($(tr[0]).append('<th><button type="button" id="leftBtn' + calendarCurrentID + '" onclick="updateMiniCalendar(' + calendarCurrentID + ', ' + 11 + ','+ (year - 1) + ')">le</button></th>'));
 	}else{
-		jQuery($(tr[0]).append('<th><button type="button" id="leftBtn' + calendarCurrentID + '" onclick="updateMiniCalendar(' + calendarCurrentID + ', '+ (month - 1) + ','+ year +')">le</button></th>'));
+		jQuery($(tr[0]).append('<th><button type="button" id="leftBtn' + calendarCurrentID + '" onclick="updateMiniCalendar(' + calendarCurrentID + ', ' + (month - 1) + ', ' + year + ')">le</button></th>'));
 	}
 	jQuery($(tr[0]).append('<th colspan="5" id = "monthLabel' + calendarCurrentID + '">' + monthName[month] + ' ' + year + '</th>'));
 
 	if (month == 11) {
-		jQuery($(tr[0]).append('<th><button type="button" id ="rightBtn' + calendarCurrentID + '" onclick="updateMiniCalendar(' + calendarCurrentID + ', '+ 0 + ','+ (year + 1)  +')">ri</button></th>'));
+		jQuery($(tr[0]).append('<th><button type="button" id ="rightBtn' + calendarCurrentID + '" onclick="updateMiniCalendar(' + calendarCurrentID + ', ' + 0 + ', ' + (year + 1) + ')">ri</button></th>'));
 	}else{
-		jQuery($(tr[0]).append('<th><button type="button" id ="rightBtn' + calendarCurrentID + '" onclick="updateMiniCalendar(' + calendarCurrentID + ', '+ (month + 1) + ','+ year +')">ri</button></th>'));
+		jQuery($(tr[0]).append('<th><button type="button" id ="rightBtn' + calendarCurrentID + '" onclick="updateMiniCalendar(' + calendarCurrentID + ', ' + (month + 1) + ', ' + year + ')">ri</button></th>'));
 	}
 	
+	//Day labels
 	jQuery($(tr[1]).append('<td class="dayLabel">Sun</td>', '<td class="dayLabel">Mon</td>', '<td class="dayLabel">Tue</td>', '<td class="dayLabel">Wed</td>', '<td class="dayLabel">Thu</td>', '<td class="dayLabel">Fri</td>', '<td class="dayLabel">Sat</td>'));
 
-
-	var td = [];
-	var j = 0;
-	for (i = monthStartDay[month]; i > 0; i--) {
-		td.push(jQuery('<td class="dateGray" id = "cal' + calendarCurrentID + 'day'+ j +'">' + (daysInMonth[month - 1] - i + 1) + '</td>'));
-		j++;
+	//these are the previous dates from the previous month (at most 7)
+	j = 0;
+	if (month == 0) {
+		for (i = monthStartDay[month]; i > 0; i--) {
+			td.push(jQuery('<td class="dateGray" id = "cal' + calendarCurrentID + 'day'+ j +'" onclick="selectDate(' + calendarCurrentID + ', ' + (daysInMonth[11] - i + 1) + ', ' + month  + ', ' + year + ')">' + (daysInMonth[11] - i + 1) + '</td>'));
+			j++;
+		}
+	}else{
+		for (i = monthStartDay[month]; i > 0; i--) {
+			td.push(jQuery('<td class="dateGray" id = "cal' + calendarCurrentID + 'day'+ j +'" onclick="selectDate(' + calendarCurrentID + ', ' + (daysInMonth[11] - i + 1) + ', ' + month  + ', ' + year + ')">' + (daysInMonth[month - 1] - i + 1) + '</td>'));
+			j++;
+		}
 	}
+
+	//dates of the current month
 	for (i = 0; i < daysInMonth[month]; i++) {
-		td.push(jQuery('<td id = "cal' + calendarCurrentID + 'day'+ j +'">' + (i + 1) + '</td>'));
-		j++;
-	}
-	for (i = 0; i < 6 * 7 - daysInMonth[month] - monthStartDay[month]; i++) {
-		td.push(jQuery('<td class="dateGray" id = "cal' + calendarCurrentID + 'day'+ j +'">' + (i + 1) + '</td>'));
+		if (i == currentTime.getDate() - 1 && year == currentTime.getFullYear() && month == currentTime.getMonth()) {
+			td.push(jQuery('<td class="dateCurrent" id = "cal' + calendarCurrentID + 'day'+ j +'" onclick="selectDate(' + calendarCurrentID + ', ' + (i + 1) + ', ' + month  + ', ' + year + ')">' + (i + 1) + '</td>'));
+		}else{
+			td.push(jQuery('<td id = "cal' + calendarCurrentID + 'day'+ j +'" onclick="selectDate(' + calendarCurrentID + ', ' + (i + 1) + ', ' + month  + ', ' + year + ')">' + (i + 1) + '</td>'));
+		}
 		j++;
 	}
 
+	//dates of the next month
+	for (i = 0; i < 6 * 7 - daysInMonth[month] - monthStartDay[month]; i++) {
+		td.push(jQuery('<td class="dateGray" id = "cal' + calendarCurrentID + 'day'+ j +'" onclick="selectDate(' + calendarCurrentID + ', ' + (i + 1) + ', ' + month  + ', ' + year + ')">' + (i + 1) + '</td>'));
+		j++;
+	}
+
+	//tr[2->8] collect 7 tr's (dates)
 	for (i = 0; i < 6; i++) {
 		for (j = 0; j < 7; j++) {
 			jQuery($(tr[i + 2]).append(td[i * 7 + j]));
 		}
 	}
 
+	//put it all together: label, minicalendar > table > tr's > th's and td's, input
 	jQuery($(table).append(tr[0], tr[1], tr[2], tr[3], tr[4], tr[5], tr[6], tr[7]));
-	jQuery($(minicalendar).append('<label for="'+ label.replace(/\s+/g, '') + calendarCurrentID + '">' + label + '</label>', table, '<input type="text" class="calendar-form-control" id="'+ label.replace(/\s+/g, '') + calendarCurrentID + '">'));
+	jQuery($(minicalendar).append('<label for="calendarInputLabel'+ calendarCurrentID + '">' + label + '</label>', table, '<input type="text" class="calendar-form-control" name="calendarInput' + calendarCurrentID + '" id="calendarInput' + calendarCurrentID + '" onblur="calendarInputValidator(' + calendarCurrentID + ')">'));
 	jQuery($(".test").append(minicalendar));
+}
+
+function calendarInputFocus() {
+
+}
+
+function calendarInputValidator(calendarCurrentID) {
+	var input = $('#calendarInput0').val();
+	var error = false;
+
+	//if ((input.replace(/\D/g,'') ).length < 4) {
+		//alert("too short of input");
+	//}
+
+	//seperate the date into date[0]=month, date[1]=day, date[2]=year
+	var date = input.split('/');
+
+	//check if there is a proper number of dashes (2) ('/')
+	if (typeof date[0] === 'undefined' || typeof date[1] === 'undefined' || typeof date[2] === 'undefined') {
+		alert("missing ( '/' ): mm/dd/yyyy");
+		error = true;
+	}
+	if (typeof date[3] !== 'undefined') {
+		alert("too many ( '/' ): mm/dd/yyyy");
+		error = true;
+	}
+	if (error == false) {
+		if (date[0].length != (date[0].replace(/\D/g,'')).length) {
+			alert("invalid month: mm/dd/yyyy");
+			error = true;
+		}
+		else if (date[0].length == 2) {
+			alert("month: " + date[0]);
+			//still needs to check if month is between 0 and maxmonth
+		}
+		else if (date[0].length == 1) {
+			alert("month: 0" + date[0]);
+			//still needs to check if month is between 0 and maxmonth
+		}
+		else if (date[0].length == 0) {
+			alert("please enter the month: mm/dd/yyyy");
+			error = true;
+		}
+		else {//(date[0].length > 2) {
+			alert("too many digits for month: mm/dd/yyyy");
+			error = true;
+		}
+	}
+	if (error == false) {
+		if (date[1].length != (date[1].replace(/\D/g,'')).length) {
+			alert("invalid day: mm/dd/yyyy");
+			error = true;
+		}
+		else if (date[1].length == 2) {
+			alert("day: " + date[1]);
+			//still needs to check if day is between 0 and maxday
+		}
+		else if (date[1].length == 1) {
+			alert("day: 0" + date[1]);
+			//still needs to check if day is between 0 and maxday
+		}
+		else if (date[1].length == 0) {
+			alert("please enter the day: mm/dd/yyyy");
+			error = true;
+		}
+		else {//(date[1].length > 2) {
+			alert("too many digits for day: mm/dd/yyyy");
+			error = true;
+		}
+	}
+	if (error == false) {
+		if (date[2].length != (date[2].replace(/\D/g,'')).length) {
+			alert("invalid year: mm/dd/yyyy");
+			error = true;
+		}
+		else if (date[2].length == 4) {
+			alert("year: " + date[2]);
+			//still needs to check if year is between 0 and maxyear
+		}
+		else if (date[2].length < 4) {
+			alert("too few digits for year: mm/dd/yyyy");
+			error = true;
+		}
+		else {//(date[2].length > 4) {
+			alert("too many digits for year: mm/dd/yyyy");
+			error = true;
+		}
+	}
+	alert(error);
+}
+
+function selectDate(calendarCurrentID, day, month, year) {
+	jQuery($('#calendarInput' + calendarCurrentID).val(month + '/' + day + '/' + year));
 }
