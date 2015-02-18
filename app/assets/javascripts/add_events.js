@@ -51,9 +51,10 @@ function updateDateInfo(year) {
 	}
 }
 
-function updateMiniCalendar(calendarCurrentID, day, month, year) {
-	updateDateInfo(day, month, year);
+function updateMiniCalendar(calendarCurrentID, month, year) {
+	updateDateInfo(year);
 
+	//update the left and right buttons to update the mini calendar with correct month and year
 	if (month == 0) {
 		jQuery($('#leftBtn' + calendarCurrentID).attr('onclick','updateMiniCalendar(' + calendarCurrentID + ', ' + 11 + ', ' + (year - 1)  + ')'));
 	}else{
@@ -67,34 +68,53 @@ function updateMiniCalendar(calendarCurrentID, day, month, year) {
 		jQuery($('#rightBtn' + calendarCurrentID).attr('onclick','updateMiniCalendar(' + calendarCurrentID + ', ' + (month + 1) + ', ' + year + ')'));
 	}
 
+	//update each day to update the mini calendar with correct days
 	var j = 0;
+	//previous months
 	if (month == 0) {
 		for (i = monthStartDay[month]; i > 0; i--) {
-			jQuery($('#cal' + calendarCurrentID + 'day'+ j).attr('class','dateGray'));
+			jQuery($('#cal' + calendarCurrentID + 'day'+ j).attr('class', 'dateGray'));
 			jQuery($('#cal' + calendarCurrentID + 'day'+ j).html(daysInMonth[11] - i + 1));
+			jQuery($('#cal' + calendarCurrentID + 'day'+ j).attr('onclick', 'selectDate(' + calendarCurrentID + ', ' + (daysInMonth[11] - i + 1) + ', ' + 11  + ', ' + year + ')'));
+			//jQuery($('#cal' + calendarCurrentID + 'day'+ j).attr('id', daysInMonth[11] - i + 1));
 			j++;
 		}
 	}else{
 		for (i = monthStartDay[month]; i > 0; i--) {
-			jQuery($('#cal' + calendarCurrentID + 'day'+ j).attr('class','dateGray'));
+			jQuery($('#cal' + calendarCurrentID + 'day'+ j).attr('class', 'dateGray'));
 			jQuery($('#cal' + calendarCurrentID + 'day'+ j).html(daysInMonth[month - 1] - i + 1));
+			jQuery($('#cal' + calendarCurrentID + 'day'+ j).attr('onclick', 'selectDate(' + calendarCurrentID + ', ' + (daysInMonth[month - 1] - i + 1) + ', ' + (month - 1)  + ', ' + year + ')'));
+			//jQuery($('#cal' + calendarCurrentID + 'day'+ j).attr('id', daysInMonth[11] - i + 1));
 			j++;
 		}
 	}
+	//current month
 	for (i = 0; i < daysInMonth[month]; i++) {
 		if (i == currentTime.getDate() - 1 && year == currentTime.getFullYear() && month == currentTime.getMonth()) {
-			jQuery($('#cal' + calendarCurrentID + 'day'+ j).attr('class','dateCurrent'));
+			jQuery($('#cal' + calendarCurrentID + 'day'+ j).attr('class', 'dateCurrent'));
 		}else{
-			jQuery($('#cal' + calendarCurrentID + 'day'+ j).attr('class',''));
+			jQuery($('#cal' + calendarCurrentID + 'day'+ j).attr('class', ''));
 		}
-		
-		jQuery($('#cal' + calendarCurrentID + 'day'+ j).html(i + 1));
+		jQuery($('#cal' + calendarCurrentID + 'day' + j).html(i + 1));
+		jQuery($('#cal' + calendarCurrentID + 'day' + j).attr('onclick', 'selectDate(' + calendarCurrentID + ', ' + (i + 1) + ', ' + month  + ', ' + year + ')'));
+		//jQuery($('#cal' + calendarCurrentID + 'day'+ j).attr('id', i + 1));
 		j++;
 	}
-	for (i = 0; i < 6 * 7 - daysInMonth[month] - monthStartDay[month]; i++) {
-		jQuery($('#cal' + calendarCurrentID + 'day'+ j).attr('class','dateGray'));
-		jQuery($('#cal' + calendarCurrentID + 'day'+ j).html(i + 1));
-		j++;
+	//next month
+	if (month == 11) {
+		for (i = 0; i < 6 * 7 - daysInMonth[month] - monthStartDay[month]; i++) {
+			jQuery($('#cal' + calendarCurrentID + 'day'+ j).attr('class','dateGray'));
+			jQuery($('#cal' + calendarCurrentID + 'day'+ j).html(i + 1));
+			jQuery($('#cal' + calendarCurrentID + 'day' + j).attr('onclick', 'selectDate(' + calendarCurrentID + ', ' + (i + 1) + ', ' + 0 + ', ' + (year + 1) + ')'));
+			j++;
+		}
+	}else{
+		for (i = 0; i < 6 * 7 - daysInMonth[month] - monthStartDay[month]; i++) {
+			jQuery($('#cal' + calendarCurrentID + 'day'+ j).attr('class','dateGray'));
+			jQuery($('#cal' + calendarCurrentID + 'day'+ j).html(i + 1));
+			jQuery($('#cal' + calendarCurrentID + 'day' + j).attr('onclick', 'selectDate(' + calendarCurrentID + ', ' + (i + 1) + ', ' + (month + 1)  + ', ' + year + ')'));
+			j++;
+		}
 	}
 }
 
@@ -148,12 +168,12 @@ function createMiniCalendar(label) {
 	j = 0;
 	if (month == 0) {
 		for (i = monthStartDay[month]; i > 0; i--) {
-			td.push(jQuery('<td class="dateGray" id = "cal' + calendarCurrentID + 'day'+ j +'" onclick="selectDate(' + calendarCurrentID + ', ' + (daysInMonth[11] - i + 1) + ', ' + month  + ', ' + year + ')">' + (daysInMonth[11] - i + 1) + '</td>'));
+			td.push(jQuery('<td class="dateGray" id = "cal' + calendarCurrentID + 'day'+ j +'" onclick="selectDate(' + calendarCurrentID + ', ' + (daysInMonth[11] - i + 1) + ', ' + 11  + ', ' + (year - 1) + ')">' + (daysInMonth[11] - i + 1) + '</td>'));
 			j++;
 		}
 	}else{
 		for (i = monthStartDay[month]; i > 0; i--) {
-			td.push(jQuery('<td class="dateGray" id = "cal' + calendarCurrentID + 'day'+ j +'" onclick="selectDate(' + calendarCurrentID + ', ' + (daysInMonth[11] - i + 1) + ', ' + month  + ', ' + year + ')">' + (daysInMonth[month - 1] - i + 1) + '</td>'));
+			td.push(jQuery('<td class="dateGray" id = "cal' + calendarCurrentID + 'day'+ j +'" onclick="selectDate(' + calendarCurrentID + ', ' + (daysInMonth[11] - i + 1) + ', ' + (month - 1)  + ', ' + year + ')">' + (daysInMonth[month - 1] - i + 1) + '</td>'));
 			j++;
 		}
 	}
@@ -170,8 +190,14 @@ function createMiniCalendar(label) {
 
 	//dates of the next month
 	for (i = 0; i < 6 * 7 - daysInMonth[month] - monthStartDay[month]; i++) {
-		td.push(jQuery('<td class="dateGray" id = "cal' + calendarCurrentID + 'day'+ j +'" onclick="selectDate(' + calendarCurrentID + ', ' + (i + 1) + ', ' + month  + ', ' + year + ')">' + (i + 1) + '</td>'));
-		j++;
+		if (month == 11) {
+			td.push(jQuery('<td class="dateGray" id = "cal' + calendarCurrentID + 'day'+ j +'" onclick="selectDate(' + calendarCurrentID + ', ' + (i + 1) + ', ' + 0  + ', ' + (year + 1) + ')">' + (i + 1) + '</td>'));
+			j++;
+		}else{
+			td.push(jQuery('<td class="dateGray" id = "cal' + calendarCurrentID + 'day'+ j +'" onclick="selectDate(' + calendarCurrentID + ', ' + (i + 1) + ', ' + (month + 1)  + ', ' + year + ')">' + (i + 1) + '</td>'));
+			j++;
+		}
+		
 	}
 
 	//tr[2->8] collect 7 tr's (dates)
@@ -185,10 +211,6 @@ function createMiniCalendar(label) {
 	jQuery($(table).append(tr[0], tr[1], tr[2], tr[3], tr[4], tr[5], tr[6], tr[7]));
 	jQuery($(minicalendar).append('<label for="calendarInputLabel'+ calendarCurrentID + '">' + label + '</label>', table, '<input type="text" class="calendar-form-control" name="calendarInput' + calendarCurrentID + '" id="calendarInput' + calendarCurrentID + '" onblur="calendarInputValidator(' + calendarCurrentID + ')">'));
 	jQuery($(".test").append(minicalendar));
-}
-
-function calendarInputFocus() {
-
 }
 
 function calendarInputValidator(calendarCurrentID) {
@@ -277,5 +299,5 @@ function calendarInputValidator(calendarCurrentID) {
 }
 
 function selectDate(calendarCurrentID, day, month, year) {
-	jQuery($('#calendarInput' + calendarCurrentID).val(month + '/' + day + '/' + year));
+	jQuery($('#calendarInput' + calendarCurrentID).val((month + 1) + '/' + day + '/' + year));
 }
