@@ -1,6 +1,10 @@
 // import the CSS framework
 @import "bootstrap-sprockets";
 @import "bootstrap";
+//test to make footer stay at the bottom
+html {
+  height: 100%;
+}
 
 // make all images responsive by default
 img {
@@ -103,7 +107,7 @@ main {
   @extend .container;
   background-color: #FFF;
   width: 80%;
-  //min-height: 900px;
+  //min-height: 100%;
   margin-top: 71px; // accommodate the navbar 51px and extra white space
   padding-bottom:60px; //the height of the footer
 }
@@ -114,8 +118,9 @@ section {
 }
 
 footer {
-  position: absolute;
-  bottom: -60px;
+  position: fixed;
+  //bottom: -60px;
+  bottom: -30px;
   left: 0;
   height: 60px;
   width: 100%;

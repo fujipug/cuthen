@@ -10,9 +10,6 @@ var monthStartDay = [0,0,0,0,0,0,0,0,0,0,0,0];
 var daysInMonth = [31,28,31,30,31,30,31,31,30,31,30,31];
 var monthName = ["January","Febuary","Marth","April","May","June","July","August","September","October","November","December"]
 var currentTime =  new Date();
-
-//mini calendar counter
-var calendarID = [0];
 /*
 	Return today's date and time
 	var currentTime = new Date()
@@ -29,6 +26,9 @@ var calendarID = [0];
 	Write output MM/dd/yyyy
 	document.write(month + "/" + day + "/" + year)
 */
+//mini calendar counter
+var calendarID = [0];
+
 function updateDateInfo(year) {
 	//calculate daycode from year
 	daycode = (year + Math.floor((year - 1) / 4) - Math.floor((year - 1) / 100) + Math.floor((year - 1) / 400) ) % 7;
@@ -75,7 +75,7 @@ function updateMiniCalendar(calendarCurrentID, month, year) {
 		for (i = monthStartDay[month]; i > 0; i--) {
 			jQuery($('#cal' + calendarCurrentID + 'day'+ j).attr('class', 'dateGray'));
 			jQuery($('#cal' + calendarCurrentID + 'day'+ j).html(daysInMonth[11] - i + 1));
-			jQuery($('#cal' + calendarCurrentID + 'day'+ j).attr('onclick', 'selectDate(' + calendarCurrentID + ', ' + (daysInMonth[11] - i + 1) + ', ' + 11  + ', ' + year + ')'));
+			jQuery($('#cal' + calendarCurrentID + 'day'+ j).attr('onclick', 'selectDate(' + calendarCurrentID + ', ' + (daysInMonth[11] - i + 1) + ', ' + 11  + ', ' + (year - 1) + ')'));
 			//jQuery($('#cal' + calendarCurrentID + 'day'+ j).attr('id', daysInMonth[11] - i + 1));
 			j++;
 		}
