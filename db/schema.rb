@@ -55,6 +55,16 @@ ActiveRecord::Schema.define(version: 20150219175442) do
 
   add_index "events", ["itinerary_id"], name: "index_events_on_itinerary_id", using: :btree
 
+  create_table "google_users", force: true do |t|
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "name"
+    t.string   "oauth_token"
+    t.datetime "oauth_expires_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "group_members", force: true do |t|
     t.integer  "user_id"
     t.integer  "group_id"

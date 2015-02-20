@@ -55,6 +55,9 @@ GEM
     debug_inspector (0.0.2)
     erubis (2.7.0)
     execjs (2.3.0)
+    fullcalendar-rails (2.2.5.1)
+      jquery-rails (>= 3.1.1, < 5.0.0)
+      momentjs-rails (~> 2.8, >= 2.8.4)
     high_voltage (2.2.1)
     hike (1.2.3)
     hub (1.12.4)
@@ -72,6 +75,8 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.25.1)
     minitest (5.5.1)
+    momentjs-rails (2.9.0)
+      railties (>= 3.1)
     multi_json (1.10.1)
     mysql2 (0.3.17)
     parser (2.2.0.2)
@@ -159,10 +164,12 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bootstrap-sass
+  fullcalendar-rails
   high_voltage
   hub
   jbuilder (~> 2.0)
   jquery-rails
+  momentjs-rails
   mysql2
   rails (= 4.1.0)
   rails_layout

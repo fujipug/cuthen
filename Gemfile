@@ -18,7 +18,9 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 #?
 gem 'spring',        group: :development
-
+#calendar dashboard
+gem 'fullcalendar-rails'
+gem 'momentjs-rails'
 #bootstrap gems
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
