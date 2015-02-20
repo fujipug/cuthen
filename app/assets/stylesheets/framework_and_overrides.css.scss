@@ -2,7 +2,7 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 //test to make footer stay at the bottom
-html {
+html, body {
   height: 100%;
 }
 
@@ -102,14 +102,13 @@ img {
 // to make views framework-neutral
 body {
   background-color: #e7e7e7;
+  //margin-bottom:60px; //the height of the footer
 }
 main {
   @extend .container;
   background-color: #FFF;
   width: 80%;
-  //min-height: 100%;
   margin-top: 71px; // accommodate the navbar 51px and extra white space
-  padding-bottom:60px; //the height of the footer
 }
 
 section {
@@ -118,17 +117,20 @@ section {
 }
 
 footer {
-  position: relative;
-  //bottom: -60px;
-  margin-top: -60px;
+  position: absolute;
+  bottom: 0;//-60px;
   left: 0;
   height: 60px;
   width: 100%;
   background: black;
-  clear both;
 }
 
-.welcome{
+.wrapper {
+  min-height: 100%;
+  position: relative;
+}
+
+.welcome {
   background-color: #39C0CF;
   padding-top: 2%;
   padding-bottom: 20%;
