@@ -1,5 +1,5 @@
 class CreateEventTimeRanges < ActiveRecord::Migration
-  def change
+  def up
     create_table :event_time_ranges do |t|
       t.belongs_to :event, index: true
       t.datetime :starttime
@@ -7,5 +7,9 @@ class CreateEventTimeRanges < ActiveRecord::Migration
 
       t.timestamps
     end
+  end
+
+  def down
+  	drop_table :event_time_ranges
   end
 end

@@ -1,5 +1,5 @@
 class CreateItinInvitedUsers < ActiveRecord::Migration
-  def change
+  def up
     create_table :itin_invited_users do |t|
       t.belongs_to :itinerary, index: true
       t.belongs_to :user, index: true
@@ -7,5 +7,9 @@ class CreateItinInvitedUsers < ActiveRecord::Migration
 
       t.timestamps
     end
+  end
+
+  def down
+  	drop_table :itin_invited_users
   end
 end

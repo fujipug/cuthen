@@ -1,5 +1,5 @@
 class CreateItinInvitedGroups < ActiveRecord::Migration
-  def change
+  def up
     create_table :itin_invited_groups do |t|
       t.belongs_to :itinerary
       t.belongs_to :group
@@ -7,5 +7,9 @@ class CreateItinInvitedGroups < ActiveRecord::Migration
 
       t.timestamps
     end
+  end
+
+	def down
+  	drop_table :itin_invited_groups
   end
 end
