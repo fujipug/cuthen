@@ -1,5 +1,5 @@
 class CreateItineraries < ActiveRecord::Migration
-  def change
+  def up
     create_table :itineraries do |t|
       t.string :name
       t.belongs_to :user, index: true
@@ -10,5 +10,9 @@ class CreateItineraries < ActiveRecord::Migration
 
       t.timestamps
     end
+  end
+
+  def down
+    drop_table :itineraries
   end
 end

@@ -21,16 +21,17 @@
     </script>  
   </head>
   <body>
-    <header>
-      <%= render 'layouts/navigation' %>
-    </header>
-     <main role="main">
-      <%= render 'layouts/messages' %>
-      <%= yield %>
-      
-    </main>
-    <footer>
-      <%= render 'layouts/footer' %>
-    </footer>
+    <div class="wrapper">
+      <header>
+        <%= render 'layouts/navigation' %>
+      </header>
+       <main role="main">
+          <%= render 'layouts/messages' %>
+          <%= yield %>
+      </main>
+      <footer class = "footer">
+        <%= render 'layouts/footer' %>
+      </footer>
+    </div>
   </body>
 </html>
