@@ -1,6 +1,3 @@
-// Place all the behaviors and hooks related to the matching controller here.
-// All this logic will automatically be available in application.js.
-
 //stuff to make the mini calendar work
 //global variables for updateDataInfo
 var daycode;
@@ -215,76 +212,72 @@ function createMiniCalendar(label) {
 
 function calendarInputValidator(calendarCurrentID) {
 	var input = $('#calendarInput0').val();
+	var month = 0, day = 0, year = 2000;
+	//format validation
 	var error = false;
-
-	//if ((input.replace(/\D/g,'') ).length < 4) {
-		//alert("too short of input");
-	//}
 
 	//seperate the date into date[0]=month, date[1]=day, date[2]=year
 	var date = input.split('/');
 
 	//check if there is a proper number of dashes (2) ('/')
+	//checks if mm dd and yyyy are seperated by /
 	if (typeof date[0] === 'undefined' || typeof date[1] === 'undefined' || typeof date[2] === 'undefined') {
 		alert("missing ( '/' ): mm/dd/yyyy");
 		error = true;
 	}
+	//checks if there's extra /
 	if (typeof date[3] !== 'undefined') {
 		alert("too many ( '/' ): mm/dd/yyyy");
 		error = true;
 	}
+
+	//checks format for mm
+	//proper length is one or two characters
+	//only includes numbers
 	if (error == false) {
 		if (date[0].length != (date[0].replace(/\D/g,'')).length) {
 			alert("invalid month: mm/dd/yyyy");
 			error = true;
 		}
-		else if (date[0].length == 2) {
-			alert("month: " + date[0]);
-			//still needs to check if month is between 0 and maxmonth
-		}
-		else if (date[0].length == 1) {
-			alert("month: 0" + date[0]);
-			//still needs to check if month is between 0 and maxmonth
-		}
 		else if (date[0].length == 0) {
 			alert("please enter the month: mm/dd/yyyy");
 			error = true;
+		}
+		else if (date[0].length <= 2) {
+			if (parseInt(date[0], 10) <= 12 && parseInt(date[0], 10) > 0) {
+				month = parseInt(date[0], 10) - 1;
+				alert("month: " + (month + 1));
+			}else{
+				alert("month is outside of range: [1, 12]");
+				error = true;
+			}
+
 		}
 		else {//(date[0].length > 2) {
 			alert("too many digits for month: mm/dd/yyyy");
 			error = true;
 		}
 	}
-	if (error == false) {
-		if (date[1].length != (date[1].replace(/\D/g,'')).length) {
-			alert("invalid day: mm/dd/yyyy");
-			error = true;
-		}
-		else if (date[1].length == 2) {
-			alert("day: " + date[1]);
-			//still needs to check if day is between 0 and maxday
-		}
-		else if (date[1].length == 1) {
-			alert("day: 0" + date[1]);
-			//still needs to check if day is between 0 and maxday
-		}
-		else if (date[1].length == 0) {
-			alert("please enter the day: mm/dd/yyyy");
-			error = true;
-		}
-		else {//(date[1].length > 2) {
-			alert("too many digits for day: mm/dd/yyyy");
-			error = true;
-		}
-	}
+
+	//checks format yyyy
+	//proper length is four characters
+	//only includes numbers
 	if (error == false) {
 		if (date[2].length != (date[2].replace(/\D/g,'')).length) {
 			alert("invalid year: mm/dd/yyyy");
 			error = true;
 		}
 		else if (date[2].length == 4) {
-			alert("year: " + date[2]);
-			//still needs to check if year is between 0 and maxyear
+			if (parseInt(date[2], 10) >= 2000) {
+				year = parseInt(date[2], 10);
+				alert("year: " + year);
+				//update date info needed for checking if the dd is within the proper range of that month, year
+				updateDateInfo(year);
+			}else{
+				alert("year is outside of range: 2000+");
+				error = true;
+			}
+			//still needs to check if year is between ~2015 and maxyear
 		}
 		else if (date[2].length < 4) {
 			alert("too few digits for year: mm/dd/yyyy");
@@ -292,6 +285,32 @@ function calendarInputValidator(calendarCurrentID) {
 		}
 		else {//(date[2].length > 4) {
 			alert("too many digits for year: mm/dd/yyyy");
+			error = true;
+		}
+	}
+
+	//checks format for dd
+	//proper length is one or two characters
+	//only includes numbers
+	if (error == false) {
+		if (date[1].length != (date[1].replace(/\D/g,'')).length) {
+			alert("invalid day: mm/dd/yyyy");
+			error = true;
+		}
+		else if (date[1].length == 0) {
+			alert("please enter the day: mm/dd/yyyy");
+			error = true;
+		}
+		else if (date[1].length <= 2) {
+			if ((parseInt(date[1], 10) <= daysInMonth[month]) && (parseInt(date[1], 10) > 0)) {
+				alert("day: " + date[1]);
+			}else{
+				alert("day is outside of range: [1, " + daysInMonth[month] + "]");
+				error = true;
+			}
+		}
+		else {//(date[1].length > 2) {
+			alert("too many digits for day: mm/dd/yyyy");
 			error = true;
 		}
 	}
