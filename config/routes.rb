@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  devise_for :auth_users
   get 'groups/group'
 
   root to: 'visitors#index'
@@ -8,5 +9,7 @@ Rails.application.routes.draw do
   get 'add_events/add_event'
   get 'search/results'
   get 'search/index'
+  get 'visitors/index'
+  get 'visitors/welcome'
 
 end

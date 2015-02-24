@@ -1,13 +1,15 @@
 class VisitorsController < ApplicationController
   def welcome
+    
   end
   
   def index
-    x = 3
+    x = 2
     if x == 3
-      render :layout => "welcome"
+
+      render(:template => 'dashboards/dashboard')
     else
-      render :layout => "application"
+      render :layout => "welcome"
     end
   end
 end  
