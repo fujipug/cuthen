@@ -1,4 +1,4 @@
-	<div class="row-fluid" style="padding-top:15px">
+	<!--<div class="row-fluid" style="padding-top:15px">
 		<div class="col-md-2 column" style= "background:#7A7878">
 			<div class="span3 bs-docs-sidebar" style= "color:#7A7878">
 				<ul class="nav nav-list bs-docs-sidenav">
@@ -8,81 +8,17 @@
           <li><a href="#forms"><i class="icon-chevron-right"></i> History</a></li>
         </ul>
       </div>
-		</div>
-		<div class="col-md-10 column">
+		</div>-->
+    
+    <button type="button" class="btn btn-default" onclick="showList()">
+      <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> List
+    </button>
+    <button type="button" class="btn btn-default" onclick="showCalendar()">
+      <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> Calendar
+    </button>
 
-			<h2>
-				Next Appointment
-			</h2>
-			<table class="table">
-				<thead>
-					<tr>
-						<th>
-							When
-						</th>
-						<th>
-							Visitor(s)
-						</th>
-						<th>
-							With?
-						</th>
-						<th>
-							Location
-						</th>
-						<th>
-						
-						</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>
-							November 5th <br>
-							10:30 AM
-						</td>
-						<td>
-							Chilean Center for Education
-						</td>
-						<td>
-							Dr. Mills <br>
-							CIE guide TBD
-						</td>
-						<td>
-							Office
-						</td>
-						<td>
-							<a href = "#">VIEW FULL SCHEDULE</a>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-			
-			
-			<h2>
-				Pending Requests
-			</h2>
-			<h3>
-				Swaps
-			</h3>
-			<table class = "table">
-				<tr>
-					<th>Day</th>
-					<th>Current Time</th>
-					<th>Proposed New Time</th>
-					<th>Accept?</th>
-				<tr>
-					<td>October 26</td>
-					<td>10:30 AM</td>
-					<td>11:30 AM</td>
-					<td>
-						<button type="button" class="btn btn-success">Yes</button>
-						<button type="button" class="btn btn-danger">No</button>
-						
-					</td>
-			</table>
-			
-			
-		</div>
-	</div>
-	
-</div>
+      <%= render 'layouts/dashboard_list' %>
+      <%= render 'layouts/dashboard_calendar' %>
+
+ 
+   

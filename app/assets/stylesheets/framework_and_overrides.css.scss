@@ -1,6 +1,10 @@
 // import the CSS framework
 @import "bootstrap-sprockets";
 @import "bootstrap";
+//test to make footer stay at the bottom
+html, body {
+  height: 100%;
+}
 
 // make all images responsive by default
 img {
@@ -31,65 +35,6 @@ img {
   @extend .btn-primary;
   @extend .btn-lg;
 }
-
-//used for add_event.html.erb
-//fixes the width of the input
-.two-digit-column {
-  width: 150px;
-}
-.two-digit-input {
-  width: 75px;
-}
-//mini calendar stuff
-.mini-calendar {
-  width: 280px;
-  //height: 280px;
-  //padding: 8px;
-  table {
-    //@extend .table;
-    table-layout: fixed;
-    width: 280px;
-    height: 280px;
-    text-align: center;
-    margin-bottom: 10px;
-  }
-  th {
-    text-align: center;
-    vertical-align: bottom;
-    //overflow: hidden;
-    font-size: 16px;
-    //width: 40px;
-    //height: 40px;
-    padding: 6px;
-  }
-  td {
-    overflow: hidden;
-    padding: 6px;
-    //width: 40px;
-    //height: 40px;
-    border: 1px solid #dddddd;
-    cursor: pointer; cursor: hand;
-  }
-  .dateGray {
-    color: #dddddd;
-  }
-  .days {
-    font-weight: bold;
-    border-top: 2px solid #dddddd;
-    border-bottom: 2px solid #dddddd;
-  }
-  .calendar-form-control {
-    @extend .form-control;
-    //@extend .input-lg;
-    height: 46px;
-    padding: 10px 16px;
-    font-size: 18px;
-    line-height: 1.3333333;
-    border-radius: 6px;
-
-    margin-bottom: 10px;
-  }
-}
 // apply styles to HTML elements
 // to make views framework-neutral
 body {
@@ -99,7 +44,7 @@ main {
   @extend .container;
   background-color: #FFF;
   width: 80%;
-  //min-height: 900px;
+  //min-height: 100%;
   margin-top: 71px; // accommodate the navbar 51px and extra white space
   padding-bottom:60px; //the height of the footer
 }
@@ -111,11 +56,16 @@ section {
 
 footer {
   position: absolute;
-  bottom: -60px;
+  bottom: 0;
   left: 0;
   height: 60px;
   width: 100%;
   background: black;
+}
+
+.wrapper{
+  min-height: 100%;
+  position: relative;
 }
 
 .welcome{
