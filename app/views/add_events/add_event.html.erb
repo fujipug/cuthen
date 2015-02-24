@@ -1,17 +1,14 @@
-<div class="container-fluid">
-	<div class="row"><div class= "col-xs-12"><h3>Add Event moo</h3></div></div>
-	<form>
-		<div class="row"><button type="button" class="btn btn-block btn-lg" data-toggle="collapse" data-target="#general_settings">General Settings</button></div>
+<h3>Add Event moo</h3>
+<form>
+	<button type="button" class="btn btn-block btn-lg" data-toggle="collapse" data-target="#general_settings">General Settings</button>
 
-		<div id="general_settings" class="collapse">
-			<button type ="button" onclick="createMiniCalendar('moo date yeah')">Science!</button>
-			<div class="row">
-				<div class="col-xs-6"><div class="test">
-
-				</div></div>
-				<div class="col-xs-6"></div>
-			</div>
-		<div class="row"><div class = "col-xs-12"><button type="submit" class="btn btn-lg">Submit</button></div></div>
-	</form>
+	<div id="general_settings" class="collapse">
+		<button type ="button" onclick="createMiniCalendar('testLeft', 'moo date left')">Science on da left!</button>
+		<button type ="button" onclick="createMiniCalendar('testRight', 'moo date right')">Science on da right!</button>
+		<div class="row">
+			<div class="col-sm-6"><div id="testLeft"></div></div>
+			<div class="col-sm-6"><div id="testRight"></div></div>
+		</div>
 	</div>
-</div><%#end container-fluid %>
+	<button type="submit" class="btn btn-lg">Submit</button>
+</form>

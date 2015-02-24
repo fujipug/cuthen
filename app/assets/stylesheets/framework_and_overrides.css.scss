@@ -35,6 +35,26 @@ img {
   @extend .btn-primary;
   @extend .btn-lg;
 }
+//overriding the default container
+@media (min-width: 768px) {
+  .container {
+    //default 750px
+    min-width: 750px;
+    width: 100%;
+  }
+}
+@media (min-width: 992px) {
+  .container {
+    //default 970px
+    width: 970px;
+  }
+}
+@media (min-width: 1200px) {
+  .container {
+    //default 1170px
+    width: 970px;
+  }
+}
 // apply styles to HTML elements
 // to make views framework-neutral
 body {
@@ -43,7 +63,7 @@ body {
 main {
   @extend .container;
   background-color: #FFF;
-  width: 80%;
+  //width: 80%;
   //min-height: 100%;
   margin-top: 71px; // accommodate the navbar 51px and extra white space
   padding-bottom:60px; //the height of the footer

@@ -119,7 +119,7 @@ function updateMiniCalendar(calendarCurrentID, day, month, year) {
 	}
 }
 
-function createMiniCalendar(label) {
+function createMiniCalendar(container, label) {
 	var calendarCurrentID, i = 0, j = 0, day=0, month, year, minicalendar, table, tr = [], td = [];
 
 	//generate unique ID
@@ -165,8 +165,8 @@ function createMiniCalendar(label) {
 
 	//put it all together: label, minicalendar > table > tr's > th's and td's, input
 	jQuery($(table).append(tr[0], tr[1], tr[2], tr[3], tr[4], tr[5], tr[6], tr[7]));
-	jQuery($(minicalendar).append('<label for="calendarInputLabel'+ calendarCurrentID + '">' + label + '</label>', table, '<input type="text" class="calendar-form-control" name="calendarInput' + calendarCurrentID + '" id="calendarInput' + calendarCurrentID + '" onblur="calendarInputValidator(' + calendarCurrentID + ')">'));
-	jQuery($(".test").append(minicalendar));
+	jQuery($(minicalendar).append('<label for="calendarInputLabel'+ calendarCurrentID + '">' + label + '</label>', table, '<input type="text" class="calendar-form-control" name="calendarInput' + calendarCurrentID + '" id="calendarInput' + calendarCurrentID + '" placeholder="mm/dd/yyyy" onblur="calendarInputValidator(' + calendarCurrentID + ')">'));
+	jQuery($("#" + container).append(minicalendar));
 
 	//populate the mini calendar
 
@@ -237,7 +237,7 @@ function calendarInputValidator(calendarCurrentID) {
 		else if (date[2].length == 4) {
 			if (parseInt(date[2], 10) >= 2000) {
 				year = parseInt(date[2], 10);
-				alert("year: " + year);
+				//alert("year: " + year);
 				//update date info needed for checking if the dd is within the proper range of that month, year
 				updateDateInfo(year);
 			}else{
@@ -270,7 +270,7 @@ function calendarInputValidator(calendarCurrentID) {
 		}
 		else if (date[1].length <= 2) {
 			if ((parseInt(date[1], 10) <= daysInMonth[month]) && (parseInt(date[1], 10) > 0)) {
-				alert("day: " + date[1]);
+				//alert("day: " + date[1]);
 				day = parseInt(date[1], 10);
 			}else{
 				alert("day is outside of range: [1, " + daysInMonth[month] + "]");
@@ -282,7 +282,6 @@ function calendarInputValidator(calendarCurrentID) {
 			error = true;
 		}
 	}
-	alert(error);
 	if (error == false) {
 		updateMiniCalendar(calendarCurrentID, day, month, year);
 	}
