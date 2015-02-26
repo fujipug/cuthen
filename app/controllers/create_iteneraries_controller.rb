@@ -1,2 +1,0 @@
-class CreateItenerariesController < ApplicationController
-end

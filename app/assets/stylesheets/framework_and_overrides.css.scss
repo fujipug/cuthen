@@ -36,11 +36,16 @@ img {
   @extend .btn-lg;
 }
 //overriding the default container
+@media (max-width: 768px) {
+  .container {
+    //bad fix for container always being big enough to hold a mini calendar, 15+280+15
+    min-width: 310px;
+  }
+}
 @media (min-width: 768px) {
   .container {
     //default 750px
-    min-width: 750px;
-    width: 100%;
+    width: 750px;
   }
 }
 @media (min-width: 992px) {

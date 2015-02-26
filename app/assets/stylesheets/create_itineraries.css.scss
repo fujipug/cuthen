@@ -1,3 +1,29 @@
 // Place all the styles related to the Create_Itineraries controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.setting {
+    border: 1px solid #a1a1a1;
+    padding: 10px 10px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.setting-label {
+    display: block;
+    width: 100%;
+    padding: 10px 16px;
+    font-size: 18px;
+    line-height: 1.3333333;
+    border-radius: 6px;
+    margin-bottom: 0;
+    font-weight: normal;
+    text-align: center;
+    vertical-align: middle;
+    background-color: #e7e7e7;
+}
+
+.setting-label-expanded {
+    @extend settingLabel;
+    line-height: 0;
+    border-radius: 0;
+}
