@@ -7,7 +7,7 @@
 <% @events.in_groups_of(3).each do |events| %>
   <% events.select! {|x| !x.nil?} %>
   <div class='row'>
-    <% events.each do |events| %>
+    <% events.each do |event| %>
       <div class='col-md-4'>
         <div class="name">
             <p> <%= event.name %> </p>
@@ -17,7 +17,7 @@
               <span class="listing-desc"><%= event.duration %></span>
               <span class="listing-desc"><%= event.startdate %></span>
               <span class="listing-desc"><%= event.enddate %></span>
-              <span class="listing-desc"><%= event.deadline %></span>
+              <span class="listing-desc"><%= event.deadlinedate %></span>
               <span><%= link_to "Edit", edit_event_path(event.id) %></span>
               <span><%= link_to "Delete", events_delete_path(:id => event.id) %></span>
             </div>

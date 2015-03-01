@@ -24,7 +24,7 @@ class Event < ActiveRecord::Base
   	datetime_to_datestring(end_datetime)
   end
 
-  def enddate=(deadline_datestring)
+  def enddate=(end_datestring)
   	self.end_datetime = string_to_datetime(end_datestring)
   end
 
@@ -33,6 +33,6 @@ class Event < ActiveRecord::Base
   end
 
   def deadlinedate=(deadline_datestring)
-  	self.end_datetime = string_to_datetime(deadline_datestring)
+  	self.deadline_datetime = string_to_datetime(deadline_datestring)
   end
 end
