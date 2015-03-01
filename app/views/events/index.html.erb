@@ -1,0 +1,29 @@
+<br>
+<br>
+<br>
+
+<h1>Listing itineraries</h1>
+
+<% @itineraries.in_groups_of(3).each do |itineraries| %>
+  <% itineraries.select! {|x| !x.nil?} %>
+  <div class='row'>
+    <% itineraries.each do |itinerary| %>
+      <div class='col-md-4'>
+        <div class="name">
+            <p> <%= itinerary.name %> </p>
+            <div class="caption">
+              <span class="listing-desc"><%= itinerary.description %></span>
+              <span class="listing-desc"><%= itinerary.startdate %></span>
+              <span class="listing-desc"><%= itinerary.enddate %></span>
+              <span><%= link_to "Edit", edit_itinerary_path(itinerary.id) %></span>
+              <span><%= link_to "Delete", itineraries_delete_path(:id => itinerary.id) %></span>
+            </div>
+          </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+<br>
+<%= link_to 'New', new_itinerary_path %>
+
+<%# link_to 'New Itinerary', new_itinerary_path %>

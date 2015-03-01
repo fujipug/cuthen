@@ -1,11 +1,7 @@
-//bad function, here for testing only
-function itinFirstClick() {
-    createMiniCalendar('startDate', 'Start Date');
-    createMiniCalendar('endDate', 'End Date');
-
-    jQuery($('#timeFrameLabel').attr('onclick',''));
-    jQuery($('#timeFrameLabel').attr('class','setting-label-expanded'));
-}
+$(document).ready(function() {
+    createMiniCalendar('startDateCalendar');
+    createMiniCalendar('endDateCalendar');
+});
 
 function toggleSettingLabel(label, moo) {
     if (moo == 1) {

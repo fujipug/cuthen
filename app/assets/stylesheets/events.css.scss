@@ -1,0 +1,69 @@
+//fixes the width of the input
+.two-digit-column {
+  width: 150px;
+}
+.two-digit-input {
+  width: 75px;
+}
+//fixedwith div
+.fixedwidth {
+  width: 280px;
+  height: 100%;
+  background-color: #FF3;
+}
+
+//mini calendar stuff
+.mini-calendar {
+  width: 280px;
+  //height: 280px;
+  //padding: 8px;
+  table {
+    //@extend .table;
+    table-layout: fixed;
+    width: 280px;
+    height: 280px;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  th {
+    text-align: center;
+    vertical-align: bottom;
+    //overflow: hidden;
+    font-size: 16px;
+    //width: 40px;
+    //height: 40px;
+    padding: 6px;
+  }
+  td {
+    overflow: hidden;
+    padding: 6px;
+    //width: 40px;
+    //height: 40px;
+    border: 1px solid #dddddd;
+    cursor: pointer; cursor: hand;
+  }
+  .dateGray {
+    color: #dddddd;
+  }
+  .dateCurrent {
+    font-weight: bold;
+    border: 2px solid #dddddd;
+    //background-color: #e7e7e7;
+  }
+  .dayLabel {
+    font-weight: bold;
+    border-top: 2px solid #dddddd;
+    border-bottom: 2px solid #dddddd;
+  }
+  .calendar-form-control {
+    @extend .form-control;
+    //@extend .input-lg;
+    height: 46px;
+    padding: 10px 16px;
+    font-size: 18px;
+    line-height: 1.3333333;
+    border-radius: 6px;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+}
