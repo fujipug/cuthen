@@ -1,28 +1,38 @@
 <p>
-  <strong>Itinerary name:</strong>
-  <%= @itinerary.name %>
+  <strong>Event name:</strong>
+  <%= @event.name %>
 </p>
 
 <p>
-  <strong>User:</strong>
-  <%= @itinerary.user_id %>
+  <strong>Itinerary ID:</strong>
+  <%= @event.itinerary_id %>
 </p>
 
 <p>
   <strong>Description:</strong>
-  <%= @itinerary.description %>
+  <%= @event.description %>
+</p>
+
+<p>
+  <strong>Duration:</strong>
+  <%= @event.duration %>
 </p>
 
 <p>
   <strong>Start:</strong>
-  <%= @itinerary.startdate %>
+  <%= @event.startdate %>
 </p>
 
 <p>
   <strong>End:</strong>
-  <%= @itinerary.enddate %>
+  <%= @event.enddate %>
 </p>
 
-<%= link_to 'Delete', itineraries_destroy_path(:id => @itinerary.id) %> |
-<%= link_to 'Edit', edit_itinerary_path(@itinerary) %> |
-<%= link_to 'Back', itineraries_path %>
+<p>
+  <strong>Deadline:</strong>
+  <%= @event.deadlinedate %>
+</p>
+
+<%= link_to 'Delete', itineraries_destroy_path(:id => @event.id) %> |
+<%= link_to 'Edit', edit_itinerary_path(@event) %> |
+<%= link_to 'Back', events_path %>
