@@ -1,6 +1,7 @@
 class ItinerariesController < ApplicationController
   def index
     @itineraries = Itinerary.all
+    @users = User.all
   end
 
   def show

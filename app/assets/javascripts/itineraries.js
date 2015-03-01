@@ -1,7 +1,15 @@
-$(document).ready(function() {
-    createMiniCalendar('startDateCalendar');
-    createMiniCalendar('endDateCalendar');
-});
+//fancy way of doing doc.ready
+//this is because the normal way doesn't load up if someone clicks a link to get to the page vs typing the url in
+var ready = function() {
+    //store all divs with class="mini-calendar-container" into an array, and add the mini-calendar div to each of them
+    //each will load with the current date
+    var mini_calendar_container = $('.mini-calendar-container');
+    for (var i=0; i < 2; i++) {
+        createMiniCalendar($(mini_calendar_container[i]).attr('id'));
+    }
+};
+$(document).ready(ready);
+$(document).on('page:load', ready);
 
 function toggleSettingLabel(label, moo) {
     if (moo == 1) {

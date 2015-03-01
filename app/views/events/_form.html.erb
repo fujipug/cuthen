@@ -5,68 +5,54 @@
 <%# Invites %>
 <%# Deadlines %>
 <%# Privite/pub etc %>
-<%= form_for(@itinerary) do |f| %>
-  <div class="user_id">
-    <%= f.label :user_id %>
-    <%= f.select :user_id, options_for_select(User.all.map{|s|[s.name, s.id]}) %>
+<%= form_for(@event) do |f| %>
+                <span class="listing-desc"><%= event.description %></span>
+              <span class="listing-desc">Itinerary: <%= @itineraries.find(event.itinerary_id).name %></span>
+              <span class="listing-desc"><%= event.duration %></span>
+              <span class="listing-desc"><%= event.startdate %></span>
+              <span class="listing-desc"><%= event.enddate %></span>
+              <span class="listing-desc"><%= event.deadline %></span>
+
+  <div class="itinerary_id">
+    <%= f.label :itinerary_id %>
+    <%= f.select :itinerary_id, options_for_select(Itinerary.all.map{|s|[s.name, s.id]}) %>
   </div>
 
-  <%# general information container %>
-  <div class="general_information_container">
-
-    <%# general information label %>
-    <div class="setting-label" id="basic_information_label" data-toggle="collapse" data-target="#generalSettings" aria-expanded="true" onclick="toggleSettingLabel('generalSettingsLabel', 0)">Itinerary Basic Information</div>
-    <%# general information label end %>
-
-    <%# general information form %>
-    <div id="general_information" class="collapse in" aria-expanded="true">
-      <%# Init Name %>
-      <div class="form-group">
-        <%= f.label :name, "Itinerary Name" %>
-        <%= f.text_field :name, class: "form-control input-lg", id: "name" %>
-      </div>
-      <%# Init Name End %>
-
-      <%# Init Desc %>
-      <div class="form-group">
-        <%= f.label :description, "Description" %>
-        <%= f.text_area :description, class: "form-control input-lg", row: "4", id: "initDesc" %>
-      </div>
-      <%# Init Desc End %>
-
-      <%# radio btns %>
-      <p>Add all the days involved in this itinerary:</p>
-      <div class="radio">
-        <label>
-          <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-          Add single days at a time
-        </label>
-      </div>
-      <div class="radio">
-        <label>
-          <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-          Add a range of days
-        </label>
-      </div>
-      <%# radio btns end %>
-
-      <%# Calendar inputs woo woo %>
-      <div class="row">
-        <div class="col-sm-6"><div class="form-group">
-            <%= f.label :startdate, "Start Date" %>
-            <div id="startDateCalendar"></div>
-            <%= f.text_field :startdate, class: "calendar-form-control", id: "calendarInput0", placeholder: "mm/dd/yyyy", onblur: "calendarInputValidator('0')" %>
-        </div></div>
-        <div class="col-sm-6"><div class="form-group">
-            <%= f.label :enddate, "End Date" %>
-            <div id="endDateCalendar"></div>
-            <%= f.text_field :enddate, class: "calendar-form-control", id: "calendarInput1", placeholder: "mm/dd/yyyy", onblur: "calendarInputValidator('1')" %>
-        </div></div>
-      </div>
-    </div>
-    <%# general information form end %>
+  <div class="form-group">
+    <%= f.label :name, "Event Name" %>
+    <%= f.text_field :name, class: "form-control input-lg", id: "name" %>
   </div>
-  <%# general information container end %>
+
+  <div class="form-group">
+    <%= f.label :description, "Event Description" %>
+    <%= f.text_field :description, class: "form-control input-lg", id: "description" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :duration, "Event Description (in minutes :0 or whatever)" %>
+    <%= f.text_field :duration, class: "form-control input-lg", id: "duration" %>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-6"><div class="form-group">
+        <%= f.label :startdate, "Start Date" %>
+        <div id="startDateCalendar" class="mini-calendar-container"></div>
+        <%= f.text_field :startdate, class: "calendar-form-control", id: "calendarInput0", placeholder: "mm/dd/yyyy", onblur: "calendarInputValidator('0')" %>
+    </div></div>
+    <div class="col-sm-6"><div class="form-group">
+        <%= f.label :enddate, "End Date" %>
+        <div id="endDateCalendar" class="mini-calendar-container"></div>
+        <%= f.text_field :enddate, class: "calendar-form-control", id: "calendarInput1", placeholder: "mm/dd/yyyy", onblur: "calendarInputValidator('1')" %>
+    </div></div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-6"><div class="form-group">
+        <%= f.label :deadline, "Deadline" %>
+        <div id="DeadlineCalendar" class="mini-calendar-container"></div>
+        <%= f.text_field :deadline, class: "calendar-form-control", id: "calendarInput2", placeholder: "mm/dd/yyyy", onblur: "calendarInputValidator('2')" %>
+    </div></div>
+  </div>
 
   <div class="actions">
     <%= f.submit class: "btn btn-lg" %>
