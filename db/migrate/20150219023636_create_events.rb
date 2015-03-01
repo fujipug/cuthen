@@ -3,10 +3,11 @@ class CreateEvents < ActiveRecord::Migration
     create_table :events do |t|
       t.string :name
       t.belongs_to :itinerary, index: true
+      t.string :description
       t.integer :duration
-      t.datetime :startdatetime
-      t.datetime :enddatetime
-      t.datetime :deadline
+      t.datetime :start_datetime
+      t.datetime :end_datetime
+      t.datetime :deadline_datetime
 
       t.timestamps
     end

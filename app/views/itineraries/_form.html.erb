@@ -48,12 +48,12 @@
         <div class="col-sm-6"><div class="form-group">
             <%= f.label :startdate, "Start Date" %>
             <div id="startDateCalendar" class="mini-calendar-container"></div>
-            <%= f.text_field :startdate, class: "calendar-form-control", id: "calendarInput0", placeholder: "mm/dd/yyyy", onblur: "calendarInputValidator('0')" %>
+            <%= f.text_field :startdate, class: "calender-form-control", id: "calendarInput0", placeholder: "mm/dd/yyyy", onblur: "calendarInputValidator('0')" %>
         </div></div>
         <div class="col-sm-6"><div class="form-group">
             <%= f.label :enddate, "End Date" %>
             <div id="endDateCalendar" class="mini-calendar-container"></div>
-            <%= f.text_field :enddate, class: "calendar-form-control", id: "calendarInput1", placeholder: "mm/dd/yyyy", onblur: "calendarInputValidator('1')" %>
+            <%= f.text_field :enddate, class: "calender-form-control", id: "calendarInput1", placeholder: "mm/dd/yyyy", onblur: "calendarInputValidator('1')" %>
         </div></div>
       </div>
     </div>

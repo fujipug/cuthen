@@ -55,15 +55,16 @@
     border-top: 2px solid #dddddd;
     border-bottom: 2px solid #dddddd;
   }
-  .calendar-form-control {
-    @extend .form-control;
-    //@extend .input-lg;
-    height: 46px;
-    padding: 10px 16px;
-    font-size: 18px;
-    line-height: 1.3333333;
-    border-radius: 6px;
-    text-align: center;
-    margin-bottom: 10px;
-  }
+}
+.calender-form-control {
+  @extend .form-control;
+  //@extend .input-lg;
+  height: 46px;
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.3333333;
+  border-radius: 6px;
+  text-align: center;
+  margin-bottom: 10px;
+  width: 150px;
 }

@@ -63,10 +63,11 @@ ActiveRecord::Schema.define(version: 20150224052737) do
   create_table "events", force: true do |t|
     t.string   "name"
     t.integer  "itinerary_id"
+    t.string   "description"
     t.integer  "duration"
-    t.datetime "startdatetime"
-    t.datetime "enddatetime"
-    t.datetime "deadline"
+    t.datetime "start_datetime"
+    t.datetime "end_datetime"
+    t.datetime "deadline_datetime"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

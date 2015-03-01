@@ -4,7 +4,7 @@ var ready = function() {
     //store all divs with class="mini-calendar-container" into an array, and add the mini-calendar div to each of them
     //each will load with the current date
     var mini_calendar_container = $('.mini-calendar-container');
-    for (var i=0; i < 2; i++) {
+    for (var i=0; i < mini_calendar_container.length; i++) {
         createMiniCalendar($(mini_calendar_container[i]).attr('id'));
     }
 };

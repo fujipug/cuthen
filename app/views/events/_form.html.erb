@@ -6,13 +6,6 @@
 <%# Deadlines %>
 <%# Privite/pub etc %>
 <%= form_for(@event) do |f| %>
-                <span class="listing-desc"><%= event.description %></span>
-              <span class="listing-desc">Itinerary: <%= @itineraries.find(event.itinerary_id).name %></span>
-              <span class="listing-desc"><%= event.duration %></span>
-              <span class="listing-desc"><%= event.startdate %></span>
-              <span class="listing-desc"><%= event.enddate %></span>
-              <span class="listing-desc"><%= event.deadline %></span>
-
   <div class="itinerary_id">
     <%= f.label :itinerary_id %>
     <%= f.select :itinerary_id, options_for_select(Itinerary.all.map{|s|[s.name, s.id]}) %>
@@ -29,28 +22,28 @@
   </div>
 
   <div class="form-group">
-    <%= f.label :duration, "Event Description (in minutes :0 or whatever)" %>
-    <%= f.text_field :duration, class: "form-control input-lg", id: "duration" %>
+    <%= f.label :duration, "Event Duration (in minutes :0 or whatever)" %>
+    <%= f.number_field :duration, class: "form-control input-lg", id: "duration" %>
   </div>
 
   <div class="row">
     <div class="col-sm-6"><div class="form-group">
         <%= f.label :startdate, "Start Date" %>
         <div id="startDateCalendar" class="mini-calendar-container"></div>
-        <%= f.text_field :startdate, class: "calendar-form-control", id: "calendarInput0", placeholder: "mm/dd/yyyy", onblur: "calendarInputValidator('0')" %>
+        <%= f.text_field :startdate, class: "calender-form-control", id: "calendarInput0", placeholder: "mm/dd/yyyy", onblur: "calendarInputValidator('0')" %>
     </div></div>
     <div class="col-sm-6"><div class="form-group">
         <%= f.label :enddate, "End Date" %>
         <div id="endDateCalendar" class="mini-calendar-container"></div>
-        <%= f.text_field :enddate, class: "calendar-form-control", id: "calendarInput1", placeholder: "mm/dd/yyyy", onblur: "calendarInputValidator('1')" %>
+        <%= f.text_field :enddate, class: "calender-form-control", id: "calendarInput1", placeholder: "mm/dd/yyyy", onblur: "calendarInputValidator('1')" %>
     </div></div>
   </div>
 
   <div class="row">
     <div class="col-sm-6"><div class="form-group">
-        <%= f.label :deadline, "Deadline" %>
+        <%= f.label :deadlinedate, "Deadline" %>
         <div id="DeadlineCalendar" class="mini-calendar-container"></div>
-        <%= f.text_field :deadline, class: "calendar-form-control", id: "calendarInput2", placeholder: "mm/dd/yyyy", onblur: "calendarInputValidator('2')" %>
+        <%= f.text_field :deadlinedate, class: "calender-form-control", id: "calendarInput2", placeholder: "mm/dd/yyyy", onblur: "calendarInputValidator('2')" %>
     </div></div>
   </div>
 
