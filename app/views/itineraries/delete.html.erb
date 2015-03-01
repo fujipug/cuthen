@@ -15,14 +15,14 @@
 
 <p>
   <strong>Start:</strong>
-  <%= @itinerary.start %>
+  <%= @itinerary.startdate %>
 </p>
 
 <p>
   <strong>End:</strong>
-  <%= @itinerary.endtime_string %>
+  <%= @itinerary.enddate %>
 </p>
 
-<%= link_to 'Delete', itineraries_delete_path(:id => @itinerary.id) %> |
+<%= link_to 'Delete', itineraries_destroy_path(:id => @itinerary.id) %> |
 <%= link_to 'Edit', edit_itinerary_path(@itinerary) %> |
 <%= link_to 'Back', itineraries_path %>

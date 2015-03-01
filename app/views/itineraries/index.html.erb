@@ -13,8 +13,8 @@
             <p> <%= itinerary.name %> </p>
             <div class="caption">
               <span class="listing-desc"><%= itinerary.description %></span>
-              <span class="listing-desc"><%= itinerary.start %></span>
-              <span class="listing-desc"><%= itinerary.endtime_string %></span>
+              <span class="listing-desc"><%= itinerary.startdate %></span>
+              <span class="listing-desc"><%= itinerary.enddate %></span>
               <span><%= link_to "Edit", edit_itinerary_path(itinerary.id) %></span>
               <span><%= link_to "Delete", itineraries_delete_path(:id => itinerary.id) %></span>
             </div>
@@ -24,5 +24,6 @@
   </div>
 <% end %>
 <br>
+<%= link_to 'New', new_itinerary_path %>
 
 <%# link_to 'New Itinerary', new_itinerary_path %>

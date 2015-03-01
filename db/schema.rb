@@ -117,8 +117,8 @@ ActiveRecord::Schema.define(version: 20150224052737) do
     t.string   "name"
     t.integer  "user_id"
     t.text     "description"
-    t.datetime "start"
-    t.datetime "endtime"
+    t.datetime "start_datetime"
+    t.datetime "end_datetime"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

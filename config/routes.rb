@@ -13,5 +13,6 @@ Rails.application.routes.draw do
   get 'visitors/welcome'
 
   resources :itineraries
-  get 'itinerary/:id/delete' => 'itineraries#delete', :as => :itineraries_delete
+  get 'itinerary/:id/delete' => 'itineraries#delete', as: :itineraries_delete
+  get 'itinerary/:id/' => 'itineraries#destroy', as: :itineraries_destroy
 end

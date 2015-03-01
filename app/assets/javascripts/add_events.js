@@ -7,22 +7,7 @@ var monthStartDay = [0,0,0,0,0,0,0,0,0,0,0,0];
 var daysInMonth = [0,31,28,31,30,31,30,31,31,30,31,30,31];
 var monthName = ["Error", "January","Febuary","Marth","April","May","June","July","August","September","October","November","December"]
 var currentTime =  new Date();
-/*
-	Return today's date and time
-	var currentTime = new Date()
 
-	Returns the month (from 0 to 11)
-	var month = currentTime.getMonth() + 1
-
-	Returns the day of the month (from 1 to 31)
-	var day = currentTime.getDate()
-
-	Returns the year (four digits)
-	var year = currentTime.getFullYear()
-
-	Write output MM/dd/yyyy
-	document.write(month + "/" + day + "/" + year)
-*/
 //mini calendar counter
 var calendarID = [0];
 
@@ -58,7 +43,7 @@ function updateFirstDayPosition(year) {
 }
 
 function updateDateInfo(year) {
-	//note that this function is not split into two functions:
+	//being replaced soon, note that this function is now split into two functions:
 	
 	updateFeb(year);
 	updateFirstDayPosition(year);
@@ -181,7 +166,8 @@ function createMiniCalendar(container, label) {
 
 	//put it all together: label, minicalendar > table > tr's > th's and td's, input
 	jQuery($(table).append(tr[0], tr[1], tr[2], tr[3], tr[4], tr[5], tr[6], tr[7]));
-	jQuery($(minicalendar).append('<label for="calendarInputLabel'+ calendarCurrentID + '">' + label + '</label>', table, '<input type="text" class="calendar-form-control" name="calendarInput' + calendarCurrentID + '" id="calendarInput' + calendarCurrentID + '" placeholder="mm/dd/yyyy" onblur="calendarInputValidator(' + calendarCurrentID + ')">'));
+	//jQuery($(minicalendar).append('<label for="calendarInputLabel'+ calendarCurrentID + '">' + label + '</label>', table, '<input type="text" class="calendar-form-control" name="calendarInput' + calendarCurrentID + '" id="calendarInput' + calendarCurrentID + '" placeholder="mm/dd/yyyy" onblur="calendarInputValidator(' + calendarCurrentID + ')">'));
+	jQuery($(minicalendar).append(table));
 	jQuery($("#" + container).append(minicalendar));
 
 	//populate the mini calendar
@@ -305,4 +291,5 @@ function calendarInputValidator(calendarCurrentID) {
 
 function selectDate(calendarCurrentID, day, month, year) {
 	jQuery($('#calendarInput' + calendarCurrentID).val(month + '/' + day + '/' + year));
+	updateMiniCalendar(calendarCurrentID, day, month, year);
 }
