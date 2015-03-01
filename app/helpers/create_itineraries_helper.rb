@@ -1,2 +1,0 @@
-module CreateItinerariesHelper
-end
