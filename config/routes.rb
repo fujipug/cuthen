@@ -15,4 +15,8 @@ Rails.application.routes.draw do
   resources :itineraries
   get 'itinerary/:id/delete' => 'itineraries#delete', as: :itineraries_delete
   get 'itinerary/:id/' => 'itineraries#destroy', as: :itineraries_destroy
+
+  resources :events
+  get 'event/:id/delete' => 'events#delete', as: :events_delete
+  get 'event/:id/' => 'events#destroy', as: :events_destroy
 end

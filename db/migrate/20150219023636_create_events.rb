@@ -4,8 +4,8 @@ class CreateEvents < ActiveRecord::Migration
       t.string :name
       t.belongs_to :itinerary, index: true
       t.integer :duration
-      t.datetime :starttime
-      t.datetime :endtime
+      t.datetime :startdatetime
+      t.datetime :enddatetime
       t.datetime :deadline
 
       t.timestamps
