@@ -1,7 +1,7 @@
 class Itinerary < ActiveRecord::Base
   has_many :events
   has_many :groups, through: :itin_invited_group
-  #has_many :user, through: :itin_invited_user
+  has_many :user, through: :itin_invited_user
 
   def datetime_to_datestring(datetime)
   	datetime.try(:strftime, "%m/%d/%Y")
