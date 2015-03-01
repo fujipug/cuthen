@@ -1,0 +1,27 @@
+<%= form_for(@itinerary) do |f| %>
+
+  <div class="name">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="user_id">
+    <%= f.label :user_id %>
+    <%= f.select :user_id, options_for_select(User.all.map{|s|[s.name, s.id]}) %>
+  </div>
+  <div class="description">
+    <%= f.label :description %>
+    <%= f.text_field :description %>
+  </div>
+  <div class="start">
+    <%= f.label :start %>
+    <%= f.datetime_select :start %>
+  </div>
+  <div class="end">
+    <%= f.label :endtime_string, "End Date" %>
+    <%= f.text_field :endtime_string %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+

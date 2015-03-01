@@ -1,0 +1,28 @@
+<p>
+  <strong>Itinerary name:</strong>
+  <%= @itinerary.name %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @itinerary.user_id %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @itinerary.description %>
+</p>
+
+<p>
+  <strong>Start:</strong>
+  <%= @itinerary.start %>
+</p>
+
+<p>
+  <strong>End:</strong>
+  <%= @itinerary.endtime_string %>
+</p>
+
+<%= link_to 'Delete', itineraries_delete_path(:id => @itinerary.id) %> |
+<%= link_to 'Edit', edit_itinerary_path(@itinerary) %> |
+<%= link_to 'Back', itineraries_path %>

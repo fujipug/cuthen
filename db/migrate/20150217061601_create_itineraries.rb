@@ -5,8 +5,7 @@ class CreateItineraries < ActiveRecord::Migration
       t.belongs_to :user, index: true
       t.text :description
       t.datetime :start
-      t.datetime :end
-      t.text :description
+      t.datetime :endtime
 
       t.timestamps
     end

@@ -26,17 +26,26 @@ var currentTime =  new Date();
 //mini calendar counter
 var calendarID = [0];
 
-function updateDateInfo(year) {
-	//calculate daycode from year
-	daycode = (year + Math.floor((year - 1) / 4) - Math.floor((year - 1) / 100) + Math.floor((year - 1) / 400) ) % 7;
-
+function isLeapYear(year) {
 	//leap year check
 	if (year % 4 == 0 && year % 100 > 0 || year % 400 == 0) {
+		return true; //
+	}//else{
+		return false; //
+	//}
+}
+
+function updateFeb(year) {
+	if (isLeapYear(year) == true) {
 		daysInMonth[2] = 29;
 	}else{
 		daysInMonth[2] = 28;
 	}
+}
 
+function updateFirstDayPosition(year) {
+	//calculate daycode from year
+	daycode = (year + Math.floor((year - 1) / 4) - Math.floor((year - 1) / 100) + Math.floor((year - 1) / 400) ) % 7;
 	//get the starting position for each month
 	for (i = 1; i < 13; i++) {
 		if (daycode == 0) {
@@ -46,6 +55,13 @@ function updateDateInfo(year) {
 		}
 		daycode = (daycode + daysInMonth[i]) % 7;
 	}
+}
+
+function updateDateInfo(year) {
+	//note that this function is not split into two functions:
+	
+	updateFeb(year);
+	updateFirstDayPosition(year);
 }
 
 function updateMiniCalendar(calendarCurrentID, day, month, year) {
