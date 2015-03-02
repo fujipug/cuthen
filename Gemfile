@@ -11,6 +11,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'devise'
 #devise authentication
 gem 'omniauth'
+gem "omniauth-google-oauth2"
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

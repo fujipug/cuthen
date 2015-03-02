@@ -39,24 +39,28 @@ img {
 @media (max-width: 768px) {
   .container {
     //bad fix for container always being big enough to hold a mini calendar, 15+280+15
+    //phone
     min-width: 310px;
   }
 }
 @media (min-width: 768px) {
   .container {
     //default 750px
+    //tablet
     width: 750px;
   }
 }
 @media (min-width: 992px) {
   .container {
     //default 970px
+    //regular computer
     width: 970px;
   }
 }
 @media (min-width: 1200px) {
   .container {
     //default 1170px
+    //full wide screen
     width: 970px;
   }
 }
@@ -71,6 +75,7 @@ main {
   //width: 80%;
   //min-height: 100%;
   margin-top: 71px; // accommodate the navbar 51px and extra white space
+  padding-top: 20px;
   padding-bottom:60px; //the height of the footer
 }
 
@@ -94,9 +99,21 @@ footer {
 }
 
 .welcome{
-  background-color: #39C0CF;
+  background-image: url(image_path('cuthen_home.jpg'));
+  background-size: cover;
+  background-repeat: no-repeat;
   padding-top: 2%;
   padding-bottom: 20%;
   text-align: center;
   color: #fff;
+}
+
+.welcome_padding{
+  text-align: center;
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+
+.center{
+  text-align: center;
 }

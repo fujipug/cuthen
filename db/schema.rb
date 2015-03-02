@@ -63,10 +63,11 @@ ActiveRecord::Schema.define(version: 20150224052737) do
   create_table "events", force: true do |t|
     t.string   "name"
     t.integer  "itinerary_id"
+    t.string   "description"
     t.integer  "duration"
-    t.datetime "starttime"
-    t.datetime "endtime"
-    t.datetime "deadline"
+    t.datetime "start_datetime"
+    t.datetime "end_datetime"
+    t.datetime "deadline_datetime"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -74,9 +75,15 @@ ActiveRecord::Schema.define(version: 20150224052737) do
   add_index "events", ["itinerary_id"], name: "index_events_on_itinerary_id", using: :btree
 
   create_table "group_members", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "group_id"
+    t.boolean  "isMember",   default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "group_members", ["group_id"], name: "index_group_members_on_group_id", using: :btree
+  add_index "group_members", ["user_id"], name: "index_group_members_on_user_id", using: :btree
 
   create_table "groups", force: true do |t|
     t.string   "name"
@@ -111,8 +118,8 @@ ActiveRecord::Schema.define(version: 20150224052737) do
     t.string   "name"
     t.integer  "user_id"
     t.text     "description"
-    t.datetime "start"
-    t.datetime "end"
+    t.datetime "start_datetime"
+    t.datetime "end_datetime"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -134,8 +141,8 @@ ActiveRecord::Schema.define(version: 20150224052737) do
     t.string   "name",       null: false
     t.string   "email",      null: false
     t.string   "title"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

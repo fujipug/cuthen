@@ -9,7 +9,13 @@
   <br/>
   <h2>Simple itinerary creation and management</h2>
   <p>Say goodbye to outdated methods of event planning</p>
-  <div class = "center">    
-    <a class="navbar-brand" href="/login">Sign In</a>
+  <div class = "row">
+    <div class="center">
+      <%= button_to('Sign In', login_path, method: "get", :class => 'btn btn-large btn-success')  %>
+      <br/>
+      <%= button_to('Sign Up', signup_path, method: "get", :class => 'btn btn-large btn-success')  %>
+      <br/>
+      <%= link_to "Sign in with Google", auth_user_omniauth_authorize_path(:google_oauth2) %>
+    </div>
   </div>
 <div>  

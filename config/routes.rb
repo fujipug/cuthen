@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
 
 
-  devise_for :auth_users, controllers: { sessions:     "auth_users/sessions"}
+  devise_for :auth_users, controllers: { sessions:     "auth_users/sessions",
+                                        omniauth_callbacks:  "auth_users/omniauth_callbacks" }
   as :auth_user do
     get "/auth_users/edit" => "devise_invitable/registrations#edit", :as => 'edit_user_registration'
     put "/auth_users"      => "devise_invitable/registrations#update", :as => 'user_registration'
     delete "/auth_users"   => "devise_invitable/registrations#destroy"
+    get "/signup"     => "devise/registrations#new"
     get "/login"      => "auth_users/sessions#new"
     post "/login"     => "auth_users/sessions#create"
     delete "/logout"  => "auth_users/sessions#destroy"
