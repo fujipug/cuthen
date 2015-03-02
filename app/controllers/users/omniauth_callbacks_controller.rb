@@ -11,7 +11,11 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
         redirect_to new_user_registration_url
       end
   end
-
+  def action_missing(provider)
+    # Set up authentication/authorizations here, and distribute tasks
+    # that are provider specific to other methods, leaving only tasks
+    # that work across all providers in this method. 
+  end
 
     # Uncomment the section below if you want users to be created if they don't exist
     # unless user
