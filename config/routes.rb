@@ -1,17 +1,15 @@
 Rails.application.routes.draw do
 
-
-  devise_for :auth_users, controllers: { sessions:     "auth_users/sessions",
-                                        omniauth_callbacks:  "auth_users/omniauth_callbacks" }
-  as :auth_user do
-    get "/auth_users/edit" => "devise_invitable/registrations#edit", :as => 'edit_user_registration'
-    put "/auth_users"      => "devise_invitable/registrations#update", :as => 'user_registration'
-    delete "/auth_users"   => "devise_invitable/registrations#destroy"
+  devise_for :users, controllers: { sessions:     "users/sessions",
+                                    omniauth_callbacks:  "users/omniauth_callbacks" }
+  as :user do
+    get "/users/edit" => "devise/registrations#edit"#, :as => 'edit_user_registration'
+    put "/users"      => "devise/registrations#update"#, :as => 'user_registration'
+    delete "/users"   => "devise/registrations#destroy"
+    get "/login"      => "users/sessions#new"
+    post "/login"     => "users/sessions#create"
     get "/signup"     => "devise/registrations#new"
-    get "/login"      => "auth_users/sessions#new"
-    post "/login"     => "auth_users/sessions#create"
-    delete "/logout"  => "auth_users/sessions#destroy"
-    get "/invite"     => "auth_users/invitations#new"
+    delete "/logout"  => "users/sessions#destroy"
   end
 
   root to: 'visitors#index'

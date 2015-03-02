@@ -12,6 +12,8 @@ gem 'devise'
 #devise authentication
 gem 'omniauth'
 gem "omniauth-google-oauth2"
+gem "faraday", '~> 0.8.0'
+#gem 'middleware'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
