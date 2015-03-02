@@ -1,14 +1,13 @@
-// Place all the behaviors and hooks related to the matching controller here.
-// All this logic will automatically be available in application.js.
-
-$(document).ready(function() {
-// page is now ready, initialize the calendar...
-$('#calendar').fullCalendar({
-// put your options and callbacks here
-})
-//hide calendar after it is done loading its stuff
-jQuery($('#cal').attr('class', 'hide'));
-});
+var ready = function() {
+    // page is now ready, initialize the calendar...
+    $('#calendar').fullCalendar({
+    // put your options and callbacks here
+    })
+    //hide calendar after it is done loading its stuff
+    jQuery($('#cal').attr('class', 'hide'));
+};
+$(document).ready(ready);
+$(document).on('page:load', ready);
 
 function showCalendar() {
     jQuery($('#cal').attr('class', 'moo'));
