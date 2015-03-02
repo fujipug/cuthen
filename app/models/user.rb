@@ -3,4 +3,5 @@ class User < ActiveRecord::Base
   has_many :itinerary, through: :itin_invited_user
   has_many :event, through: :event_invited_user
   has_many :user_event_vote
+  #belongs_to :owner, polymorphic: true
 end

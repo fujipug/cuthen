@@ -1,7 +1,9 @@
 class Itinerary < ActiveRecord::Base
-  has_many :events
+  has_many :events, dependent: :destroy
   has_many :groups, through: :itin_invited_group
   has_many :user, through: :itin_invited_user
+  belongs_to :owner #user that owns of itinerary
+  #accepts_nested_attributes_for :events
 
   def datetime_to_datestring(datetime)
   	datetime.try(:strftime, "%m/%d/%Y")

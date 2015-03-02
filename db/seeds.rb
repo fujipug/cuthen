@@ -5,6 +5,14 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-
-test_user = User.create({name: 'test_user_name', email: 'test_user@gmail.com', title: 'test_user_title'})
+test_user = Array.new(7)
+test_other_user = Array.new(7)
+for i in 0..6
+	test_other_user[i] = User.create({name: 'test_other_user_name' + i.to_s, email: 'test_other_user' + i.to_s + '@gmail.com', title: 'test_other_user' + i.to_s + '_title'})
+end
+for i in 0..6
+	test_user[i] = User.create({name: 'test_user_name' + i.to_s, email: 'test_user' + i.to_s + '@gmail.com', title: 'test_user' + i.to_s + '_title'})
+end
+User.create({name: 'moomoomamoo', email: 'moomoomamoo@gmail.com', title: 'cow tamer'})
+#test_user = User.create({name: 'test_user_name', email: 'test_user@gmail.com', title: 'test_user_title'})
 test_itinerary = Itinerary.create({name: 'test_itinerary_name', user_id: '1', description: 'test_itinerary_description', start_datetime: DateTime.strptime('4/1/2015', '%m/%d/%Y'), end_datetime: DateTime.strptime('4/5/2015', '%m/%d/%Y')})
