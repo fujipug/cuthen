@@ -20,6 +20,8 @@ Rails.application.routes.draw do
   get 'search/index'
   get 'visitors/index'
   get 'visitors/welcome'
+  get 'groups/group'
+
 
   resources :itineraries
   get 'itinerary/:id/delete' => 'itineraries#delete', as: :itineraries_delete
