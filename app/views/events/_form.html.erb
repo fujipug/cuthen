@@ -1,10 +1,3 @@
-<%# event name %>
-<%# Description %>
-<%# Timespan %>
-<%# Availabilities %>
-<%# Invites %>
-<%# Deadlines %>
-<%# Privite/pub etc %>
 <%= form_for(@event) do |f| %>
   <div class="itinerary_id">
     <%= f.label :itinerary_id %>
@@ -47,6 +40,9 @@
     </div></div>
   </div>
 
+  <%= f.fields_for :event_invited_users do |builder| %>
+    <%= render "event_invited_user_fields", f: builder %>
+  <% end %>
   <div class="actions">
     <%= f.submit class: "btn btn-lg" %>
   </div>

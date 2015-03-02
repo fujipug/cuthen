@@ -1,7 +1,10 @@
 class EventsController < ApplicationController
+  before_action :set_event, only: [:name, :descrption, :duration, :startdate, :enddate, :deadlinedate]
+
   def index
     @events = Event.all
     @itineraries = Itinerary.all
+    #@event_invited_user = EventInvitedUser.all
   end
 
   def show
@@ -10,11 +13,12 @@ class EventsController < ApplicationController
 
   def new
     @event = Event.new
+    event_invited_users = @event.event_invited_users.build
   end
   
   def create
     @event = Event.new(event_params)
-
+    #event_invited_users = @event.event_invited_users.build
     if @event.save
       redirect_to(:action => 'index')
     else
@@ -44,8 +48,14 @@ class EventsController < ApplicationController
     redirect_to(:action => 'index')
   end
   
-  private
+private
+  def set_event
+    @event = Event.find(params[:id])
+  end
+
   def event_params
-    params.require(:event).permit(:name, :itinerary_id, :description, :duration, :startdate, :enddate, :deadlinedate)
+    params.require(:event).permit(:name, :itinerary_id, 
+      :description, :duration, :startdate, :enddate, 
+      :deadlinedate, event_invited_users_attributes: [:id, :event_id, :user_id])
   end
 end

@@ -215,7 +215,7 @@ function calendarInputValidator(calendarCurrentID) {
         else if (date[0].length <= 2) {
             if (parseInt(date[0], 10) <= 12 && parseInt(date[0], 10) > 0) {
                 month = parseInt(date[0], 10);
-                alert("month: " + month);
+                //alert("month: " + month);
             }else{
                 alert("month is outside of range: [1, 12]");
                 error = true;
@@ -292,4 +292,10 @@ function calendarInputValidator(calendarCurrentID) {
 function selectDate(calendarCurrentID, day, month, year) {
     jQuery($('#calendarInput' + calendarCurrentID).val(month + '/' + day + '/' + year));
     updateMiniCalendar(calendarCurrentID, day, month, year);
+}
+
+function add_fields(link, association, content) {
+  var new_id = new Date().getTime();
+  var regexp = new RegExp("new_" + association, "g")
+  $(link).parent().before(content.replace(regexp, new_id));
 }

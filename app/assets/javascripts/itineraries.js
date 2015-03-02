@@ -6,10 +6,33 @@ var ready = function() {
     var mini_calendar_container = $('.mini-calendar-container');
     for (var i=0; i < mini_calendar_container.length; i++) {
         createMiniCalendar($(mini_calendar_container[i]).attr('id'));
+        //.parent().children('.form-control input-lg').eq(0).attr('id')
     }
+
+    var remove_field = $('.remove_field');
+    var add_field = $('.remove_field');
+    var input_name;
+    var input_name_split;
+    for (var i=0; i < remove_field.length; i++) {
+        input_name[i] = $(remove_field[i]).parent().children("input").attr("name") ;
+        $(remove_field[i]).attr('onclick', 'remove_field("'+ input_name[i] + '")');
+        $(add_field[i]).attr('onclick', 'add_field("'+ input_name[i] + '")');
+        //seperate the date into date[0]=month, date[1]=day, date[2]=year
+    var date = input.split('/');
+    }
+
+    //mini calendar counter
+    calendarID = [0];
 };
 $(document).ready(ready);
 $(document).on('page:load', ready);
+
+function remove_field(moo) {
+    $("input[name='"+ moo + "']").attr({"value" : "", "type" : "hidden"});
+}
+function add_field(moo) {
+    $("input[name='"+ moo + "']").attr({"value" : "", "type" : "hidden"});
+}
 
 function toggleSettingLabel(label, moo) {
     if (moo == 1) {

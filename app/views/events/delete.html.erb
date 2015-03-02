@@ -33,6 +33,6 @@
   <%= @event.deadlinedate %>
 </p>
 
-<%= link_to 'Delete', itineraries_destroy_path(:id => @event.id) %> |
-<%= link_to 'Edit', edit_itinerary_path(@event) %> |
+<%= link_to 'Delete', events_destroy_path(:id => @event.id) %> |
+<%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>
