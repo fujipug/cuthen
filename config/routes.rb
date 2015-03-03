@@ -27,7 +27,20 @@ Rails.application.routes.draw do
   get 'itinerary/:id/delete' => 'itineraries#delete', as: :itineraries_delete
   get 'itinerary/:id/' => 'itineraries#destroy', as: :itineraries_destroy
 
-  resources :events
-  get 'event/:id/delete' => 'events#delete', as: :events_delete
-  get 'event/:id/' => 'events#destroy', as: :events_destroy
+  resources :itineraries do
+    resources :events
+  end
+  #get 'event/:id/delete' => 'events#delete', as: :events_delete
+  #get 'event/:id/' => 'events#destroy', as: :events_destroy
+
+  #get 'itinerary/:itinerary_id/events' => 'events#index', as: :events_path
+  #post 'itinerary/:itinerary_id/events' => 'events#create'
+  #get 'itinerary/:itinerary_id/event/new' => 'events#new', as: :new_event_path
+  #get 'itinerary/:itinerary_id/event/:id/edit' => 'events#edit', as: :edit_event_path
+  #get 'itinerary/:itinerary_id/event/:id' => 'events#show', as: :event_path
+  #patch 'itinerary/:itinerary_id/event/:id' => 'events#update'
+  #put 'itinerary/:itinerary_id/event/:id' => 'events#update'
+  get 'itineraries/:itinerary_id/event/:id/delete' => 'events#delete', as: :itinerary_events_delete
+  get 'itineraries/:itinerary_id/event/:id' => 'events#destroy', as: :itinerary_events_destroy
+
 end

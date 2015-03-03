@@ -2,24 +2,27 @@ class EventsController < ApplicationController
   before_action :set_event, only: [:name, :descrption, :duration, :startdate, :enddate, :deadlinedate]
 
   def index
-    @events = Event.all
-    @itineraries = Itinerary.all
+    @itinerary = Itinerary.find(params[:itinerary_id])
+    @events = Event.where(itinerary_id: params[:itinerary_id])#.to_a
+    #@events = @itinerary.Event.all
+    #@itineraries = Itinerary.all
     #@event_invited_user = EventInvitedUser.all
   end
 
   def show
     @event = Event.find(params[:id])
+    @itinerary = Itinerary.find(params[:itinerary_id])
   end
 
   def new
     @event = Event.new
-    event_invited_users = @event.event_invited_users.build
-    event_invited_users = @event.event_invited_users.build
+    @itinerary = Itinerary.find(params[:itinerary_id])
     event_invited_users = @event.event_invited_users.build
   end
   
   def create
     @event = Event.new(event_params)
+    @event.itinerary_id = params[:itinerary_id]
     #event_invited_users = @event.event_invited_users.build
     if @event.save
       redirect_to(:action => 'index')
@@ -30,6 +33,7 @@ class EventsController < ApplicationController
 
   def edit
     @event = Event.find(params[:id])
+    @itinerary = Itinerary.find(params[:itinerary_id])
   end
   
   def update
@@ -43,6 +47,7 @@ class EventsController < ApplicationController
   
   def delete
     @event = Event.find(params[:id])
+    @itinerary = Itinerary.find(params[:itinerary_id])
   end
   
   def destroy

@@ -1,7 +1,7 @@
-<%= form_for(@event) do |f| %>
+<%= form_for [@itinerary, @event] do |f| %>
   <div class="itinerary_id">
-    <%= f.label :itinerary_id %>
-    <%= f.select :itinerary_id, options_for_select(Itinerary.all.map{|s|[s.name, s.id]}) %>
+    <%# f.label :itinerary_id %>
+    <%# f.select :itinerary_id, options_for_select(Itinerary.all.map{|s|[s.name, s.id]}) %>
   </div>
 
   <div class="form-group">

@@ -13,13 +13,13 @@
             <p> <%= event.name %> </p>
             <div class="caption">
               <span class="listing-desc"><%= event.description %></span>
-              <span class="listing-desc">Itinerary: <%= @itineraries.find(event.itinerary_id).name %></span>
+              <span class="listing-desc">Itinerary: <%= @itinerary.name %></span>
               <span class="listing-desc"><%= event.duration %></span>
               <span class="listing-desc"><%= event.startdate %></span>
               <span class="listing-desc"><%= event.enddate %></span>
               <span class="listing-desc"><%= event.deadlinedate %></span>
-              <span><%= link_to "Edit", edit_event_path(event.id) %></span>
-              <span><%= link_to "Delete", events_delete_path(:id => event.id) %></span>
+              <span><%= link_to "Edit", edit_itinerary_event_path(:itinerary_id => 1, :id => event.id) %></span>
+              <span><%= link_to "Delete", itinerary_events_delete_path(1, :id => event.id) %></span>
             </div>
           </div>
       </div>
@@ -27,4 +27,4 @@
   </div>
 <% end %>
 <br>
-<%= link_to 'New Event', new_event_path %>
+<%= link_to 'New Event', new_itinerary_event_path %>
