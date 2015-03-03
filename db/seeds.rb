@@ -13,7 +13,7 @@ end
 for i in 0..6
 	#test_user[i] = User.create({name: 'test_user_name' + i.to_s, email: 'test_user' + i.to_s + '@gmail.com', title: 'test_user' + i.to_s + '_title'})
 end
-User.create({name: 'moomoomamoo', email: 'moomoomamoo@gmail.com', password: '9meowFatpugs', sign_in_count: 0, title: 'cow tamer'})
-User.create({email: 'mooomamoo@gmail.com', password: '9meowFatpugs', sign_in_count: 0, title: 'cow tamer'})
+User.create({name: 'Mark', email: 'moo@gmail.com', password: 'moo123123', sign_in_count: 0, title: 'cow tamer'})
+User.create({name: 'Lane', email: 'lane.fujikado@gmail.com', password: '9meowFatpugs', sign_in_count: 1, title: 'pug tamer'})
 #test_user = User.create({name: 'test_user_name', email: 'test_user@gmail.com', title: 'test_user_title'})
 test_itinerary = Itinerary.create({name: 'test_itinerary_name', user_id: '1', description: 'test_itinerary_description', start_datetime: DateTime.strptime('4/1/2015', '%m/%d/%Y'), end_datetime: DateTime.strptime('4/5/2015', '%m/%d/%Y')})

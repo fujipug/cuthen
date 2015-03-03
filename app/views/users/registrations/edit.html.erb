@@ -1,5 +1,5 @@
 <% provide(:title, 'Edit User') %>
-<h1>Edit User</h1>
+<h1>Account Settings</h1>
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
@@ -7,8 +7,8 @@
                            :url => registration_path(resource_name),
                            :html => { :method => :put } do |f| %>
 
-      <%# f.label :name %>
-      <%# f.text_field :name, class: 'form-control' %>
+      <%= f.label :name %>
+      <%= f.text_field :name, class: 'form-control' %>
 
       <%= f.label :email %>
       <%= f.email_field :email, class: 'form-control' %>
@@ -23,28 +23,19 @@
       <%= f.label :password_confirmation %>
       <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control' %>
 
-      <%# if Rails.env.development? %>
-        <%# f.label :role_id %>
-        <%# f.collection_select :role_id, Role.all, :id, :name, class: 'form-control' %>
-
-        <%# f.label :employer_id %>
-        <%# f.number_field :employer_id, class: 'form-control' %>
-
         <%# f.label :prefix %>
         <%# f.select :prefix, options_for_select([['Mr.', 'Mr.'], ['Ms.', 'Ms.'], ['Mrs.', 'Mrs.'], ['Dr.', 'Dr.']]) %>
 
         <%# f.label :title %>
         <%# f.text_field :title, class: 'form-control' %>
-      <% end %>
+        <%# end %>
 
-      <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i>
+      <%= f.label :current_password %> <i>(To confirm your changes)</i>
       <%= f.password_field :current_password, autocomplete: "off", class: 'form-control' %>
-
+      <br/>
       <%= f.submit "Update", class: "btn btn-primary" %>
     <% end %>
   </div>
 </div>
 
-<%= link_to "Back", :back %>
-
-
+<%# link_to "Back", :back %>

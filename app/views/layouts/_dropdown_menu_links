@@ -1,5 +1,0 @@
-<li><%= link_to 'Home', page_path('../') %></li>
-<li><%= link_to 'My itineraries', page_path('../dashboards/dashboard') %></li>
-<li><%= link_to 'My events', page_path('../events') %></li>
-<li><%= link_to 'My groups', page_path('../groups/group') %></li>
-<li><%= link_to 'My profile', page_path('../visitors') %></li>

@@ -2,7 +2,7 @@
   <nav class="navbar">
       <div class="container">
           <div class="navbar-header">
-            <a class="navbar-brand" href="#"><%= image_tag("cuthen_logo.png", size: "140x140") %></a>
+            <a class="navbar-brand" href="#"><%= image_tag("cu.png", size: "60x60") %></a>
           </div>
       </div>
   </nav>
@@ -11,11 +11,11 @@
   <p>Say goodbye to outdated methods of event planning</p>
   <div class = "row">
     <div class="center">
-      <%= button_to('Sign In', login_path, method: "get", :class => 'btn btn-large btn-success')  %>
+      <%= button_to('Sign In', login_path, method: "get", :class => 'btn btn-large btn-info')  %>
       <br/>
-      <%= button_to('Sign Up', signup_path, method: "get", :class => 'btn btn-large btn-success')  %>
-      <br/>
-      <%= link_to "Sign in with Google", user_omniauth_authorize_path(:google_oauth2) %>
+      <%= button_to('Sign Up', signup_path, method: "get", :class => 'btn btn-large btn-info')  %>
     </div>
   </div>
+  <br/>
+  <%= button_to "Sign in with Google", user_omniauth_authorize_path(:google_oauth2), :class => "btn btn-large btn-danger" %>
 <div>  

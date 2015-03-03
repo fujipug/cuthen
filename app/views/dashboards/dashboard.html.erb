@@ -9,16 +9,22 @@
         </ul>
       </div>
 		</div>-->
-    
+<div class = "row">
+  <div class="col-md-4">
     <button type="button" class="btn btn-default" onclick="showList()">
       <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> List
     </button>
     <button type="button" class="btn btn-default" onclick="showCalendar()">
       <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> Calendar
     </button>
-
-      <%= render 'layouts/dashboard_list' %>
-      <%= render 'layouts/dashboard_calendar' %>
+  </div>
+  <div class="col-md-4 col-md-offset-4">
+    <a href = "/itineraries" class="btn btn-success" role = "button">+Create Itinerary
+    </a>
+  </div>
+</div>
+<%= render 'layouts/dashboard_list' %>
+<%= render 'layouts/dashboard_calendar' %>
 
  
    
