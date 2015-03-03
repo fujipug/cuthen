@@ -5,6 +5,15 @@ class Itinerary < ActiveRecord::Base
   belongs_to :owner #user that owns of itinerary
   #accepts_nested_attributes_for :events
 
+  #these are for testing the autocomplete forms
+  def test_name
+    #test.try(:name)
+  end
+  def test_name=(name)
+    #self.test = Test.find_by_name(name) if name.present?
+  end
+  #autocomplete forms end
+
   def datetime_to_datestring(datetime)
   	datetime.try(:strftime, "%m/%d/%Y")
   end

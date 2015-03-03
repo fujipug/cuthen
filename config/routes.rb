@@ -23,6 +23,8 @@ Rails.application.routes.draw do
   get 'groups/group'
   get 'pages/about'
 
+  #autocomplete and typeahead routes
+  get 'users/autocomplete_array' => 'users#autocomplete_array', as: :users_autocomplete_array
 
   resources :itineraries
   get 'itinerary/:id/delete' => 'itineraries#delete', as: :itineraries_delete
