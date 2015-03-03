@@ -16,6 +16,7 @@
               <span class="listing-desc">By <%= @users.find(itinerary.user_id).name %></span>
               <span class="listing-desc"><%= itinerary.startdate %></span>
               <span class="listing-desc"><%= itinerary.enddate %></span>
+              <span><%= link_to 'Events', itinerary_events_path(itinerary) %></span>
               <span><%= link_to "Edit", edit_itinerary_path(itinerary.id) %></span>
               <span><%= link_to "Delete", itineraries_delete_path(:id => itinerary.id) %></span>
             </div>
