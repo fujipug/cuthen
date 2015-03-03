@@ -13,13 +13,6 @@ var ready = function() {
 $(document).ready(ready);
 $(document).on('page:load', ready);
 
-function remove_field(btn, input, label) {
-    $("input[name='"+ moo + "']").attr({"value" : "", "type" : "hidden"});
-}
-function add_field(moo) {
-    $("input[name='"+ moo + "']").attr({"value" : "", "type" : "hidden"});
-}
-
 function toggleSettingLabel(label, moo) {
     if (moo == 1) {
         jQuery($('#' + label).attr('class','setting-label-expanded'));

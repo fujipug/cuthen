@@ -294,8 +294,16 @@ function selectDate(calendarCurrentID, day, month, year) {
     updateMiniCalendar(calendarCurrentID, day, month, year);
 }
 
-function add_fields(link, association, content) {
-  var new_id = new Date().getTime();
-  var regexp = new RegExp("new_" + association, "g")
-  $(link).parent().before(content.replace(regexp, new_id));
+function remove_field(btn, input) {
+    $("input[name='"+ input + "']").attr({"value" : "", "type" : "hidden"});
+    $("#" + btn).remove()
+}
+function add_user_field(moo) {
+  remove_button=$('<button id="remove_field_button_' + moo + '" name="button" onclick="remove_field(\'remove_field_button_"' + moo + '"\', \'event[event_invited_users_attributes]["' + moo + '"][user_id]\')">Remove</button>');
+  label=$('<label class="sr-only" for="event_invited_users_attributes_' + moo + '_user_id">User ID</label>');
+  input=$('<input class="form-control input-lg" id="event_event_invited_users_attributes_' + moo + '_user_id" name="event[event_invited_users_attributes][' + moo + '][user_id]" type="number">');
+  nested_form_div=$('<div class="form-group"></div>');
+  
+  nested_form_div.append(remove_button, label, input);
+  $('#event_invited_user_form').append(nested_form_div);
 }

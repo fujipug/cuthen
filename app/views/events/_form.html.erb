@@ -39,11 +39,15 @@
         <%= f.text_field :deadlinedate, class: "calender-form-control", id: "calendarInput2", placeholder: "mm/dd/yyyy", onblur: "calendarInputValidator('2')" %>
     </div></div>
   </div>
-  <% i=0 %>
-  <%= f.fields_for :event_invited_users do |builder| %>
-    <%= render "event_invited_user_fields", f: builder , i: i %>
-    <% i+=1 %>
-  <% end %>
+  <div id="event_invited_user_form">
+    <p> manage invited users to event </p>
+    <% i=0 %>
+    <%= f.fields_for :event_invited_users do |builder| %>
+      <%= render "event_invited_user_fields", f: builder , i: i %>
+      <% i+=1 %>
+    <% end %>
+  </div>
+  <%= button_tag "Add Another User", type: "button", onclick: "add_user_field('" + (@event.event_invited_users.length).to_s + "')" %>
   <div class="actions">
     <%= f.submit class: "btn btn-lg" %>
   </div>
