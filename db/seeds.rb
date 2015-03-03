@@ -17,3 +17,5 @@ User.create({name: 'Mark', email: 'moo@gmail.com', password: 'moo123123', sign_i
 User.create({name: 'Lane', email: 'lane.fujikado@gmail.com', password: '9meowFatpugs', sign_in_count: 1, title: 'pug tamer'})
 #test_user = User.create({name: 'test_user_name', email: 'test_user@gmail.com', title: 'test_user_title'})
 test_itinerary = Itinerary.create({name: 'test_itinerary_name', user_id: '1', description: 'test_itinerary_description', start_datetime: DateTime.strptime('4/1/2015', '%m/%d/%Y'), end_datetime: DateTime.strptime('4/5/2015', '%m/%d/%Y')})
+
+test_event = Event.create(name: 'test_event_name', itinerary_id: '1', description: 'test_event_description', duration: 60, start_datetime: DateTime.strptime('4/1/2015', '%m/%d/%Y'), end_datetime: DateTime.strptime('4/5/2015', '%m/%d/%Y'), deadline_datetime: DateTime.strptime('4/1/2015', '%m/%d/%Y'))
