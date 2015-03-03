@@ -14,6 +14,7 @@ class ItinerariesController < ApplicationController
   
   def create
     @itinerary = Itinerary.new(itinerary_params)
+    @itinerary.user_id = current_user.id
 
     if @itinerary.save
       redirect_to(:action => 'index')
