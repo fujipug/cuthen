@@ -12,13 +12,16 @@ class EventsController < ApplicationController
   end
 
   def new
+    #@nested_form_index = 0;
     @event = Event.new
+    event_invited_users = @event.event_invited_users.build
+    event_invited_users = @event.event_invited_users.build
     event_invited_users = @event.event_invited_users.build
   end
   
   def create
     @event = Event.new(event_params)
-    #event_invited_users = @event.event_invited_users.build
+    event_invited_users = @event.event_invited_users.build
     if @event.save
       redirect_to(:action => 'index')
     else
