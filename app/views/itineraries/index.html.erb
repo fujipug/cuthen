@@ -13,7 +13,7 @@
             <p> <%= itinerary.name %> </p>
             <div class="caption">
               <span class="listing-desc"><%= itinerary.description %></span>
-              <span class="listing-desc">By <%= @users.find(itinerary.user_id).name %></span>
+              <span class="listing-desc">By <%= @users.find(itinerary.user_id).email %></span>
               <span class="listing-desc"><%= itinerary.startdate %></span>
               <span class="listing-desc"><%= itinerary.enddate %></span>
               <span><%= link_to "Edit", edit_itinerary_path(itinerary.id) %></span>

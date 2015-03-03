@@ -1,0 +1,33 @@
+﻿Merge branch 'master' of http://github.com/lf237/cuthen
+
+Conflicts:
+	app/controllers/dashboards_controller.rb
+	app/views/dashboards/dashboard.html.erb
+	app/views/layouts/_dashboard_calendar.html.erb
+#
+# It looks like you may be committing a merge.
+# If this is not correct, please remove the file
+#	.git/MERGE_HEAD
+# and try again.
+
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Your branch and 'origin/master' have diverged,
+# and have 1 and 2 different commits each, respectively.
+#   (use "git pull" to merge the remote branch into yours)
+#
+# All conflicts fixed but you are still merging.
+#
+# Changes to be committed:
+#	modified:   app/controllers/dashboards_controller.rb
+#	modified:   app/controllers/itineraries_controller.rb
+#	modified:   app/views/dashboards/dashboard.html.erb
+#	modified:   app/views/itineraries/_form.html.erb
+#	modified:   app/views/itineraries/index.html.erb
+#	modified:   app/views/itineraries/show.html.erb
+#	modified:   app/views/layouts/_dashboard_calendar.html.erb
+#	deleted:    app/views/layouts/_dashboard_list.html.erb
+#
+
