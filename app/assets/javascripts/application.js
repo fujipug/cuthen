@@ -16,5 +16,6 @@
 //= require fullcalendar
 //= require fullcalendar/gcal
 //= require turbolinks
+//= require twitter/typeahead
 //= require bootstrap-sprockets
 //= require_tree .
