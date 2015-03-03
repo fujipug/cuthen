@@ -13,10 +13,15 @@
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
         <%= render 'layouts/navigation_links' %>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.name %><b class="caret"></b></a>
-          <ul class="dropdown-menu">
-           <li><%= render 'layouts/dropdown_menu_links'%></li>
+        <!--User name in navabar-->
+        <% if user_signed_in? %>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.name %><b class="caret"></b></a>
+            <ul class="dropdown-menu">
+             <li><%= render 'layouts/dropdown_menu_links'%></li>
+        <% else %>
+          <li><%= link_to "Log in", login_path %></li>
+        <% end %>
       </ul>
     </div>
   </div>
