@@ -32,8 +32,9 @@ gem 'momentjs-rails'
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
 
+#commented out since the actual js file is now in the javascripts folder.  Keeping here for reference
 # helps the autocomplete and typeahead for forms
-gem 'twitter-typeahead-rails'
+#gem 'twitter-typeahead-rails'
 
 gem 'high_voltage'
 #that horrible mysql gem
