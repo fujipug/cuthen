@@ -2,7 +2,7 @@ class DashboardsController < ApplicationController
 
   def dashboard
     @user = current_user
-    @event = Event.first  #fix this
-    @itinerary = Itinerary.find(@event.itinerary_id)
+    @invitations = EventInvitedUser.where(user_id: @user.id) 
+    #@events = Event.where(id: @invitations.event_id).find_each
   end
 end
