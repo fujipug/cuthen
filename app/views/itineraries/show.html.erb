@@ -1,7 +1,10 @@
-<p>
-  <strong>Itinerary name:</strong>
-  <%= @itinerary.name %>
-</p>
+<div class='title' style="text-align:center">
+  <h1><%= @itinerary.name %></h1>
+
+  <p>From 
+  <%= @itinerary.startdate %> to <%= @itinerary.enddate %>
+  </p>
+</div>
 
 <p>
   <strong>Description:</strong>
@@ -13,15 +16,28 @@
   <%= @user.email %>
 </p>
 
-<p>
-  <strong>Start:</strong>
-  <%= @itinerary.startdate %>
-</p>
-
-<p>
-  <strong>End:</strong>
-  <%= @itinerary.enddate %>
-</p>
+<table class='table'>
+  <tr>
+  <th>Event     </th>
+  <th>Duration     </th>
+  <th>Time Ranges    </th>
+  <th>Invited Users     </th>
+    <th></th>
+  </tr>
+  <% Event.where(itinerary_id: @itinerary.id).find_each do |event| %>
+   <tr>
+     <td><%= event.name %></td>
+     <td><%= event.duration %></td> 
+     <td><%= event.start_datetime %></td>
+     <td><% EventInvitedUser.where(event_id: event.id).find_each do |eiu| %>
+       <p><%= eiu.user_id %></p>
+       <% end %>
+     </td>
+     <td><%= link_to 'Edit Event', edit_itinerary_event_path(@itinerary, event) %></td>
+   </tr>
+  <% end %>
+    
+</table>
 
 <%= link_to 'Edit', edit_itinerary_path(@itinerary) %> |
 <%= link_to 'Back', itineraries_path %>
