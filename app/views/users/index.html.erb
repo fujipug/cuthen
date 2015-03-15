@@ -1,0 +1,22 @@
+<br>
+<br>
+<br>
+
+<h1>Listing users</h1>
+
+<% @users.in_groups_of(3).each do |users| %>
+  <% users.select! {|x| !x.nil?} %>
+  <div class='row'>
+    <% users.each do |user| %>
+      <div class='col-md-4'>
+        <div class="name">
+            <p> <%= user.name %> </p>
+            <div class="caption">
+              <span class="listing-desc"><%= user.email %></span>
+            </div>
+          </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+<br>

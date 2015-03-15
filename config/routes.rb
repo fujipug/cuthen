@@ -12,6 +12,10 @@ Rails.application.routes.draw do
     delete "/logout"  => "users/sessions#destroy"
   end
 
+
+  get "users/" => "users#index", as: :users_path
+  get "users/:id/" => "users#show", as: :user_path
+
   root to: 'visitors#index'
   get 'dashboards/dashboard'
   get 'create_itineraries/create_itinerary'
