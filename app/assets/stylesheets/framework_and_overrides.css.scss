@@ -1,6 +1,7 @@
 // import the CSS framework
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import 'bootstrap-datetimepicker';
 //test to make footer stay at the bottom
 html, body {
   height: 100%;
@@ -34,6 +35,10 @@ img {
   @extend .btn;
   @extend .btn-primary;
   @extend .btn-lg;
+}
+// The max width is dependant on the container (more info below)
+.popover{
+    max-width: 100%; // Max Width of the popover (depending on the container!)
 }
 //overriding the default container
 @media (max-width: 768px) {
