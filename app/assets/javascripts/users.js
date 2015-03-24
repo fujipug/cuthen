@@ -2,10 +2,10 @@
 // All this logic will automatically be available in application.js.
 var ready = function() {
   $.get( $("#target").data("url"), function( data ) {
-    var nameMatcher = function(json_data) {
+    var substringMatcher = function(json_data) {
       return function findMatches(q, cb) {
         var matches, substrRegex;
-        alert(q);
+
         // an array that will be populated with substring matches
         matches = [];
      
@@ -14,11 +14,12 @@ var ready = function() {
      
         // iterate through the pool of strings and for any string that
         // contains the substring `q`, add it to the `matches` array
-        $.each(strs, function(i, str) {
-          if (substrRegex.test(str)) {
+        $.each(json_data, function(i, json_object) {
+          if (substrRegex.test(json_object.name)) {
+            alert(json_object.name);
             // the typeahead jQuery plugin expects suggestions to a
             // JavaScript object, refer to typeahead docs for more info
-            matches.push({ value: str });
+            matches.push(json_object);
           }
         });
      
