@@ -44,4 +44,8 @@ class Event < ActiveRecord::Base
   def deadlinedate=(deadline_datestring)
   	self.deadline_datetime = string_to_datetime(deadline_datestring)
   end
+
+  def as_json(options={})
+    {title: name, start: start_datetime, end: end_datetime}
+  end
 end

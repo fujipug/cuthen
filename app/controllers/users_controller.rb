@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  respond_to :html, :json
+  respond_to :json
   def typeahead
   	@users = User.order(:name).where "name like ?", "%#{params[:term]}%"
   	#@tests.map(&:name) ==> @users.map{|x| x.name}

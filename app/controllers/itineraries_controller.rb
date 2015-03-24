@@ -1,4 +1,13 @@
 class ItinerariesController < ApplicationController
+
+  respond_to :json
+  def calendar_data
+    @events = Event.all
+    respond_to do |format|
+      format.json { render json: @events.as_json }
+    end
+  end
+
   def index
     @itineraries = Itinerary.all
     @users = User.all
