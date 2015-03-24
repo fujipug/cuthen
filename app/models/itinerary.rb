@@ -15,11 +15,11 @@ class Itinerary < ActiveRecord::Base
   #autocomplete forms end
 
   def datetime_to_datestring(datetime)
-  	datetime.try(:strftime, "%m/%d/%Y")
+  	datetime.try(:strftime, "%m/%d/%Y %I:%M %p")
   end
 
   def string_to_datetime(string)
-  	DateTime.strptime(string, "%m/%d/%Y")
+  	DateTime.strptime(string, "%m/%d/%Y %I:%M %p")
   end
 
   def startdate

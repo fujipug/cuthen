@@ -16,7 +16,6 @@ var ready = function() {
         // contains the substring `q`, add it to the `matches` array
         $.each(json_data, function(i, json_object) {
           if (substrRegex.test(json_object.name)) {
-            alert(json_object.name);
             // the typeahead jQuery plugin expects suggestions to a
             // JavaScript object, refer to typeahead docs for more info
             matches.push(json_object);

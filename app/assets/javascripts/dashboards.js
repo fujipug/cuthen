@@ -24,3 +24,28 @@ function showList() {
     jQuery($('#cal').attr('class', 'hide'));
     jQuery($('#list').attr('class', 'moo'));
 }
+
+//this is for later
+var substringMatcher = function(json_data) {
+      return function findMatches(q, cb) {
+        var matches, substrRegex;
+
+        // an array that will be populated with substring matches
+        matches = [];
+     
+        // regex used to determine if a string contains the substring `q`
+        substrRegex = new RegExp(q, 'i');
+     
+        // iterate through the pool of strings and for any string that
+        // contains the substring `q`, add it to the `matches` array
+        $.each(json_data, function(i, json_object) {
+          if (substrRegex.test(json_object.itinerary_id)) {
+            // the typeahead jQuery plugin expects suggestions to a
+            // JavaScript object, refer to typeahead docs for more info
+            matches.push(json_object);
+          }
+        });
+     
+        return matches;
+      };
+    };
