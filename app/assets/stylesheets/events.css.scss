@@ -12,7 +12,7 @@
   background-color: #FF3;
 }
 
-//mini calendar stuff
+/*mini calendar stuff
 .mini-calendar {
   width: 280px;
   //height: 280px;
@@ -55,8 +55,8 @@
     border-top: 2px solid #dddddd;
     border-bottom: 2px solid #dddddd;
   }
-}
-.calender-form-control {
+}*/
+.datetime-form-control {
   @extend .form-control;
   //@extend .input-lg;
   height: 46px;
@@ -66,5 +66,5 @@
   border-radius: 6px;
   text-align: center;
   margin-bottom: 10px;
-  width: 150px;
+  width: 250px;
 }
