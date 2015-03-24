@@ -11,7 +11,8 @@
 
       <%# This is just for testing.  It doesn't affect submitting the form, and can be ignored %>
       <div id="the-basics" class="form-group">
-
+        <%= f.label :test_name, "Test Name" %>
+        <%= f.text_field :test_name, class: "typeahead", type: :text, placeholder: "Invite User", id: "target", data: {url: users_typeahead_path} %>
       </div>
       <%# Init Name End %>
 
