@@ -1,2 +1,19 @@
-<h1>Search#results</h1>
-<p>Find me in app/views/search/results.html.erb</p>
+<h1> Results</h1>
+
+<h3> users </h3>
+
+<% @users.each do |user| %>
+    <%# users.select! {|x| !x.nil?} %>
+        <%# users.each do |user| %>
+    <p> <%= user.name %> | <%= user.email %></p>
+    <%# end %>
+<% end %>
+
+<h3> itineraries </h3>
+
+<% @itineraries.each do |itinerary| %>
+    <%# users.select! {|x| !x.nil?} %>
+        <%# users.each do |user| %>
+    <p> <%= itinerary.name %> | <%= itinerary.start_datetime %></p>
+    <%# end %>
+<% end %>

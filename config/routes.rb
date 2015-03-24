@@ -12,7 +12,6 @@ Rails.application.routes.draw do
     delete "/logout"  => "users/sessions#destroy"
   end
 
-
   get "users/" => "users#index", as: :users_path
   get "users/:id/" => "users#show", as: :user_path
   #autocomplete and typeahead routes
@@ -21,8 +20,12 @@ Rails.application.routes.draw do
   get 'dashboards/dashboard'
   get 'create_itineraries/create_itinerary'
   get 'add_events/add_event'
-  get 'search/results'
+
+  get 'search/results/' => 'search#results', as: :search_results
   get 'search/index'
+  get 'user_data/' => 'search#user_data', as: :search_user_data
+  get 'itinerary_data/' => 'search#itinerary_data', as: :search_itinerary_data
+
   get 'visitors/index'
   get 'visitors/welcome'
   get 'groups/group'
