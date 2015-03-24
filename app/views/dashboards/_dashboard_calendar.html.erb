@@ -1,4 +1,4 @@
-<div id = "cal">
-    <div id = "calendar">
-    </div>
-</div>
+<%= content_tag :div, id: :cal, data: {url: calendar_data_path} do -%>
+  <div id = "calendar"></div>
+<% end -%>
+    
