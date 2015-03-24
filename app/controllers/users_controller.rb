@@ -1,8 +1,13 @@
 class UsersController < ApplicationController
-	def autocomplete_array
+  respond_to :html, :json
+  def typeahead
   	@users = User.order(:name).where "name like ?", "%#{params[:term]}%"
   	#@tests.map(&:name) ==> @users.map{|x| x.name}
-  	render json: @users.map{|x| x.name + "/" + x.id.to_s}
+  	#render json: @users.map{|x| x.id.to_s}
+    #render json: @users.to_json(include: {})
+    respond_to do |format|
+      format.json { render json: @users.as_json }
+    end
   end
 
   def index
@@ -10,6 +15,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = Itinerary.find(params[:id])
+    @user = User.find(params[:id])
   end
 end

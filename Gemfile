@@ -37,6 +37,7 @@ gem 'bootstrap3-datetimepicker-rails', '~> 4.0.0'
 #commented out since the actual js file is now in the javascripts folder.  Keeping here for reference
 # helps the autocomplete and typeahead for forms
 #gem 'twitter-typeahead-rails'
+#gem 'handlebars', '~> 0.7.0'
 
 gem 'high_voltage'
 #that horrible mysql gem

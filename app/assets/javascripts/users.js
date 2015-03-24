@@ -1,42 +1,32 @@
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
-
-var substringMatcher = function(strs) {
-  return function findMatches(q, cb) {
-    var matches, substrRegex;
- 
-    // an array that will be populated with substring matches
-    matches = [];
- 
-    // regex used to determine if a string contains the substring `q`
-    substrRegex = new RegExp(q, 'i');
- 
-    // iterate through the pool of strings and for any string that
-    // contains the substring `q`, add it to the `matches` array
-    $.each(strs, function(i, str) {
-      if (substrRegex.test(str)) {
-        // the typeahead jQuery plugin expects suggestions to a
-        // JavaScript object, refer to typeahead docs for more info
-        matches.push({ value: str });
+var ready = function() {
+  //$.get( $("#target").data("url"), function( data ) {
+    var bestPictures = new Bloodhound({
+      datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
+      queryTokenizer: Bloodhound.tokenizers.whitespace,
+      prefetch: '../users_typeahead.json',
+    });
+    bestPictures.initialize();
+    $('#the-basics .typeahead').typeahead({
+      hint: true,
+      highlight: true,
+      minLength: 0
+    },
+    {
+      name: 'uusers_typeahead',
+      displayKey: 'value',
+      source: bestPictures.ttAdapter(),
+      templates: {
+        empty: [
+          '<div class="empty-message">',
+          'unable to find any users that match the current query',
+          '</div>'
+        ].join('\n'),
+        suggestion: Handlebars.compile('<p><strong>{{value}}</strong> – moo</p>')
       }
     });
- 
-    cb(matches);
-  };
+  //});
 };
-
-$(function() {
-    $.get( $("#target").data("url"), function( data ) {
-      //alert( data );
-        $('#the-basics .typeahead').typeahead({
-          hint: true,
-          highlight: true,
-          minLength: 1
-        },
-        {
-          name: 'users',
-          displayKey: 'value',
-          source: substringMatcher(data)
-        });
-    });
-});
+$(document).ready(ready);
+$(document).on('page:load', ready);

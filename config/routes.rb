@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 
   get "users/" => "users#index", as: :users_path
   get "users/:id/" => "users#show", as: :user_path
+  #autocomplete and typeahead routes
 
   root to: 'visitors#index'
   get 'dashboards/dashboard'
@@ -27,12 +28,10 @@ Rails.application.routes.draw do
   get 'groups/group'
   get 'pages/about'
 
-  #autocomplete and typeahead routes
-  get 'users/autocomplete_array' => 'users#autocomplete_array', as: :users_autocomplete_array
-
   resources :itineraries
   get 'itinerary/:id/delete' => 'itineraries#delete', as: :itineraries_delete
   get 'itinerary/:id/' => 'itineraries#destroy', as: :itineraries_destroy
+  get 'users_typeahead/' => 'users#typeahead', as: :users_typeahead
 
   resources :itineraries do
     resources :events
