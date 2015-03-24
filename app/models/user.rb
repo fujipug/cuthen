@@ -23,8 +23,8 @@ class User < ActiveRecord::Base
       user
   end
 
-  def as_json(options={})
-    {value: name.to_s}
-  end
+  #def as_json(options={})
+  #  {value: name.to_s, name: }
+  #end
 
 end
