@@ -1,0 +1,14 @@
+<%# invited label button%>
+<a data-toggle="collapse" id="invited_label_button" data-toggle="collapse" data-target="#invited_container" aria-expanded="true" href="#invited_container">
+<div class="setting-label" onclick="toggle_label_button('#information_label_button', 0)">People Involved</div>
+</a>
+
+<%# invited form %>
+<div id="invited_container" class="collapse in" aria-expanded="true">
+  <%# This is just for testing.  It doesn't affect submitting the form, and can be ignored %>
+  <div id="the-basics" class="form-group">
+    <%= f.label :test_name, "Test Name" %>
+    <%= f.text_field :test_name, class: "typeahead", type: :text, placeholder: "Invite User", id: "target", data: {url: users_typeahead_path} %>
+  </div>
+  <%# Init Name End %>
+</div>

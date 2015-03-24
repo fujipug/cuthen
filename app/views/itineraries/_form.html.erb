@@ -1,67 +1,7 @@
 <%= form_for(@itinerary) do |f| %>
-  <%# general information container %>
-  <div class="general_information_container">
-
-    <%# general information label %>
-    <div class="setting-label" id="basic_information_label" data-toggle="collapse" data-target="#generalSettings" aria-expanded="true" onclick="toggleSettingLabel('generalSettingsLabel', 0)">Itinerary Basic Information</div>
-    <%# general information label end %>
-
-    <%# general information form %>
-    <div id="general_information" class="collapse in" aria-expanded="true">
-
-      <%# This is just for testing.  It doesn't affect submitting the form, and can be ignored %>
-      <div id="the-basics" class="form-group">
-        <%= f.label :test_name, "Test Name" %>
-        <%= f.text_field :test_name, class: "typeahead", type: :text, placeholder: "Invite User", id: "target", data: {url: users_typeahead_path} %>
-      </div>
-      <%# Init Name End %>
-
-      <%# Init Name %>
-      <div class="form-group">
-        <%= f.label :name, "Itinerary Name" %>
-        <%= f.text_field :name, class: "form-control input-lg", id: "name" %>
-      </div>
-      <%# Init Name End %>
-
-      <%# Init Desc %>
-      <div class="form-group">
-        <%= f.label :description, "Description" %>
-        <%= f.text_area :description, class: "form-control input-lg", rows: "4", id: "initDesc" %>
-      </div>
-      <%# Init Desc End %>
-
-      <%# radio btns %>
-      <p>Add all the days involved in this itinerary:</p>
-      <div class="radio">
-        <label>
-          <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-          Add single days at a time
-        </label>
-      </div>
-      <div class="radio">
-        <label>
-          <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-          Add a range of days
-        </label>
-      </div>
-      <%# radio btns end %>
-
-      <%# Calendar inputs woo woo %>
-      <div class="row">
-        <div class="col-sm-6"><div class="form-group">
-            <%= f.label :startdate, "Start Date" %>
-            <%= f.text_field :startdate, class: "datetime-form-control", id: "datetimepicker1", placeholder: "mm/dd/yyyy hh:mm AM" %>
-        </div></div>
-        <div class="col-sm-6"><div class="form-group">
-            <%= f.label :enddate, "End Date" %>
-            <%= f.text_field :enddate, class: "datetime-form-control", id: "datetimepicker2", placeholder: "mm/dd/yyyy hh:mm AM" %>
-        </div></div>
-      </div>
-    </div>
-    <%# general information form end %>
-  </div>
-  <%# general information container end %>
-
+  <%= render 'form_information', f: f %>
+  <%= render 'form_duration', f: f %>
+  <%= render 'form_invited', f: f %>
   <div class="actions">
     <%= f.submit class: "btn btn-lg" %>
   </div>
