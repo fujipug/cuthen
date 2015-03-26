@@ -1,4 +1,5 @@
 class ItinerariesController < ApplicationController
+  before_action :set_itinerary, only: [:name, :description, :duration, :startdate, :enddate]
 
   respond_to :json
   def calendar_data
@@ -20,12 +21,12 @@ class ItinerariesController < ApplicationController
 
   def new
     @itinerary = Itinerary.new
+    itin_invited_users = @itinerary.itin_invited_users.build
   end
   
   def create
     @itinerary = Itinerary.new(itinerary_params)
     @itinerary.user_id = current_user.id
-
     if @itinerary.save
       redirect_to(:action => 'index')
     else
@@ -55,8 +56,13 @@ class ItinerariesController < ApplicationController
     redirect_to(:action => 'index')
   end
   
-  private
+private
+  def set_itinerary
+    @itinerary = Itinerary.find(params[:id])
+  end
+
   def itinerary_params
-    params.require(:itinerary).permit(:name, :user_id, :description, :startdate, :enddate)
+    params.require(:itinerary).permit(:name, :user_id, 
+      :description, :startdate, :enddate, itin_invited_users_attributes: [:id, :itinerary_id, :user_id])
   end
 end

@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:name, :descrption, :duration, :startdate, :enddate, :deadlinedate]
+  before_action :set_event, only: [:name, :description, :duration, :startdate, :enddate, :deadlinedate]
 
   def index
     @itinerary = Itinerary.find(params[:itinerary_id])

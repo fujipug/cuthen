@@ -1,7 +1,7 @@
 class Event < ActiveRecord::Base
   belongs_to :itinerary
   has_many :group, through: :event_invited_group
-  has_many :user, through: :event_invited_user
+  #has_many :user, through: :event_invited_user
   has_many :event_invited_users, dependent: :destroy
   has_many :event_time_range, dependent: :destroy
   accepts_nested_attributes_for :event_invited_users, reject_if: :reject_invited_user, allow_destroy: true
