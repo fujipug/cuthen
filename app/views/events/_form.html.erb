@@ -40,7 +40,7 @@
     <p> manage invited users to event </p>
     <% i=0 %>
     <%= f.fields_for :event_invited_users do |builder| %>
-      <%= render "event_invited_user_fields", f: builder , i: i %>
+      <%= render "form_user_fields", f: builder , i: i %>
       <% i+=1 %>
     <% end %>
   </div>

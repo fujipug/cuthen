@@ -11,5 +11,5 @@ function add_user_field(btn, model, nested_id) {
   
   nested_form_div.append(remove_button, label, input);
   $('#event_invited_' + model + 's_form').append(nested_form_div);
-  $('#' + btn).attr("onclick","add_" + model + "_field('add_" + model + "_button', '" + model + "', '" + (nested_id + 1) + "')");
+  $('#' + btn).attr("onclick","add_" + model + "_field('add_" + model + "_button', '" + model + "', " + (nested_id + 1) + ")");
 }

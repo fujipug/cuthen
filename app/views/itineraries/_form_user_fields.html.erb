@@ -1,0 +1,6 @@
+<div class="form-group">
+    <% nested_id=@itinerary.itin_invited_users[i].id %>
+    <%= button_tag "Remove", type: "button", id: "remove_field_button_" + i.to_s, onclick: "remove_field('remove_field_button_" + i.to_s + "', 'itinerary[itinerary_invited_users_attributes][" + i.to_s + "][user_id]')" %>
+    <%= f.label :user_id, "User ID", class: "sr-only" %>
+    <%= f.number_field :user_id, class: "form-control input-lg" %>
+</div>
