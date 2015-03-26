@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150325051528) do
+ActiveRecord::Schema.define(version: 20150326230614) do
 
   create_table "auth_users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -161,7 +161,7 @@ ActiveRecord::Schema.define(version: 20150325051528) do
     t.integer  "user_id"
     t.integer  "event_id"
     t.datetime "start"
-    t.datetime "end"
+    t.datetime "end_time"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
