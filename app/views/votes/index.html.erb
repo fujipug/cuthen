@@ -1,0 +1,9 @@
+<h1>Votes for <%= @event.name %></h1>
+<ul> <% if @votes.blank? %> <%# if nothing is found %>
+  No votes found
+  <% else %>
+<p> <% @votes.each do |vote| %> </p>
+  <%= vote.user_id %> ---- From: <%= vote.start %> to <%= vote.end %>
+  <% end %>
+  <% end %>
+</ul>

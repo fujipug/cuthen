@@ -1,0 +1,9 @@
+<%= simple_form_for ([@itinerary, @event, @vote]) do |f| %>
+<%= f.label :start %>
+<%= f.input :start %>
+
+<%= f.label :end %>
+<%= f.input :end %>
+
+<%= f.button :submit %>
+<% end %>

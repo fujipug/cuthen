@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  
+
   devise_for :users, controllers: { sessions:     "users/sessions",
                                     omniauth_callbacks:  "users/omniauth_callbacks" }
   as :user do
@@ -38,7 +40,13 @@ Rails.application.routes.draw do
   get 'users_typeahead/' => 'users#typeahead', as: :users_typeahead
 
   resources :itineraries do
-    resources :events
+    resources :events do
+      resources :votes
+    end
+  end
+  
+  resources :events do
+    resources :votes
   end
   #get 'event/:id/delete' => 'events#delete', as: :events_delete
   #get 'event/:id/' => 'events#destroy', as: :events_destroy
