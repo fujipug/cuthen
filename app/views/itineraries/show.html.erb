@@ -24,16 +24,19 @@
   <th>Invited Users     </th>
     <th></th>
   </tr>
-  <% Event.where(itinerary_id: @itinerary.id).find_each do |event| %>
+  <% @events.each do |event| %>
    <tr>
      <td><%= event.name %></td>
      <td><%= event.duration %></td> 
      <td><%= event.start_datetime %></td>
      <td><% EventInvitedUser.where(event_id: event.id).find_each do |eiu| %>
-       <p><%= eiu.user_id %></p>
+       <% if User.exists?(eiu.user_id) %> 
+           <p><% user = User.find(eiu.user_id) %>
+           <%= user.email %></p>
+         <% end %>
        <% end %>
      </td>
-     <td><%= link_to 'Edit Event', edit_itinerary_event_path(@itinerary, event) %></td>
+     <td><%= link_to 'View Event', itinerary_event_path(@itinerary, event) %></td>
    </tr>
   <% end %>
     
