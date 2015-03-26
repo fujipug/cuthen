@@ -5,8 +5,8 @@
     <th>Duration</th>
     <th>Start Time</th>
     <th>Itinerary Name</th>
-    <th><th>
-    <th>More Info<th>
+    <th>See Full Itinerary</th>
+    <th>More Info</th>
   </tr>
   <% @invitations.each do |invite| %>
   <tr>
@@ -18,7 +18,7 @@
   <td><%= @event.start_datetime %></td>
   <td><%= @itinerary.name %></td>
   <td><%= link_to 'Show Itinerary', @itinerary %></td>
-    <td><%= link_to 'More info', [@itinerary, @event] %></td>
+    <td><%= link_to 'More Event Info', [@itinerary, @event] %></td>
    </tr>
   <% end %> 
 </table>
