@@ -1,16 +1,17 @@
 <p>
-  <strong>Event name:</strong>
-  <%= @event.name %>
+  <h1><%= @event.name %></h1>
+  
 </p>
+
+<p>
+  From <%= @event.startdate %> to <%= @event.enddate %>
+</p>
+
+<p> Part of <%= @itinerary.name %> </p>
 
 <p>
   <strong>Description:</strong>
   <%= @event.description %>
-</p>
-
-<p>
-  <strong>Itinerary ID:</strong>
-  <%= @event.itinerary_id %>
 </p>
 
 <p>
@@ -19,18 +20,34 @@
 </p>
 
 <p>
-  <strong>Start:</strong>
-  <%= @event.startdate %>
-</p>
-
-<p>
-  <strong>End:</strong>
-  <%= @event.enddate %>
-</p>
-
-<p>
   <strong>Deadline:</strong>
   <%= @event.deadlinedate %>
 </p>
+
+<p>
+  <strong>Invited Guests:</strong>
+  <table class="table">
+    <tr>
+    <th>Email</th>
+    <th>Has Responded</th>
+      <th></th>
+    </tr>
+  <% @guests.each do |guest| %>
+    <% if User.exists?(guest.user_id) %>
+  <% user = User.find(guest.user_id) %>
+    <tr>
+    <td><%= user.email %></td>
+     <td><% votes = Vote.where(user_id: user.id) %>
+       <% if votes.blank? %>
+         No
+       <% else %>
+         Yes
+       <% end %>
+        </td>
+    </tr>
+    <% end %>
+  <% end %>
+</table>
+</p>
 <%= link_to 'Edit', edit_itinerary_event_path(@itinerary, @event) %> |
-<%= link_to 'Back', itinerary_events_path %>
+<%= link_to 'View Itinerary', itinerary_path %>

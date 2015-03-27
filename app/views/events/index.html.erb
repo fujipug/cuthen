@@ -18,8 +18,9 @@
               <span class="listing-desc"><%= event.startdate %></span>
               <span class="listing-desc"><%= event.enddate %></span>
               <span class="listing-desc"><%= event.deadlinedate %></span>
-              <span><%= link_to "Edit", edit_itinerary_event_path(:itinerary_id => 1, :id => event.id) %></span>
-              <span><%= link_to "Delete", itinerary_events_delete_path(1, :id => event.id) %></span>
+              <br><span><%= link_to "Edit", edit_itinerary_event_path(@itinerary.id, :id => event.id) %></span>
+              <span><%= link_to "Delete", itinerary_events_delete_path(@itinerary.id, :id => event.id) %></span>
+              <span><%= link_to "Show", [@itinerary, event] %></span>
             </div>
           </div>
       </div>
