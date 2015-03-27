@@ -1,3 +1,5 @@
-<h1>New vote</h1>
+<h1>New vote for <%= @event.name %></h1>
+
+<h3> From <%= @event.start_datetime %> to <%= @event.end_datetime %> </h3>
 
 <%= render 'form' %>

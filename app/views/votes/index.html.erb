@@ -3,7 +3,7 @@
   No votes found
   <% else %>
 <p> <% @votes.each do |vote| %> </p>
-  <%= vote.user_id %> ---- From: <%= vote.start %> to <%= vote.end %>
+  <%= vote.user_id %> ---- From: <%= vote.start %> to <%= vote.end_time %>
   <% end %>
   <% end %>
 </ul>
