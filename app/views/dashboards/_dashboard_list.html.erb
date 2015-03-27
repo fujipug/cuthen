@@ -1,4 +1,4 @@
-<h2>Next Event</h2>
+<h2>Upcoming Events</h2>
 <table class="table">
   <tr>
     <th>Name</th>
@@ -21,4 +21,29 @@
     <td><%= link_to 'More Event Info', [@itinerary, @event] %></td>
    </tr>
   <% end %> 
+</table>
+
+<h2>New Invitations</h2>
+
+<table class='table'>
+  <tr>
+    <th>Event Name</th>
+    <th>When</th>
+    <th>Visitor</th>
+    <th>Respond</th>
+    <th></th>
+  </tr>
+  <% @invitations.each do |invite| %>
+  
+  <tr>
+    <% event = Event.find(invite.event_id) %>
+    <td><%= event.name %></td>
+    <td><%= event.start_datetime %> -- <%= event.end_datetime %></td>
+    <td><% itin = Itinerary.find(event.itinerary_id) %><%= itin.name %></td>
+    <td>
+  <div class="btn btn-default" role = "button"><%= link_to 'Vote', new_itinerary_event_vote_path(itin, event) %></div>
+    </td>
+    
+  </tr>
+  <% end %>
 </table>
