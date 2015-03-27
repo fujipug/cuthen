@@ -17,6 +17,7 @@ class ItinerariesController < ApplicationController
   def show
     @itinerary = Itinerary.find(params[:id])
     @user = User.find(@itinerary.user_id)
+    @events = Event.where "itinerary_id like ?", "%#{params[:id]}%"
   end
 
   def new
@@ -36,10 +37,11 @@ class ItinerariesController < ApplicationController
 
   def edit
     @itinerary = Itinerary.find(params[:id])
-    @itinerary_invited_users = Itinerary_Invited_User.where "itinerary_id like ?", "%#{@itinerary.id}%"
-    for (@itinerary_invited_users.each)
-    <% @users.each do |user| %>
-    @users = User.where "itinerary_id like ?", "%#{@itinerary.id}%"
+    @itinerary_invited_users = ItineraryInvitedUser.where "itinerary_id like ?", "%#{params[:id]}%"
+    @users ||= Array.new
+    @itinerary_invited_users.each do |itinerary_invited_user|
+      @users.push(User.find_by(id: itinerary_invited_user.user_id))
+    end
   end
   
   def update
