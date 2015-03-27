@@ -1,10 +1,10 @@
 class Itinerary < ActiveRecord::Base
   belongs_to :user
   has_many :events, dependent: :destroy
-  has_many :groups, through: :itin_invited_group
+  has_many :groups, through: :itinerary_invited_group
   #has_and_belongs_to_many :user, through: :itin_invited_user
-  has_many :itin_invited_users, dependent: :destroy
-  accepts_nested_attributes_for :itin_invited_users, reject_if: :reject_invited_user, allow_destroy: true
+  has_many :itinerary_invited_users, dependent: :destroy
+  accepts_nested_attributes_for :itinerary_invited_users, reject_if: :reject_invited_user, allow_destroy: true
 
   def reject_invited_user(attributes)
     exists = attributes['id'].present?

@@ -21,7 +21,7 @@ class ItinerariesController < ApplicationController
 
   def new
     @itinerary = Itinerary.new
-    itin_invited_users = @itinerary.itin_invited_users.build
+    itinerary_invited_users = @itinerary.itinerary_invited_users.build
   end
   
   def create
@@ -36,6 +36,10 @@ class ItinerariesController < ApplicationController
 
   def edit
     @itinerary = Itinerary.find(params[:id])
+    @itinerary_invited_users = Itinerary_Invited_User.where "itinerary_id like ?", "%#{@itinerary.id}%"
+    for (@itinerary_invited_users.each)
+    <% @users.each do |user| %>
+    @users = User.where "itinerary_id like ?", "%#{@itinerary.id}%"
   end
   
   def update
@@ -63,6 +67,6 @@ private
 
   def itinerary_params
     params.require(:itinerary).permit(:name, :user_id, 
-      :description, :startdate, :enddate, itin_invited_users_attributes: [:id, :itinerary_id, :user_id])
+      :description, :startdate, :enddate, itinerary_invited_users_attributes: [:id, :itinerary_id, :user_id])
   end
 end

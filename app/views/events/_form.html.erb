@@ -44,7 +44,7 @@
       <% i+=1 %>
     <% end %>
   </div>
-  <%= button_tag "Add Another User", id: "add_user_button", type: "button", onclick: "add_user_field('add_user_button', 'user', '" + (@event.event_invited_users.length).to_s + "')" %>
+  <%= button_tag "Add Another User", id: "add_user_button", type: "button", onclick: "add_user_field('add_user_button', 'user', " + (@event.event_invited_users.length).to_s + ", 'event')" %>
   <div class="actions">
     <%= f.submit class: "btn btn-lg" %>
   </div>

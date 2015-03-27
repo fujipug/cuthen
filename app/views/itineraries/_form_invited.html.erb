@@ -11,13 +11,13 @@
     <%= f.text_field :test_name, class: "typeahead", type: :text, placeholder: "Invite User", id: "target", data: {url: users_typeahead_path} %>
   </div>
   <%# Init Name End %>
-  <div id="itin_invited_users_form">
+  <div id="itinerary_invited_users_form">
     <p> manage invited users to event </p>
     <% i=0 %>
-    <%= f.fields_for :itin_invited_users do |builder| %>
+    <%= f.fields_for :itinerary_invited_users do |builder| %>
       <%= render "form_user_fields", f: builder , i: i %>
       <% i+=1 %>
     <% end %>
   </div>
-  <%= button_tag "Add Another User", id: "add_user_button", type: "button", onclick: "add_user_field('add_user_button', 'user', '" + (@itinerary.itin_invited_users.length).to_s + "')" %>
+  <%= button_tag "Add Another User", id: "add_user_button", type: "button", onclick: "add_user_field('add_user_button', 'user', " + (@itinerary.itinerary_invited_users.length).to_s + ", 'itinerary')" %>
 </div>

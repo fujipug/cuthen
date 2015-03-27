@@ -1,6 +1,6 @@
-class CreateItinInvitedUsers < ActiveRecord::Migration
+class CreateItineraryInvitedUsers < ActiveRecord::Migration
   def up
-    create_table :itin_invited_users do |t|
+    create_table :itinerary_invited_users do |t|
       t.belongs_to :itinerary, index: true
       t.belongs_to :user, index: true
       t.integer :privelege
@@ -10,6 +10,6 @@ class CreateItinInvitedUsers < ActiveRecord::Migration
   end
 
   def down
-  	drop_table :itin_invited_users
+  	drop_table :itinerary_invited_users
   end
 end
