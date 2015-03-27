@@ -95,25 +95,6 @@ ActiveRecord::Schema.define(version: 20150326230614) do
 
   add_index "groups", ["user_id"], name: "index_groups_on_user_id", using: :btree
 
-  create_table "itin_invited_groups", force: true do |t|
-    t.integer  "itinerary_id"
-    t.integer  "group_id"
-    t.integer  "privelege"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "itin_invited_users", force: true do |t|
-    t.integer  "itinerary_id"
-    t.integer  "user_id"
-    t.integer  "privelege"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "itin_invited_users", ["itinerary_id"], name: "index_itin_invited_users_on_itinerary_id", using: :btree
-  add_index "itin_invited_users", ["user_id"], name: "index_itin_invited_users_on_user_id", using: :btree
-
   create_table "itineraries", force: true do |t|
     t.string   "name"
     t.integer  "user_id"
@@ -125,6 +106,33 @@ ActiveRecord::Schema.define(version: 20150326230614) do
   end
 
   add_index "itineraries", ["user_id"], name: "index_itineraries_on_user_id", using: :btree
+
+  create_table "itinerary_invited_groups", force: true do |t|
+    t.integer  "itinerary_id"
+    t.integer  "group_id"
+    t.integer  "privelege"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "itinerary_invited_users", force: true do |t|
+    t.integer  "itinerary_id"
+    t.integer  "user_id"
+    t.integer  "privelege"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "itinerary_invited_users", ["itinerary_id"], name: "index_itinerary_invited_users_on_itinerary_id", using: :btree
+  add_index "itinerary_invited_users", ["user_id"], name: "index_itinerary_invited_users_on_user_id", using: :btree
+
+  create_table "new_users", force: true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "login"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "user_event_votes", force: true do |t|
     t.integer  "user_id"

@@ -36,6 +36,7 @@ GEM
       json
     bcrypt (3.1.10)
     bcrypt (3.1.10-x64-mingw32)
+    bcrypt (3.1.10-x86-mingw32)
     better_errors (2.1.1)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
@@ -97,6 +98,7 @@ GEM
     multipart-post (1.2.0)
     mysql2 (0.3.18)
     mysql2 (0.3.18-x64-mingw32)
+    mysql2 (0.3.18-x86-mingw32)
     oauth2 (1.0.0)
       faraday (>= 0.8, < 0.10)
       jwt (~> 1.0)
@@ -198,6 +200,7 @@ GEM
 PLATFORMS
   ruby
   x64-mingw32
+  x86-mingw32
 
 DEPENDENCIES
   autoprefixer-rails

@@ -25,7 +25,7 @@ class UpdateUsers < ActiveRecord::Migration
     add_column(:users, :unconfirmed_email, :string) #Only if using reconfirmable, :string)
 
     ## Lockable
-    add_column(:users, :failed_attempts, :integer, null: false, default: 0) #Only if lock strategy #is :failed_attempts, :integer)
+    add_column(:users, :failed_attempts, :integer, null: false, default: 0) #Only if lock strategy is :failed_attempts, :integer)
     add_column(:users, :unlock_token, :string) #Only if unlock strategy is :email or :both, #:string)
     add_column(:users, :locked_at, :datetime)
 
