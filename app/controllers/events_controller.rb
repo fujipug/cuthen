@@ -12,6 +12,7 @@ class EventsController < ApplicationController
   def show
     @event = Event.find(params[:id])
     @itinerary = Itinerary.find(params[:itinerary_id])
+    @guests = EventInvitedUser.where(event_id: @event.id)
   end
 
   def new
