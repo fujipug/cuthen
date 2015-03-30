@@ -17,10 +17,9 @@ function get_search_results() {
     // contains the substring `q`, add it to the `matches` array
     $.each(data, function(i, json_object) {
       if (substrRegex.test(json_object.name)) {
-        $('#user_results').append('<p>' + json_object.name + ' | ' + json_object.email + '</p>');
+        $('#user_results').append('<p>' + json_object.id + ' | ' + json_object.name + ' | ' + json_object.title + '|' + json_object.email + '</p>');
       }
     });
-    
   });
 }
 

@@ -1,6 +1,9 @@
 <div class="form-group">
-    <% nested_id=@itinerary.itinerary_invited_users[i].id %>
-    <%= button_tag "Remove", type: "button", id: "remove_field_button_" + i.to_s, onclick: "remove_field('remove_field_button_" + i.to_s + "', 'itinerary[itinerary_invited_users_attributes][" + i.to_s + "][user_id]')" %>
+    <% nested_id=@itinerary_invited_users[i].id %>
+    <%= button_tag "Remove", type: "button", id: "remove_field_button_" + i.to_s, onclick: "remove_field('remove_field_button_" + i.to_s + "', 'itinerary[itinerary_invited_users_attributes][" + i.to_s + "][user_id]', 'itinerary_invited_users_display_" + i.to_s + "')" %>
     <%= f.label :user_id, "User ID", class: "sr-only" %>
-    <%= f.number_field :user_id, class: "form-control input-lg" %>
+    <%= f.number_field :user_id, class: "hidden_user_input"%>
+    <%= content_tag :div, id: "itinerary_invited_users_display_" + i.to_s do -%>
+        <p> <%= image_tag("user_image.png", size: "64x64") %> ID <%= @users[i].id %> | Name <%= @users[i].name %> | Email <%= @users[i].email %> | Last Updated at <%= @users[i].updated_at_string %></p>
+    <% end -%>
 </div>

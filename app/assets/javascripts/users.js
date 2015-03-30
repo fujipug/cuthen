@@ -1,6 +1,7 @@
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
 var ready = function() {
+  var user_id, user_name, user_title, user_email;
   $.get( $("#target").data("url"), function( data ) {
     var substringMatcher = function(json_data) {
       return function findMatches(q, cb) {
@@ -28,7 +29,7 @@ var ready = function() {
     $('#the-basics .typeahead').typeahead({
       hint: true,
       highlight: true,
-      minLength: 0
+      minLength: 1
     },
     {
       name: 'users_typeahead',
@@ -41,9 +42,25 @@ var ready = function() {
           '</div>'
         ].join('\n'),
         suggestion: function(d) {
-              return '<p><strong>' + d.name + '</strong></p>';
+          //user_id = d.id;
+          //user_name = d.name;
+          //user_title = d.title;
+          //user_email = d.email;
+          return '<p><strong>' + d.name + '</strong></p>';
         }
       }
+    })
+    .on('typeahead:selected', function($e, d){
+      users = $(".hidden_user_input");
+      doit = true;
+      for (i = 0; i < users.length; i++) {
+        if (Number(users[i].value) == d.id) {
+          alert("dup: user_id: " + user_id + " | users[i].value: " + users[i].value);
+          doit = false;
+          break;
+        }
+      }
+      if (doit == true) add_user_field("add_user_button", "user", "itinerary", d.id, d.name, d.title, d.email, d.updated_at);
     });
   });
 };

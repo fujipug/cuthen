@@ -10,14 +10,17 @@
     <%= f.label :test_name, "Test Name" %>
     <%= f.text_field :test_name, class: "typeahead", type: :text, placeholder: "Invite User", id: "target", data: {url: users_typeahead_path} %>
   </div>
-  <%# Init Name End %>
+  
+  <%= button_tag "Add Another User", id: "add_user_button", type: "button", onclick: "add_user_field('add_user_button', 'user', 'itinerary', 1)" %>
+  <div id = 'user_results'>
+      <p> List of finds </p>
+  </div>
   <div id="itinerary_invited_users_form">
-    <p> manage invited users to event </p>
+    <p> Manage invited users to event </p>
     <% i=0 %>
     <%= f.fields_for :itinerary_invited_users do |builder| %>
       <%= render "form_user_fields", f: builder , i: i %>
       <% i+=1 %>
     <% end %>
   </div>
-  <%= button_tag "Add Another User", id: "add_user_button", type: "button", onclick: "add_user_field('add_user_button', 'user', " + (@itinerary.itinerary_invited_users.length).to_s + ", 'itinerary')" %>
 </div>

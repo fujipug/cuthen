@@ -23,6 +23,9 @@ class User < ActiveRecord::Base
       user
   end
 
+  def updated_at_string()
+    updated_at.try(:strftime, "%m/%d/%Y %I:%M %p")
+  end
   #def as_json(options={})
   #  {value: name.to_s, name: }
   #end

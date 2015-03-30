@@ -1519,6 +1519,14 @@
             _onFocused: function onFocused() {
                 this.isActivated = true;
                 this.dropdown.open();
+                //added this line to let menu show when input is focused
+                var query = this.input.getQuery();
+                if (query.length >= this.minLength) {
+                    var val = this.input.getInputValue(); 
+                    var query = Input.normalizeQuery(val);
+                    this.dropdown.update(query);
+                }
+                //end
             },
             _onBlurred: function onBlurred() {
                 this.isActivated = false;
