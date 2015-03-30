@@ -17,10 +17,12 @@
   </div>
   <div id="itinerary_invited_users_form">
     <p> Manage invited users to event </p>
-    <% i=0 %>
-    <%= f.fields_for :itinerary_invited_users do |builder| %>
-      <%= render "form_user_fields", f: builder , i: i %>
-      <% i+=1 %>
+    <% if @itinerary_invited_users != nil %>
+      <% i=0 %>
+      <%= f.fields_for :itinerary_invited_users do |builder| %>
+        <%= render "form_user_fields", f: builder , i: i %>
+        <% i+=1 %>
+      <% end %>
     <% end %>
   </div>
 </div>
