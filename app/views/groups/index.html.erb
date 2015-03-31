@@ -1,0 +1,31 @@
+<h3>
+	My Groups
+</h3>
+<div class = "row">
+<%= link_to "+Create Group", new_group_path, :class => "btn btn-success pull-right" %>
+</div>
+<br><br>
+<table class="table table-striped">
+  <tr>
+   <th>Name</th>
+   <th>Members Number</th>
+   <th>Actions</th>
+ </tr>
+<% @groups.each do |group|%>
+<tr>
+  <td>
+  	<%= group.name %>
+  </td>
+
+  <td>
+  	<%= GroupMember.where(:group_id => group.id).count %>
+  </td>
+
+  <td>
+  	<%= link_to "View", group_path(group) %>
+  	<%= link_to "Edit", edit_group_path(group) %>
+  </td>
+
+</tr>
+<% end %>
+</table>

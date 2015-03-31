@@ -1,0 +1,39 @@
+
+
+
+<div class="panel panel-primary">
+	<div class="panel-heading">
+    <h3 class="panel-title"><%= @group.name %></h3>
+  </div>
+<h4>
+ Coordinated by: <%= @group.user.name %>
+</h4>
+<p>
+	<%= @group.description %>
+</p>
+</div>
+
+
+<h4>
+	Members
+</h4>
+
+<table class="table table-striped">
+  <tr>
+   <th>Name</th>
+   <th>Email</th>
+ </tr>
+<% @members.each do |member|%>
+<tr>
+  <td>
+  	<%= member.name %>
+  </td>
+
+  <td>
+  	<%= member.email %>
+  </td>
+
+
+</tr>
+<% end %>
+</table>

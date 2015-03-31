@@ -30,7 +30,7 @@ Rails.application.routes.draw do
 
   get 'visitors/index'
   get 'visitors/welcome'
-  get 'groups/group'
+  resources :groups
   get 'pages/about'
 
   resources :itineraries
