@@ -1,0 +1,17 @@
+<%= form_for ([@itinerary, @event, @vote]) do |f| %>
+<div><h3>What is the best available time slot for this <%= @event.duration %> minute long event? </h3></div>
+  <div class="row">
+    <% while @slot < @event.end_datetime %>
+    <% if !Vote.where(event_id: @event.id, start: @slot).first %>
+        <div><%= f.label :start, @slot.strftime("%H:%M") %>
+            <%= f.radio_button :start, @slot , :checked => false , :value => @slot %>
+          </div>
+        <br>
+      <% end %>
+        <% @slot += @event.duration*60 %>
+    <% end %>
+  </div>
+  <div class="actions">
+    <%= f.submit class: "btn btn-lg" %>
+  </div>
+<% end %>

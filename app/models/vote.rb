@@ -2,6 +2,13 @@ class Vote < ActiveRecord::Base
   belongs_to :user
   belongs_to :event
   
+  validate :end_cannot_come_before_start
+  
+  def end_cannot_come_before_start
+    if end_time < start
+      errors.add(:end_time, "Invalid Time Range")
+    end
+  end
     
   def datetime_to_datestring(datetime)
   	datetime.try(:strftime, "%m/%d/%Y %I:%M %p")
