@@ -22,7 +22,6 @@ var ready = function() {
             matches.push(json_object);
           }
         });
-     
         cb(matches);
       };
     };
@@ -42,11 +41,7 @@ var ready = function() {
           '</div>'
         ].join('\n'),
         suggestion: function(d) {
-          //user_id = d.id;
-          //user_name = d.name;
-          //user_title = d.title;
-          //user_email = d.email;
-          return '<p><strong>' + d.name + '</strong></p>';
+          return '<div class="row"><div class="image-block"><img alt="User image" height="32" src="/assets/user_image.png" width="32"></div><div class="col-xs-3">' + d.name + '</div><div class="col-xs-3">' + d.title + '</div><div class="col-xs-3">' + d.email + '</div></div>';
         }
       }
     })
@@ -55,7 +50,7 @@ var ready = function() {
       doit = true;
       for (i = 0; i < users.length; i++) {
         if (Number(users[i].value) == d.id) {
-          alert("dup: user_id: " + user_id + " | users[i].value: " + users[i].value);
+          //alert("<p>test</p><b> dup: user_id: " + user_id + " | users[i].value: " + users[i].value + "</b>");
           doit = false;
           break;
         }

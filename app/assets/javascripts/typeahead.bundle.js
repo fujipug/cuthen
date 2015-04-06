@@ -730,7 +730,7 @@
             dropdown: '<span class="tt-dropdown-menu"></span>',
             dataset: '<div class="tt-dataset-%CLASS%"></div>',
             suggestions: '<span class="tt-suggestions"></span>',
-            suggestion: '<div class="tt-suggestion"></div>'
+            suggestion: '<div class="tt-suggestion"><div class = "fluid-container"></div></div>'
         };
     }();
     var css = function() {

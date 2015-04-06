@@ -27,3 +27,16 @@
 .calendar-popover-content {
     display: none;
 }
+div.image-block {
+    img {
+        width: 32px;
+        height: 32px;
+    }
+    float: left;
+    position: relative;
+    min-height: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+    width: 62px;
+    height: 32px;
+}
