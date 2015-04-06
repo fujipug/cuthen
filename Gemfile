@@ -39,6 +39,10 @@ gem 'bootstrap3-datetimepicker-rails', '~> 4.0.0'
 #gem 'twitter-typeahead-rails'
 #gem 'handlebars', '~> 0.7.0'
 
+#for pdf stuff
+gem 'prawn'
+gem 'prawnto'
+
 gem 'high_voltage'
 #that horrible mysql gem
 gem 'mysql2'
