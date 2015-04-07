@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150406174320) do
+ActiveRecord::Schema.define(version: 20150407040239) do
 
   create_table "auth_users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -160,6 +160,8 @@ ActiveRecord::Schema.define(version: 20150406174320) do
     t.integer  "failed_attempts",        default: 0,  null: false
     t.string   "unlock_token"
     t.datetime "locked_at"
+    t.string   "work",                   default: "", null: false
+    t.string   "cell",                   default: "", null: false
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
