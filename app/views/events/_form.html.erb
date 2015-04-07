@@ -19,6 +19,16 @@
     <%= f.number_field :duration, class: "form-control input-lg", id: "duration" %>
   </div>
 
+<div clas = "row">
+  <%= label :votetype, "Will this event be voted or first come first serve?" %>
+  <br>
+  <div><%= f.label :votetype, "Vote for best time for everyone within the time range" %>
+    <%= f.radio_button :votetype, true , :checked => true , :value => false %></div>
+    <br>
+  <div><%= f.label :votetype, "Break up the time frame into duration-length chunks and make the slots first come first serve"%>
+    <%= f.radio_button :votetype, false, :value => false%></div>
+</div>
+<br>
   <div class="row">
     <div class="col-sm-6"><div class="form-group">
         <%= f.label :startdate, "Start Date" %>

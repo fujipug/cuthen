@@ -15,6 +15,10 @@
 </p>
 
 <p>
+  <strong>Event Type</strong>
+  Event time is decided by <% if @event.votetype %>voting to determine best time<% else %>first come first serve time slots<% end %>.
+
+<p>
   <strong>Duration:</strong>
   <%= @event.duration %>
 </p>

@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:name, :description, :duration, :startdate, :enddate, :deadlinedate]
+  before_action :set_event, only: [:name, :description, :duration, :startdate, :enddate, :deadlinedate, :votetype]
 
   def index
     @itinerary = Itinerary.find(params[:itinerary_id])
@@ -64,6 +64,6 @@ private
   def event_params
     params.require(:event).permit(:name, :itinerary_id, 
       :description, :duration, :startdate, :enddate, 
-      :deadlinedate, event_invited_users_attributes: [:id, :event_id, :user_id])
+      :deadlinedate, :votetype, event_invited_users_attributes: [:id, :event_id, :user_id])
   end
 end

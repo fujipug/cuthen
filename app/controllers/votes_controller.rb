@@ -16,6 +16,9 @@ class VotesController < ApplicationController
   def new
     @vote = Vote.new
     @event = Event.find(params[:event_id])
+    @startday = @event.start_datetime.strftime("%d")
+    @endday = @event.end_datetime.strftime("%d")
+    @slot = @event.start_datetime
   end
 
   def edit
@@ -23,7 +26,11 @@ class VotesController < ApplicationController
 
   def create
     @vote = Vote.new(vote_params)
-    @vote.event_id = params[:event_id]
+    @event = Event.find(params[:event_id])
+    @vote.event_id = @event.id
+    if !@event.votetype
+      @vote.end_time = @vote.start + @event.duration*60
+    end
     @vote.user_id = current_user.id
     @event = Event.find(@vote.event_id)
     #event_invited_users = @event.event_invited_users.build
