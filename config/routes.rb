@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 
   get "users/" => "users#index", as: :users_path
   get "users/:id/" => "users#show", as: :user_path
+  get "profile/" => "users#profile", as: :profile_path
   #autocomplete and typeahead routes
 
   root to: 'visitors#index'
