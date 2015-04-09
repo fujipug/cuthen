@@ -1,1 +1,28 @@
-form
+<%= form_for @user, url: profile_edit_path do |f| %>
+
+  <div class="form-group">
+    <%= f.label :name, "Name" %>
+    <%= f.text_field :name, class: "form-control input-lg", id: "name" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :title, "Title" %>
+    <%= f.text_field :title, class: "form-control input-lg", id: "title" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :email, "email" %>
+    <%= f.text_field :email, class: "form-control input-lg", id: "email" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :work, "Phone" %>
+    <%= f.text_field :work, class: "form-control input-lg", id: "phone" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit %>
+  </div>
+
+
+<% end %>

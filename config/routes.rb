@@ -16,11 +16,13 @@ Rails.application.routes.draw do
 
   get "users/" => "users#index", as: :users_path
   get "users/:id/" => "users#show", as: :user_path
-  get "profile/" => "users#profile", as: :profile_path
+  get "profile/" => "users#profile", as: :profile
+  get "profile/edit" => "users#profile_edit", as: :profile_edit
+  patch "profile/edit" => "users#profile_update" 
   #autocomplete and typeahead routes
 
   root to: 'visitors#index'
-  get 'dashboards/dashboard'
+  get 'dashboards/dashboard', as: :dashboard
   get 'create_itineraries/create_itinerary'
   get 'add_events/add_event'
 
