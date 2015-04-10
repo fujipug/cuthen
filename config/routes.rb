@@ -30,6 +30,7 @@ Rails.application.routes.draw do
   get 'search/index'
   get 'user_data/' => 'search#user_data', as: :search_user_data
   get 'itinerary_data/' => 'search#itinerary_data', as: :search_itinerary_data
+  put 'event_data/:id' => 'events#replace_event_data', as: :replace_event_data
 
   get 'visitors/index'
   get 'visitors/welcome'

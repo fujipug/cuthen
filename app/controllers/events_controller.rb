@@ -1,6 +1,14 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:name, :description, :duration, :startdate, :enddate, :deadlinedate, :votetype]
 
+  skip_before_action :verify_authenticity_token
+  def replace_event_data
+    @event = Event.find(params[:id])
+    @event.update_column(:start_datetime, params[:start])
+    @event.update_column(:end_datetime, params[:end])
+    render json: @event.as_json
+  end
+
   def index
     @itinerary = Itinerary.find(params[:itinerary_id])
     @events = Event.where(itinerary_id: params[:itinerary_id])#.to_a
