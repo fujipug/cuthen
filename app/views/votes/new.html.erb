@@ -1,13 +1,18 @@
-<h1>New vote for <%= @event.name %></h1>
-<% if @startday==@endday %> <%# Only display date once, show only the time range %>
-  <h3> From <%= @event.start_datetime.strftime("%H:%M") %> to <%= @event.end_datetime.strftime("%H:%M") %> on <%=@event.start_datetime.strftime("%m/%d/%y")%> </h3>
+<%# if !Vote.where(user_id: current_user.id, event_id: @event.id).first %>
+  <h1>New vote for <%= @event.name %></h1>
+  <% if @startday==@endday %> <%# Only display date once, show only the time range %>
+    <h3> From <%= @event.start_datetime.strftime("%H:%M") %> to <%= @event.end_datetime.strftime("%H:%M") %> on <%=@event.start_datetime.strftime("%m/%d/%y")%> </h3>
 
-<% else %> <%# if event spans multiple days, define those days %>
-  <h3> From <%= @event.start_datetime.strftime("%m/%d at %H:%M:%S") %> to <%= @event.end_datetime.strftime("%m/%d at %H:%M:%S") %> </h3>
-<% end %>
+  <% else %> <%# if event spans multiple days, define those days %>
+    <h3> From <%= @event.start_datetime.strftime("%m/%d at %H:%M:%S") %> to <%= @event.end_datetime.strftime("%m/%d at %H:%M:%S") %> </h3>
+  <% end %>
 
-<% if @event.votetype %>
-  <%= render 'form' %>
-<% else %>
-  <%= render 'altform' %>
-<% end %>
+  <% if @event.votetype %>
+    <%= render 'form' %>
+  <% else %>
+    <%= render 'altform' %>
+  <% end %>
+
+<%# else %>
+<!-- <h1> You have already cast a vote for this event </h1> -->
+<%# end %>

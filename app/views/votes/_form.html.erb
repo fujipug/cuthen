@@ -1,13 +1,13 @@
 <%= form_for ([@itinerary, @event, @vote]) do |f| %>
-  <div class="row">
-    <div class="col-sm-6"><div class="form-group">
-        <%= f.label :start, "Start Date" %>
-        <%= f.text_field :start, class: "datetime-form-control", id: "datetimepicker1", placeholder: "mm/dd/yyyy hh:mm AM" %>
-    </div></div>
-    <div class="col-sm-6"><div class="form-group">
-      <%= f.label :end_time, "End Date" %>
-      <%= f.text_field :end_time, class: "datetime-form-control", id: "datetimepicker2", placeholder: "mm/dd/yyyy hh:mm AM" %>
-    </div></div>
+<%= @vote.errors.full_messages.first if @vote.errors.any? %>
+   <div class="row">
+    <% while @slot < @event.end_datetime %>
+     <div><%= f.label :start, @slot.strftime("%H:%M")%> - <%= f.label :start, (@slot+@event.duration*60).strftime("%H:%M") %>
+       <%= check_box_tag 'times[]', @slot, false, {multiple: true}%>
+          </div>
+        <br>
+        <% @slot += @event.duration*30 %>
+    <% end %>
   </div>
   <div class="actions">
     <%= f.submit class: "btn btn-lg" %>
