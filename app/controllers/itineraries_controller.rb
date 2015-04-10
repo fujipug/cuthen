@@ -4,8 +4,11 @@ class ItinerariesController < ApplicationController
   respond_to :json
   def calendar_data
     @events = Event.all
+    @itineraries = Itinerary.all
+    rb_hash = @events.as_json @itineraries.as_json
+    #
     respond_to do |format|
-      format.json { render json: @events.as_json }
+      format.json { render json: @itineraries.as_json + @events.as_json }
     end
   end
 

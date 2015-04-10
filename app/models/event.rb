@@ -46,6 +46,6 @@ class Event < ActiveRecord::Base
   end
 
   def as_json(options={})
-    {id: id, title: name, start: start_datetime, end: end_datetime}
+    {id: id, title: name, start: start_datetime, end: end_datetime, constraint: itinerary_id}
   end
 end

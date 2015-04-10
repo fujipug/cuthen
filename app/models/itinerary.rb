@@ -45,4 +45,8 @@ class Itinerary < ActiveRecord::Base
   def enddate=(end_datestring)
   	self.end_datetime = string_to_datetime(end_datestring)
   end
+
+  def as_json(options={})
+    {id: id, start: start_datetime, end: end_datetime, rendering: 'background'}
+  end
 end

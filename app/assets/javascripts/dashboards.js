@@ -7,16 +7,8 @@ var ready = function() {
             editable: true,
             eventLimit: true, // allow "more" link when too many events
             events: data,
-            eventDrop: function(event, delta, revertFunc) {
-
-                alert(event.title + " was dropped on start:" + event.start.format() + "with end:" + event.end.format());
-
-                //if (!confirm("Are you sure about this change?")) {
-                 //   revertFunc();
-                //}
+            eventResize: function(event, delta, revertFunc) {
                 moved_day = {"id": event.id, "title": event.title , "start": event.start.format(), "end": event.end.format()};
-                console.log(moved_day);
-                //alert("id is: " + event.id);
                 $.ajax({
                     url: "/event_data/" + event.id + "?start=" + event.start.format() + "&end=" + event.end.format(),
                     method: 'PUT',
@@ -29,9 +21,23 @@ var ready = function() {
                         console.log("Failed to update event");
                     }
                 });
-                },
-            }
-        )//})
+            },
+            eventDrop: function(event, delta, revertFunc) {
+                moved_day = {"id": event.id, "title": event.title , "start": event.start.format(), "end": event.end.format()};
+                $.ajax({
+                    url: "/event_data/" + event.id + "?start=" + event.start.format() + "&end=" + event.end.format(),
+                    method: 'PUT',
+                    //accepts: "application/json",
+                    //contentType: "application/json",
+                    data: moved_day,
+                    success: function(result) {
+                    },
+                    error: function() {
+                        console.log("Failed to update event");
+                    }
+                });
+            },
+        })
         //hide calendar after it is done loading its stuff
         jQuery($('#cal').attr('class', 'hide'));
     });
