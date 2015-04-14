@@ -1,3 +1,15 @@
+body#users{
+    div#profile{
+        p{
+            font-size: 150%;
+            margin: 3% 5%;
+        }
+        h1{
+            margin: 0 0 10%;
+        }
+    }
+}
+
 .typeahead {
     //display: block !important;
     width: 100%;
