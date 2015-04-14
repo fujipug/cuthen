@@ -1,27 +1,29 @@
-<div class='title' style="text-align:center">
-  <h1> My Profile </h1>
+<div id = "profile">
+	<div class='title' style="text-align:center">
+	  <h1> My Profile </h1>
+	</div>
+
+	<p>
+		<strong>Name:</strong>
+		<%= @user.name %>
+	</p>
+
+	<p>
+		<strong>Title:</strong>
+		<%= @user.title %>
+	</p>
+
+	<p>
+		<strong>email:</strong>
+		<%= @user.email %>
+	</p>
+
+	<p>
+		<strong>Phone number:</strong>
+		<%= @user.work %>
+	</p>
+
+	<p>
+		<%= link_to "Edit profile", profile_edit_path, class: "btn btn-success" %>
+	</p>
 </div>
-
-<p>
-	<strong>Name:</strong>
-	<%= @user.name %>
-</p>
-
-<p>
-	<strong>Title:</strong>
-	<%= @user.title %>
-</p>
-
-<p>
-	<strong>email:</strong>
-	<%= @user.email %>
-</p>
-
-<p>
-	<strong>Phone number:</strong>
-	<%= @user.work %>
-</p>
-
-<p>
-	<%= link_to "Edit profile", profile_edit_path %>
-</p>
