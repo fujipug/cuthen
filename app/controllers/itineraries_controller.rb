@@ -21,6 +21,7 @@ class ItinerariesController < ApplicationController
     @itinerary = Itinerary.find(params[:id])
     @user = User.find(@itinerary.user_id)
     @events = Event.where "itinerary_id like ?", "%#{params[:id]}%"
+    @allevent = Event.find_by "itinerary_id like ?", "%#{params[:id]}%"
   end
 
   def new
