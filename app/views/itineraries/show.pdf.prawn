@@ -16,6 +16,4 @@ pdf.text "Events", :size => 15, :style => :bold
 	pdf.text "#{@allevent.description}"
 	pdf.text "#{@allevent.duration} minutes"
 	pdf.text "#{@allevent.start_datetime}"
-	
-
 end
