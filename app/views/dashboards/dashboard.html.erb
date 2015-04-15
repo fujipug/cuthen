@@ -24,5 +24,12 @@
     </a>
   </div>
 </div>
+<% @itineraries.each do |itinerary| %>
+    <p> <%= itinerary.id %> | <%= itinerary.name %></p>
+<% end %>
+<p>itinerary2</p>
+<% @itineraries2.each do |itinerary| %>
+    <p> <%= itinerary.id %> | <%= itinerary.name %></p>
+<% end %>
 <%= render 'dashboard_list' %>
 <%= render 'dashboard_calendar' %>

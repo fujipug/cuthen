@@ -38,6 +38,8 @@ var ready = function() {
                 });
             },
         })
+        $('#calendar').fullCalendar('removeEvents', 1);
+        $('#calendar').fullCalendar('refetchEvents');
         //hide calendar after it is done loading its stuff
         jQuery($('#cal').attr('class', 'hide'));
     });

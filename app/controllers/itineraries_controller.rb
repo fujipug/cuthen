@@ -5,8 +5,6 @@ class ItinerariesController < ApplicationController
   def calendar_data
     @events = Event.all
     @itineraries = Itinerary.all
-    rb_hash = @events.as_json @itineraries.as_json
-    #
     respond_to do |format|
       format.json { render json: @itineraries.as_json + @events.as_json }
     end
@@ -54,6 +52,7 @@ class ItinerariesController < ApplicationController
     @users = User.all
   end
 
+
   def show
     @itinerary = Itinerary.find(params[:id])
     @user = User.find(@itinerary.user_id)
@@ -61,11 +60,13 @@ class ItinerariesController < ApplicationController
     @allevent = Event.find_by "itinerary_id like ?", "%#{params[:id]}%"
   end
 
+
   def new
     @itinerary = Itinerary.new
     itinerary_invited_users = @itinerary.itinerary_invited_users.build
   end
   
+
   def create
     @itinerary = Itinerary.new(itinerary_params)
     @itinerary.user_id = current_user.id
