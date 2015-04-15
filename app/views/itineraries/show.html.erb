@@ -28,11 +28,15 @@
    <tr>
      <td><%= event.name %></td>
      <td><%= event.duration %></td> 
-     <td><%= event.start_datetime %></td>
+     <td><%= event.start_datetime.strftime("%m/%d at %H:%M:%S") %> to <%= event.end_datetime.strftime("%m/%d at %H:%M:%S") %></td> 
      <td><% EventInvitedUser.where(event_id: event.id).find_each do |eiu| %>
        <% if User.exists?(eiu.user_id) %> 
            <p><% user = User.find(eiu.user_id) %>
-           <%= user.email %></p>
+             <% if Vote.exists?(user_id: eiu.user_id, event_id: event.id) %>
+               <p class="bg-success"><%= user.email %></p>
+             <% else %>
+               <p class="bg-danger"><%= user.email %></p>
+             <% end %>
          <% end %>
        <% end %>
      </td>
@@ -42,6 +46,7 @@
     
 </table>
 
+<%= button_to 'Call Action', itinerary_determine_time_path(@itinerary), method: :post %>
 <%= link_to 'Edit', edit_itinerary_path(@itinerary) %> |
 <%= link_to 'Back', itineraries_path %>
 <p><%= link_to "PDF Print Out", itinerary_path(@itinerary, :format => 'pdf') %></p>

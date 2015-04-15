@@ -42,8 +42,9 @@ Rails.application.routes.draw do
   get 'itinerary/:id/' => 'itineraries#destroy', as: :itineraries_destroy
   get 'calendar_data/' => 'itineraries#calendar_data', as: :calendar_data
   get 'users_typeahead/' => 'users#typeahead', as: :users_typeahead
-
+  
   resources :itineraries do
+    post 'determine_time'    
     resources :events do
       resources :votes
     end
