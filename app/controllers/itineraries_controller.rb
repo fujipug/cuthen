@@ -9,6 +9,25 @@ class ItinerariesController < ApplicationController
       format.json { render json: @itineraries.as_json + @events.as_json }
     end
   end
+
+  respond_to :json
+  def calendar_data2
+    @itinerary = Itinerary.where(id: params[:id])
+    @events = Event.where(itinerary_id: params[:id])
+    #@itineraries = Itinerary.all
+    respond_to do |format|
+      format.json { render json: @itinerary.as_json + @events.as_json }
+    end
+  end
+
+  respond_to :json
+  def calendar_data3
+    @event = Event.find(params[:event_id])
+    #@itineraries = Itinerary.all
+    respond_to do |format|
+      format.json { render json: @event.as_json }
+    end
+  end
   
   def determine_time
     @itinerary = Itinerary.find(params[:itinerary_id])

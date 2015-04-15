@@ -2,7 +2,6 @@ var ready = function() {
     $.get( $("#cal").data("url"), function( data ) {
         // page is now ready, initialize the calendar...
         $('#calendar').fullCalendar({
-        // put your options and callbacks here
             defaultView: 'agendaWeek',
             editable: true,
             eventLimit: true, // allow "more" link when too many events
@@ -38,8 +37,6 @@ var ready = function() {
                 });
             },
         })
-        $('#calendar').fullCalendar('removeEvents', 1);
-        $('#calendar').fullCalendar('refetchEvents');
         //hide calendar after it is done loading its stuff
         jQuery($('#cal').attr('class', 'hide'));
     });
@@ -47,6 +44,43 @@ var ready = function() {
 $(document).ready(ready);
 $(document).on('page:load', ready);
 
+function hide_itinerary(id) {
+    $.get( "/calendar_data/" + id + ".json", function( data ) {
+        for(i = 0; i < data.length; i++) {
+            $('#calendar').fullCalendar('removeEvents', data[i].id);
+        }
+        $('#itinerary_hide_toggle' + id).attr("onclick", "show_itinerary(" + id + ")");
+    });
+}
+
+function show_itinerary(id) {
+    $.get( "/calendar_data/" + id + ".json", function( data ) {
+        for(i = 0; i < data.length; i++) {
+            //first object shoul be the one with id
+            eventObject = $('#calendar').fullCalendar('clientEvents', id)[0];
+            $('#calendar').fullCalendar('renderEvent', data[i], true);
+        }
+    });  
+    $('#itinerary_hide_toggle' + id).attr("onclick", "hide_itinerary(" + id + ")");
+}
+
+function hide_event(itinerary_id, event_id) {
+    $.get( "/calendar_data/" + itinerary_id + "/" + event_id + ".json", function( data ) {
+            $('#calendar').fullCalendar('removeEvents', data.id);
+        $('#event_hide_toggle' + itinerary_id + "_" + event_id).attr("onclick", "show_event(" + itinerary_id + ", " + event_id + ")");
+    });
+}
+
+function show_event(itinerary_id, event_id) {
+    $.get( "/calendar_data/" + itinerary_id + "/" + event_id + ".json", function( data ) {
+        //first object shoul be the one with id
+        eventObject = $('#calendar').fullCalendar('clientEvents', event_id)[0];
+        $('#calendar').fullCalendar('renderEvent', data, true);
+    });
+    $('#event_hide_toggle' + itinerary_id + "_" + event_id).attr("onclick", "hide_event(" + itinerary_id + ", " + event_id + ")");
+}
+
+//stop with the camel case show_cal..
 function showCalendar() {
     jQuery($('#cal').attr('class', 'moo'));
     jQuery($('#list').attr('class', 'hide'));

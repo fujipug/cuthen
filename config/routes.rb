@@ -41,6 +41,8 @@ Rails.application.routes.draw do
   get 'itinerary/:id/delete' => 'itineraries#delete', as: :itineraries_delete
   get 'itinerary/:id/' => 'itineraries#destroy', as: :itineraries_destroy
   get 'calendar_data/' => 'itineraries#calendar_data', as: :calendar_data
+  get 'calendar_data/:id/' => 'itineraries#calendar_data2', as: :calendar_data2
+  get 'calendar_data/:itinerary_id/:event_id' => 'itineraries#calendar_data3', as: :calendar_data3
   get 'users_typeahead/' => 'users#typeahead', as: :users_typeahead
   
   resources :itineraries do
