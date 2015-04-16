@@ -26,34 +26,22 @@
 </div>
 <% i = 0 %>
 <% @itineraries.each do |itinerary| %>
-  <div class="checkbox" id="itinerary_hide_toggle<%= itinerary.id %>" onclick="hide_itinerary(<%= itinerary.id %>)">
-    <label>
-      <input type="checkbox" checked="true"> <%= itinerary.id %> | <%= itinerary.name %>
-    </label>
-  </div>
+  <input type="checkbox" checked="true" id="itinerary_hide_toggle<%= itinerary.id %>" onclick="hide_itinerary(<%= itinerary.id %>)">
+  Itinerary: <%= itinerary.id %> | <%= itinerary.name %><br>
   <% @itinerary_event_count[i].times do |j| %>
-    <div class="checkbox" id="event_hide_toggle<%= itinerary.id %>_<%= @events[j].id %>" onclick="hide_event(<%= itinerary.id %>, <%= @events[j].id %>)">
-      <label>
-        <input type="checkbox" checked="true"> <%= @events[j].id %> | <%= @events[j].name %>
-      </label>
-    </div>
+    <input type="checkbox" checked="true" class="itinerary_hide_toggle<%= itinerary.id %>" id="event_hide_toggle<%= itinerary.id %>_<%= @events[j].id %>" onclick="hide_event(<%= itinerary.id %>, <%= @events[j].id %>)">
+    Event: <%= @events[j].id %> | <%= @events[j].name %><br>
   <% end %>
   <% i += 1 %>
 <% end %>
 <p>itinerary2</p>
 <% i = 0 %>
 <% @itineraries2.each do |itinerary| %>
-  <div class="checkbox" id="itinerary_hide_toggle<%= itinerary.id %>" onclick="hide_itinerary(<%= itinerary.id %>)">
-    <label>
-      <input type="checkbox" checked="true"> <%= itinerary.id %> | <%= itinerary.name %>
-    </label>
-  </div>
+  <input type="checkbox" checked="true" id="itinerary_hide_toggle<%= itinerary.id %>" onclick="hide_itinerary(<%= itinerary.id %>)">
+  Itinerary: <%= itinerary.id %> | <%= itinerary.name %><br>
   <% @itinerary_event_count2[i].times do |j| %>
-    <div class="checkbox" id="event_hide_toggle<%= itinerary.id %>_<%= @events2[j].id %>" onclick="hide_event(<%= itinerary.id %>, <%= @events2[j].id %>)">
-      <label>
-        <input type="checkbox" checked="true"> <%= @events2[j].id %> | <%= @events2[j].name %>
-      </label>
-    </div>
+    <input type="checkbox" checked="true" class="itinerary_hide_toggle<%= itinerary.id %>" id="event_hide_toggle<%= itinerary.id %>_<%= @events2[j].id %>" onclick="hide_event(<%= itinerary.id %>, <%= @events2[j].id %>)">
+    Event: <%= @events2[j].id %> | <%= @events2[j].name %><br>
   <% end %>
   <% i += 1 %>
 <% end %>

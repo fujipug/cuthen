@@ -1,14 +1,17 @@
 <div class="form-group">
-    <%= button_tag "Remove", type: "button", id: "remove_field_button_" + i.to_s, onclick: "remove_field('remove_field_button_" + i.to_s + "', 'itinerary[itinerary_invited_users_attributes][" + i.to_s + "][user_id]', 'itinerary_invited_users_display_" + i.to_s + "')" %>
     <%= f.label :user_id, "User ID", class: "sr-only" %>
     <%= f.number_field :user_id, class: "hidden_user_input"%>
 
     <% nested_id=@itinerary_invited_users[i].id %>
     <%= content_tag :div, class: "row", id: "itinerary_invited_users_display_" + i.to_s do -%>
-        <div class="col-xs-1"><%= image_tag("user_image.png", size: "64x64") %></div>
-        <div class="col-xs-2"><%= @users[i].name %></div>
-        <div class="col-xs-2"><%= @users[i].title %></div>
-        <div class="col-xs-2"><%= @users[i].email %></div>
-        <div class="col-xs-4"><%= @users[i].updated_at_string %></div>
+        <div class="image-block">
+            <img alt="User image" height="32" src="/assets/user_image.png" width="32">
+        </div>
+        <div class="col-xs-3"><%= @users[i].name %></div>
+        <div class="col-xs-3"><%= @users[i].title %></div>
+        <div class="col-xs-3"><%= @users[i].email %></div>
+        <div class="col-xs-2">
+            <%= button_tag "Remove", type: "button", id: "remove_field_button_" + i.to_s, onclick: "remove_field('remove_field_button_" + i.to_s + "', 'itinerary[itinerary_invited_users_attributes][" + i.to_s + "][user_id]', 'itinerary_invited_users_display_" + i.to_s + "')" %>
+        </div>
     <% end -%>
 </div>

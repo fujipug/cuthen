@@ -45,23 +45,27 @@ $(document).ready(ready);
 $(document).on('page:load', ready);
 
 function hide_itinerary(id) {
+    $('#itinerary_hide_toggle' + id).unbind('click');
     $.get( "/calendar_data/" + id + ".json", function( data ) {
         for(i = 0; i < data.length; i++) {
             $('#calendar').fullCalendar('removeEvents', data[i].id);
         }
         $('#itinerary_hide_toggle' + id).attr("onclick", "show_itinerary(" + id + ")");
+        $('.itinerary_hide_toggle' + id).prop("checked", false);
     });
 }
 
 function show_itinerary(id) {
+    $('#itinerary_hide_toggle' + id).unbind('click');
     $.get( "/calendar_data/" + id + ".json", function( data ) {
         for(i = 0; i < data.length; i++) {
             //first object shoul be the one with id
             eventObject = $('#calendar').fullCalendar('clientEvents', id)[0];
             $('#calendar').fullCalendar('renderEvent', data[i], true);
         }
-    });  
+    });
     $('#itinerary_hide_toggle' + id).attr("onclick", "hide_itinerary(" + id + ")");
+    $('.itinerary_hide_toggle' + id).prop("checked", true);
 }
 
 function hide_event(itinerary_id, event_id) {

@@ -10,8 +10,6 @@
     <%= f.label :test_name, "Test Name" %>
     <%= f.text_field :test_name, class: "typeahead", type: :text, placeholder: "Invite User", id: "target", data: {url: users_typeahead_path} %>
   </div>
-  
-  <%= button_tag "Add Another User", id: "add_user_button", type: "button", onclick: "add_user_field('add_user_button', 'user', 'itinerary', 1)" %>
   <div id = 'user_results'>
       <p> List of finds </p>
   </div>
