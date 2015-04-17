@@ -47,6 +47,6 @@ class Itinerary < ActiveRecord::Base
   end
 
   def as_json(options={})
-    {id: "itinerary_#{id}", start: start_datetime, end: end_datetime, rendering: 'background'}
+    {id: "itinerary_#{id}", start: start_datetime, end: end_datetime, rendering: 'background', color: color}
   end
 end

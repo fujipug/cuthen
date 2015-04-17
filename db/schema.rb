@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150407040239) do
+ActiveRecord::Schema.define(version: 20150417023505) do
 
   create_table "auth_users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(version: 20150407040239) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "votetype",          default: true
+    t.string   "color",             default: "#0A0D9C", null: false
   end
 
   add_index "events", ["itinerary_id"], name: "index_events_on_itinerary_id", using: :btree
@@ -104,6 +105,7 @@ ActiveRecord::Schema.define(version: 20150407040239) do
     t.datetime "end_datetime"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "color",          default: "#aeaffa", null: false
   end
 
   add_index "itineraries", ["user_id"], name: "index_itineraries_on_user_id", using: :btree

@@ -3,6 +3,8 @@ var ready = function() {
         // page is now ready, initialize the calendar...
         $('#calendar').fullCalendar({
             defaultView: 'agendaWeek',
+            duration: '00:15:00',
+            slotDuration: '00:15:00',
             editable: true,
             eventLimit: true, // allow "more" link when too many events
             events: data,
