@@ -1,62 +1,9 @@
 <%= form_for [@itinerary, @event] do |f| %>
-  <div class="itinerary_id">
-    <%# f.label :itinerary_id %>
-    <%# f.select :itinerary_id, options_for_select(Itinerary.all.map{|s|[s.name, s.id]}) %>
-  </div>
 
-  <div class="form-group">
-    <%= f.label :name, "Event Name" %>
-    <%= f.text_field :name, class: "form-control input-lg", id: "name" %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :description, "Event Description" %>
-    <%= f.text_field :description, class: "form-control input-lg", id: "description" %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :duration, "Event Duration (in minutes :0 or whatever)" %>
-    <%= f.number_field :duration, class: "form-control input-lg", id: "duration" %>
-  </div>
-
-<div clas = "row">
-  <%= label :votetype, "Will this event be voted or first come first serve?" %>
-  <br>
-  <div><%= f.label :votetype, "Vote for best time for everyone within the time range" %>
-    <%= f.radio_button :votetype, true , :checked => true , :value => false %></div>
-    <br>
-  <div><%= f.label :votetype, "Break up the time frame into duration-length chunks and make the slots first come first serve"%>
-    <%= f.radio_button :votetype, false, :value => false%></div>
-</div>
-<br>
-  <div class="row">
-    <div class="col-sm-6"><div class="form-group">
-        <%= f.label :startdate, "Start Date" %>
-        <%= f.text_field :startdate, class: "datetime-form-control", id: "datetimepicker1", placeholder: "--/--/---- --:-- --" %>
-    </div></div>
-    <div class="col-sm-6"><div class="form-group">
-        <%= f.label :enddate, "End Date" %>
-        <%= f.text_field :enddate, class: "datetime-form-control", id: "datetimepicker2", placeholder: "--/--/---- --:-- --" %>
-    </div></div>
-  </div>
-
-  <div class="row">
-    <div class="col-sm-6"><div class="form-group">
-        <%= f.label :deadlinedate, "Deadline" %>
-        <%= f.text_field :deadlinedate, class: "datetime-form-control", id: "datetimepicker3", placeholder: "--/--/---- --:-- --" %>
-    </div></div>
-  </div>
-  <div id="event_invited_users_form">
-    <p> manage invited users to event </p>
-    <% i=0 %>
-    <%= f.fields_for :event_invited_users do |builder| %>
-      <%= render "form_user_fields", f: builder , i: i %>
-      <% i+=1 %>
-    <% end %>
-  </div>
-  <%= button_tag "Add Another User", id: "add_user_button", type: "button", onclick: "add_user_field('add_user_button', 'user', " + (@event.event_invited_users.length).to_s + ", 'event')" %>
+  <%= render 'form_information', f: f %>
+  <%= render 'form_duration', f: f %>
+  <%= render 'form_invited', f: f %>
   <div class="actions">
     <%= f.submit class: "btn btn-lg" %>
   </div>
 <% end %>
-

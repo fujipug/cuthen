@@ -1,0 +1,19 @@
+<%# information label button%>
+<a data-toggle="collapse" id="information_label_button" data-toggle="collapse" data-target="#information_container" aria-expanded="true" href="#information_container">
+<div class="setting-label" onclick="toggle_label_button('#information_label_button', 0)">Information</div>
+</a>
+<%# information form %>
+
+<div id="information_container" class="collapse in" aria-expanded="true">
+  <%# Event Name %>
+  <div class="form-group">
+    <%= f.label :name, "Event Name" %>
+    <%= f.text_field :name, class: "form-control input-lg", id: "name" %>
+  </div>
+
+  <%# Event Desc %>
+  <div class="form-group">
+    <%= f.label :description, "Description" %>
+    <%= f.text_area :description, class: "form-control input-lg", rows: "4", id: "EventDesc" %>
+  </div>
+</div>

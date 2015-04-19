@@ -14,10 +14,10 @@ class Itinerary < ActiveRecord::Base
   end
 
   #these are for testing the autocomplete forms
-  def test_name
+  def invite_user_name
     #test.try(:name)
   end
-  def test_name=(name)
+  def invite_user_name=(name)
     #self.test = Test.find_by_name(name) if name.present?
   end
   #autocomplete forms end

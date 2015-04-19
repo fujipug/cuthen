@@ -2,7 +2,7 @@
 // All this logic will automatically be available in application.js.
 var ready = function() {
   var user_id, user_name, user_title, user_email;
-  $.get( $("#target").data("url"), function( data ) {
+  $.get( "/users_typeahead", function( data ) {
     var substringMatcher = function(json_data) {
       return function findMatches(q, cb) {
         var matches, substrRegex;
@@ -37,7 +37,7 @@ var ready = function() {
       templates: {
         empty: [
           '<div class="empty-message">',
-          'unable to find any users that match the current query',
+          '<p>Unable to find any users that match the current query</p>',
           '</div>'
         ].join('\n'),
         suggestion: function(d) {
@@ -55,7 +55,9 @@ var ready = function() {
           break;
         }
       }
-      if (doit == true) add_user_field("add_user_button", "user", "itinerary", d.id, d.name, d.title, d.email, d.updated_at);
+      if (doit == true) {
+        add_user_field("add_user_button", "user", $('#target').attr("data"), d.id, d.name, d.title, d.email, d.updated_at);
+      }
     });
   });
 };

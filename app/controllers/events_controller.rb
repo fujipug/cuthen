@@ -43,6 +43,11 @@ class EventsController < ApplicationController
   def edit
     @event = Event.find(params[:id])
     @itinerary = Itinerary.find(params[:itinerary_id])
+    @event_invited_users = EventInvitedUser.where "event_id like ?", "%#{params[:id]}%"
+    @users ||= Array.new
+    @event_invited_users.each do |event_invited_user|
+      @users.push(User.find_by(id: event_invited_user.user_id))
+    end
   end
   
   def update

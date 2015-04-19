@@ -13,6 +13,15 @@ class Event < ActiveRecord::Base
     return (!exists and empty)
   end
   
+  #these are for testing the autocomplete forms
+  def invite_user_name
+    #test.try(:name)
+  end
+  def invite_user_name=(name)
+    #self.test = Test.find_by_name(name) if name.present?
+  end
+  #autocomplete forms end
+  
   def datetime_to_datestring(datetime)
   	datetime.try(:strftime, "%m/%d/%Y %I:%M %p")
   end

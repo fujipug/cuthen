@@ -6,17 +6,17 @@
 <%# invited form %>
 <div id="invited_container" class="collapse in" aria-expanded="true">
   <div id="the-basics" class="form-group">
-    <%= f.label :invite_user_name, "Test Name" %>
-    <%= f.text_field :invite_user_name, class: "typeahead", type: :text, placeholder: "Type a User's name you'd like to invite", id: "target", data: "itinerary" %>
+    <%= f.label :invite_user_name, "Invite Users" %>
+    <%= f.text_field :invite_user_name, class: "typeahead", type: :text, placeholder: "Type a User's name you'd like to invite", id: "target", data: "event" %>
   </div>
   <div id = 'user_results'>
       <p> List of finds </p>
   </div>
-  <div id="itinerary_invited_users_form">
+  <div id="event_invited_users_form">
     <p> Manage invited users to event </p>
-    <% if @itinerary_invited_users != nil %>
+    <% if @event_invited_users != nil %>
       <% i=0 %>
-      <%= f.fields_for :itinerary_invited_users do |builder| %>
+      <%= f.fields_for :event_invited_users do |builder| %>
         <%= render "form_user_fields", f: builder , i: i %>
         <% i+=1 %>
       <% end %>

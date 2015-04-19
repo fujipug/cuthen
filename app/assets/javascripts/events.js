@@ -12,10 +12,10 @@ function remove_field(btn, input, display) {
 
 function add_user_field(btn, model, type, user_id, user_name, user_title, user_email, user_upadted_at) {
     model = "user";
-    remove_button=$('<button id="remove_field_button_' + user_id + '" name="button" onclick="remove_field(\'remove_field_button_' + user_id + '\', \''+ type + '['+ type + '_invited_' + model + 's_attributes][' + user_id + '][' + model + '_id]\', \'itinerary_invited_users_display_' + user_id + '\')">Remove</button>');
+    remove_button=$('<button id="remove_field_button_' + user_id + '" name="button" onclick="remove_field(\'remove_field_button_' + user_id + '\', \''+ type + '['+ type + '_invited_' + model + 's_attributes][' + user_id + '][' + model + '_id]\', \'' + model + '_invited_users_display_' + user_id + '\')">Remove</button>');
     label=$('<label class="sr-only" for="'+ type + '_invited_users_attributes_' + (user_id + user_field_count) + '_user_id">User ID</label>');
     input=$('<input class="hidden_user_input" id="'+ type + '_'+ type + '_invited_' + model + 's_attributes_' + (user_id + user_field_count)  + '_' + model + '_id" name="'+ type + '['+ type + '_invited_' + model + 's_attributes][' + (user_id + user_field_count) + '][' + model + '_id]" type="number" value=' + user_id + '>');
-    display=$('<div id="itinerary_invited_users_display_' + (user_id + user_field_count)  + '"><div class="image-block"><img alt="User image" height="32" src="/assets/user_image.png" width="32"></div><div class="col-xs-3">' + user_name + '</div><div class="col-xs-3">' + user_title + '</div><div class="col-xs-3">' + user_email + '</div></div></div>');
+    display=$('<div id="' + model + '_invited_users_display_' + (user_id + user_field_count)  + '"><div class="image-block"><img alt="User image" height="32" src="/assets/user_image.png" width="32"></div><div class="col-xs-3">' + user_name + '</div><div class="col-xs-3">' + user_title + '</div><div class="col-xs-3">' + user_email + '</div></div></div>');
     nested_form_div=$('<div class="form-group"></div>');
     
     nested_form_div.append(remove_button, label, input, display);
