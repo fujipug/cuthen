@@ -15,7 +15,8 @@ class GroupsController < ApplicationController
   def new
    	 @group = Group.new
      @users = User.all
-     @member_names = @users.map{|u| u.name}
+     @member_names = @users.map{|u| { :name => u.name, :id => u.id }}
+
   end
 
   def create

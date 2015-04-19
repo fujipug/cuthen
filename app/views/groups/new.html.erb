@@ -31,7 +31,7 @@
 
 <script>
   $(function() {
-    var substringMatcher = function(strs) {
+    var substringMatcher = function(objs) {
       return function findMatches(q, cb) {
         var matches, substrRegex;
      
@@ -43,11 +43,11 @@
      
         // iterate through the pool of strings and for any string that
         // contains the substring `q`, add it to the `matches` array
-        $.each(strs, function(i, str) {
-          if (substrRegex.test(str)) {
+        $.each(objs, function(i, obj) {
+          if (substrRegex.test(obj.name)) {
             // the typeahead jQuery plugin expects suggestions to a
             // JavaScript object, refer to typeahead docs for more info
-            matches.push({ value: str });
+            matches.push(obj);
           }
         });
      
@@ -62,7 +62,7 @@
     },
     {
       name: 'member_names',
-      displayKey: 'value',
+      displayKey: 'name',
       source: substringMatcher(member_names)
     });
   });
