@@ -14,6 +14,8 @@ class GroupsController < ApplicationController
 
   def new
    	 @group = Group.new
+     @users = User.all
+     @member_names = @users.map{|u| u.name}
   end
 
   def create
