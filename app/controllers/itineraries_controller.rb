@@ -90,7 +90,7 @@ class ItinerariesController < ApplicationController
     @itinerary = Itinerary.new(itinerary_params)
     @itinerary.user_id = current_user.id
     if @itinerary.save
-      redirect_to(:action => 'index')
+      redirect_to(:action => 'show', :id => @itinerary.id)
     else
       render('new')
     end

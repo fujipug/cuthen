@@ -4,8 +4,9 @@
   <p>From 
   <%= @itinerary.startdate %> to <%= @itinerary.enddate %>
   </p>
+  </a>
+  <a href = "<%= new_itinerary_event_path(@itinerary) %>" class="btn btn-success" role = "button">+Add Events</a>
 </div>
-
 <p>
   <strong>Description:</strong>
   <%= @itinerary.description %>
