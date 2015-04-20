@@ -16,13 +16,18 @@ class GroupsController < ApplicationController
    	 @group = Group.new
      @users = User.all
      @member_names = @users.map{|u| { :name => u.name, :id => u.id }}
-
   end
 
   def create
      @group = Group.create(group_params)
      @group.user = current_user
      @group.save!
+
+      group_params['members'].each { |member|
+       group_member = Group_Member.new
+       group_member.user = User.get(member["id"])
+       group_member.group = @group
+     }
      redirect_to groups_path
   end
 
@@ -45,7 +50,7 @@ class GroupsController < ApplicationController
     # since you'll be able to reuse the same permit list between create and update. Also, you
     # can specialize this method with per-user checking of permissible attributes.
     def group_params
-      params.require(:group).permit(:name, :description)
+      params.require(:group).permit(:name, :description, :members)
     end
  
 

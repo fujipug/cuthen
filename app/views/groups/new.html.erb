@@ -19,7 +19,11 @@
   <div class="control-group">
     <%= label_tag :member_name, "member name:", class: "control-label" %>
     <div class="controls">
-      <p><%= text_field_tag(:member_name) %></p>
+      <p><%= text_field_tag(:member_name) %>
+        <button id="add_member" type="button">+
+        </button>
+      </p>
+      <div id="selected_members"></div>
     </div>
   </div>
 
@@ -31,6 +35,40 @@
 
 <script>
   $(function() {
+    var addName = function(){
+      var name = $("#member_name").typeahead("val");
+      var obj = false;
+      for (var i=0; i<member_names.length; i++) {
+        if (member_names[i].name == name) {
+          obj = member_names[i];
+          break;
+        }
+      }
+      if (obj) {
+        var input = $("<input />");
+        input.attr("name", "group[members][]");
+        input.val(obj.id);
+        input.attr("id", "input_" + obj.id);
+        input.attr("type", "hidden");
+        var memberDiv = $("<div />");
+        memberDiv.attr("id", "member_" + obj.id);
+        memberDiv.text(obj.name);
+         
+        var container = $("<div />");
+        container.append(memberDiv).append(input);
+         
+        $("#selected_members").append(container);
+
+        $("#member_name").typeahead("val", "");
+      }
+    };
+    $("#add_member").on("click", addName);
+    $("#member_name").on("keypress", function(e){
+      if (e.which == 13){
+        e.preventDefault();
+        addName();
+      }
+    });
     var substringMatcher = function(objs) {
       return function findMatches(q, cb) {
         var matches, substrRegex;
