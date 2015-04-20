@@ -71,13 +71,7 @@ img {
     background: rgba(255,255,255,0.2);
 }
 
-.dropdown-menu{
-  background-color: #9EABE2;
-}
 
-.dropdown-menu-calendar{
-  background-color: #000;
-}
 
 .nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
     text-decoration: none;
@@ -85,7 +79,40 @@ img {
     background: rgba(255,255,255,0.2);
 }
 
-.dropdown-menu > li > a {
+.dropdown-menu-nav {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  display: none;
+  float: left;
+  min-width: 160px;
+  padding: 5px 0;
+  margin: 2px 0 0;
+  list-style: none;
+  font-size: 14px;
+  text-align: left;
+  background-color: #9EABE2;
+  border: 1px solid #cccccc;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+  background-clip: padding-box;
+}
+/* line 53, /Library/Ruby/Gems/2.0.0/gems/bootstrap-sass-3.3.4.1/assets/stylesheets/bootstrap/_dropdowns.scss */
+.dropdown-menu-nav.pull-right {
+  right: 0;
+  left: auto;
+}
+/* line 59, /Library/Ruby/Gems/2.0.0/gems/bootstrap-sass-3.3.4.1/assets/stylesheets/bootstrap/_dropdowns.scss */
+.dropdown-menu-nav .divider {
+  height: 1px;
+  margin: 9px 0;
+  overflow: hidden;
+  background-color: #e5e5e5;
+}
+/* line 64, /Library/Ruby/Gems/2.0.0/gems/bootstrap-sass-3.3.4.1/assets/stylesheets/bootstrap/_dropdowns.scss */
+.dropdown-menu-nav > li > a {
   display: block;
   padding: 3px 20px;
   clear: both;
@@ -93,6 +120,109 @@ img {
   line-height: 1.42857143;
   color: #fff;
   white-space: nowrap;
+}
+
+/* line 78, /Library/Ruby/Gems/2.0.0/gems/bootstrap-sass-3.3.4.1/assets/stylesheets/bootstrap/_dropdowns.scss */
+.dropdown-menu-nav > li > a:hover, .dropdown-menu > li > a:focus {
+  text-decoration: none;
+  color: #fff;
+  background: rgba(255,255,255,0.2);
+}
+
+/* line 89, /Library/Ruby/Gems/2.0.0/gems/bootstrap-sass-3.3.4.1/assets/stylesheets/bootstrap/_dropdowns.scss */
+.dropdown-menu-nav > .active > a, .dropdown-menu-nav > .active > a:hover, .dropdown-menu-nav > .active > a:focus {
+  color: white;
+  text-decoration: none;
+  outline: 0;
+  background-color: #337ab7;
+}
+
+/* line 104, /Library/Ruby/Gems/2.0.0/gems/bootstrap-sass-3.3.4.1/assets/stylesheets/bootstrap/_dropdowns.scss */
+.dropdown-menu-nav > .disabled > a, .dropdown-menu-nav > .disabled > a:hover, .dropdown-menu-nav > .disabled > a:focus {
+  color: #777777;
+}
+/* line 110, /Library/Ruby/Gems/2.0.0/gems/bootstrap-sass-3.3.4.1/assets/stylesheets/bootstrap/_dropdowns.scss */
+.dropdown-menu-nav > .disabled > a:hover, .dropdown-menu-nav > .disabled > a:focus {
+  text-decoration: none;
+  background-color: transparent;
+  background-image: none;
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+  cursor: not-allowed;
+}
+
+/* line 122, /Library/Ruby/Gems/2.0.0/gems/bootstrap-sass-3.3.4.1/assets/stylesheets/bootstrap/_dropdowns.scss */
+.open > .dropdown-menu-nav {
+  display: block;
+}
+/* line 127, /Library/Ruby/Gems/2.0.0/gems/bootstrap-sass-3.3.4.1/assets/stylesheets/bootstrap/_dropdowns.scss */
+.open > a {
+  outline: 0;
+}
+
+/* line 136, /Library/Ruby/Gems/2.0.0/gems/bootstrap-sass-3.3.4.1/assets/stylesheets/bootstrap/_dropdowns.scss */
+.dropdown-menu-nav-right {
+  left: auto;
+  right: 0;
+}
+
+/* line 146, /Library/Ruby/Gems/2.0.0/gems/bootstrap-sass-3.3.4.1/assets/stylesheets/bootstrap/_dropdowns.scss */
+.dropdown-menu-nav-left {
+  left: 0;
+  right: auto;
+}
+
+/* line 152, /Library/Ruby/Gems/2.0.0/gems/bootstrap-sass-3.3.4.1/assets/stylesheets/bootstrap/_dropdowns.scss */
+.dropdown-header {
+  display: block;
+  padding: 3px 20px;
+  font-size: 12px;
+  line-height: 1.42857143;
+  color: #777777;
+  white-space: nowrap;
+}
+
+/* line 162, /Library/Ruby/Gems/2.0.0/gems/bootstrap-sass-3.3.4.1/assets/stylesheets/bootstrap/_dropdowns.scss */
+.dropdown-backdrop {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  z-index: 990;
+}
+
+/* line 172, /Library/Ruby/Gems/2.0.0/gems/bootstrap-sass-3.3.4.1/assets/stylesheets/bootstrap/_dropdowns.scss */
+.pull-right > .dropdown-menu-nav {
+  right: 0;
+  left: auto;
+}
+
+/* line 185, /Library/Ruby/Gems/2.0.0/gems/bootstrap-sass-3.3.4.1/assets/stylesheets/bootstrap/_dropdowns.scss */
+.dropup .caret,
+.navbar-fixed-bottom .dropdown .caret {
+  border-top: 0;
+  border-bottom: 4px solid;
+  content: "";
+}
+/* line 191, /Library/Ruby/Gems/2.0.0/gems/bootstrap-sass-3.3.4.1/assets/stylesheets/bootstrap/_dropdowns.scss */
+.dropup .dropdown-menu-nav,
+.navbar-fixed-bottom .dropdown .dropdown-menu-nav {
+  top: auto;
+  bottom: 100%;
+  margin-bottom: 2px;
+}
+
+@media (min-width: 768px) {
+  /* line 205, /Library/Ruby/Gems/2.0.0/gems/bootstrap-sass-3.3.4.1/assets/stylesheets/bootstrap/_dropdowns.scss */
+  .navbar-right .dropdown-menu-nav {
+    right: 0;
+    left: auto;
+  }
+  /* line 210, /Library/Ruby/Gems/2.0.0/gems/bootstrap-sass-3.3.4.1/assets/stylesheets/bootstrap/_dropdowns.scss */
+  .navbar-right .dropdown-menu-nav-left {
+    left: 0;
+    right: auto;
+  }
 }
 
 // THESE ARE EXAMPLES YOU CAN MODIFY
