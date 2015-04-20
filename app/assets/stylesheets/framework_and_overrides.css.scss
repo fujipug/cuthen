@@ -17,6 +17,84 @@ img {
   font-size: inherit;
 }
 
+.navbar-planifi{
+  background-color: #4C60B2;
+}
+
+.nav>li>a {
+    color: #fff;
+}
+
+.navbar-nav>li>a {
+    color: #fff;
+}
+
+.navbar-nav {
+    color: #123456;
+}
+
+.navbar-nav li a:hover {
+    text-decoration: none;
+    color: #fff;
+    background: rgba(255,255,255,0.2);
+}
+
+.navbar-brand{
+  color: #fff;  
+}
+
+.navbar-header{
+  color: #fff;
+}
+
+.navbar-header>li>a {
+    color: #fff;
+}
+
+.navbar-header>li>a {
+    color: #fff;
+}
+
+.navbar-header {
+    color: #123456;
+}
+
+.navbar-header a:hover {
+    text-decoration: none;
+    color: #fff;
+    background: rgba(255,255,255,0.2);
+}
+
+.navbar-header a:active {
+    text-decoration: none;
+    color: #fff;
+    background: rgba(255,255,255,0.2);
+}
+
+.dropdown-menu{
+  background-color: #9EABE2;
+}
+
+.dropdown-menu-calendar{
+  background-color: #000;
+}
+
+.nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
+    text-decoration: none;
+    color: #fff;
+    background: rgba(255,255,255,0.2);
+}
+
+.dropdown-menu > li > a {
+  display: block;
+  padding: 3px 20px;
+  clear: both;
+  font-weight: normal;
+  line-height: 1.42857143;
+  color: #fff;
+  white-space: nowrap;
+}
+
 // THESE ARE EXAMPLES YOU CAN MODIFY
 // create your own classes
 // to make views framework-neutral
@@ -95,7 +173,7 @@ footer {
   left: 0;
   height: 60px;
   width: 100%;
-  background: black;
+  background: #4C60B2;
 }
 
 .wrapper{
