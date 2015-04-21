@@ -1,6 +1,6 @@
 <%# duration label button%>
 <a data-toggle="collapse" id="duration_label_button" data-toggle="collapse" data-target="#duration_container" aria-expanded="true" href="#duration_container">
-<div class="setting-label" onclick="toggle_label_button('#information_label_button', 0)">Itinerary Duration</div>
+<div class="setting-label" onclick="toggle_label_button('#information_label_button', 0)">Event Duration</div>
 </a>
 
 <%# duration form %>
@@ -23,7 +23,7 @@
     </div></div>
   </div>
     <div class="form-group">
-    <%= f.label :duration, "Event Duration (in minutes :0 or whatever)" %>
+    <%= f.label :duration, "Event Duration (minutes)" %>
     <%= f.number_field :duration, class: "form-control input-lg", id: "duration" %>
   </div>
   <div clas = "row">

@@ -6,7 +6,7 @@
 <%# invited form %>
 <div id="invited_container" class="collapse in" aria-expanded="true">
   <div id="the-basics" class="form-group">
-    <%= f.label :invite_user_name, "Test Name" %>
+    <%= f.label :invite_user_name %> <%#"Test Name" %>
     <%= f.text_field :invite_user_name, class: "typeahead", type: :text, placeholder: "Type a User's name you'd like to invite", id: "target", data: "itinerary" %>
   </div>
   <div id = 'user_results'>
