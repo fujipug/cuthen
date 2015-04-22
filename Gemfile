@@ -1,5 +1,5 @@
 source 'http://rubygems.org'
-#ruby '2.0.0'
+ruby '2.0.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.0'
@@ -38,6 +38,8 @@ gem 'bootstrap3-datetimepicker-rails', '~> 4.0.0'
 # helps the autocomplete and typeahead for forms
 #gem 'twitter-typeahead-rails'
 #gem 'handlebars', '~> 0.7.0'
+#env  stuff
+gem 'dotenv-rails' ,            '2.0.1'
 
 #for pdf stuff
 gem 'prawn'
