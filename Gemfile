@@ -51,7 +51,7 @@ gem 'simple_form'
 gem 'therubyracer', :platform=>:ruby
 group :development do
   #helps follow ruby conventions
-  gem 'better_errors'
+  #gem 'better_errors'
   gem 'binding_of_caller', :platform=>:mri
   gem 'hub', :require=>nil
   gem 'rails_layout'
