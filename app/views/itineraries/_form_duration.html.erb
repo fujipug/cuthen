@@ -7,13 +7,21 @@
 <div id="duration_container" class="collapse in" aria-expanded="true">
   <%# Calendar inputs %>
   <div class="row">
-    <div class="col-sm-6"><div class="form-group">
-        <%= f.label :startdate, "Start Date" %>
-        <%= f.text_field :startdate, class: "datetime-form-control", id: "datetimepicker1", placeholder: "--/--/---- --:-- --" %>
-    </div></div>
-    <div class="col-sm-6"><div class="form-group">
-        <%= f.label :enddate, "End Date" %>
-        <%= f.text_field :enddate, class: "datetime-form-control", id: "datetimepicker2", placeholder: "--/--/---- --:-- --" %>
-    </div></div>
+    <div class="col-sm-6">
+      <div class="form-group">
+        <div class='input-group date' id='datetimepicker1'>
+          <%= f.label :startdate, "Start Date" %>
+          <%= f.text_field :startdate, class: "datetime-form-control", placeholder: "--/--/---- --:-- --" %>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="form-group">
+        <div class='input-group date' id='datetimepicker2'>
+          <%= f.label :enddate, "End Date" %>
+          <%= f.text_field :enddate, class: "datetime-form-control", placeholder: "--/--/---- --:-- --" %>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
