@@ -1,3 +1,16 @@
+<% if @itinerary.startdate == nil %>
+<% weak_startdate = "nil" %>
+<% else %>
+<% weak_startdate = @itinerary.startdate %>
+<div id="weak_startdate" data="<%= weak_startdate %>"></div>
+<% end %>
+<% if @itinerary.enddate == nil %>
+<% weak_enddate = "nil" %>
+<% else %>
+<% weak_enddate = @itinerary.enddate %>
+<div id="weak_enddate" data="<%= weak_enddate %>"></div>
+<% end %>
+
 <%= form_for(@itinerary) do |f| %>
   <%= render 'form_information', f: f %>
   <%= render 'form_duration', f: f %>
