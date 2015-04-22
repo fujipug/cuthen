@@ -27,7 +27,7 @@ Rails.application.configure do
   # config.assets.css_compressor = :sass
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
-  config.assets.compile = false
+  config.assets.compile = true#false
 
   # Generate digests for assets URLs.
   config.assets.digest = true
@@ -73,6 +73,7 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { :host => 'http://broxburn.istud.nau.edu' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.raise_delivery_errors = false
 
   # Send deprecation notices to registered listeners.
   config.active_support.deprecation = :notify
@@ -86,11 +87,7 @@ Rails.application.configure do
     user_name: Rails.application.secrets.email_provider_username,
     password: Rails.application.secrets.email_provider_password
   }
-  # ActionMailer Config
-  config.action_mailer.default_url_options = { :host => Rails.application.secrets.domain_name }
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.perform_deliveries = true
-  config.action_mailer.raise_delivery_errors = false
+
 
 
   # Disable automatic flushing of the log to improve performance.
