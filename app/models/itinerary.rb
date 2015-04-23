@@ -22,38 +22,56 @@ class Itinerary < ActiveRecord::Base
   end
   #autocomplete forms end
 
-  def figure_out_best_times(array_of_times)
+    def figure_out_best_times(array_of_times)
     #first, sort the array of votes (array_of_times) so that it's in order of start time
     #since it's just an array, we can't user .order
     
     @best_votes = []
     @event_order = []
     #for each vote, build an array of times and events that lead to the greatest number of events included
-    array_of_times 
     #select the first time
     event_ids = []
     #event_ids.push array_of_times[0].event_id
-    sort, ees = best_time_helper(array_of_times, array_of_times[0], 0, event_ids, [])
-    return sort, ees
+    #sort, ees = best_time_helper(array_of_times, array_of_times[0], 0, event_ids, [])
+    sort = temp_best_time_helper(array_of_times)
+    return sort
   end
   
-  def best_time_helper(array_of_times, vote, vote_position, event_ids, votes)
-    event_ids.push  vote.event_id
-    if vote_position==array_of_times.length or vote.end_time > array_of_times[-1].start
-      return vote, event_ids
-    else
-      next_vote = vote
-      while vote_position < array_of_times.length
-        #if the next event comes after the current event and the event hasn't been included yet
-        if next_vote.start >= vote.end_time and !vote.event_id.in?(event_ids)
-          event_ids.push next_vote.event_id
-          votes.push best_time_helper(array_of_times, next_vote, vote_position, event_ids, votes)
+  def temp_best_time_helper(array_of_times)
+    best_times = [] #holds the final result
+    time_array = [] #holder of times, best version will be put in best_times.  This holds votes
+    event_array = [] #holds the events that are included in the time_array. This holds events
+
+    
+    # order events by start time
+    array_of_times.sort! { |a,b| a.start <=> b.start }
+    #then do a terribly inefficient algorithm
+    
+    #start
+    for outer in 0..array_of_times.length-1 do
+      time_array = []
+      event_array = []
+      time_array.push array_of_times[outer] #push the first
+      event_array.push array_of_times[outer].event_id
+      
+      for inner in outer+1..array_of_times.length-1 do
+        if time_array[-1].end_time > array_of_times[inner].start #if the next event starts before the last
+          next
         end
-        vote_position += 1
-        next_vote = array_of_times[vote_position]
+  
+        if event_array.include?(array_of_times[inner].event_id) #if the event has already been used
+          next
+        end
+        
+        time_array.push array_of_times[inner]
+        event_array.push array_of_times[inner].event_id
+      end  
+      if time_array.length > best_times.length
+        best_times = time_array
       end
     end
- 
+    
+    return best_times
   end
   
   def datetime_to_datestring(datetime)
