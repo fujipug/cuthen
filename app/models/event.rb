@@ -22,35 +22,34 @@ class Event < ActiveRecord::Base
   end
   #autocomplete forms end
   
-  def select_winning_votes
+    def select_winning_votes
     best_times = []
     invited_users = EventInvitedUser.where(event_id: self.id)
-    number_of_guests = 0
-    invited_users.each do |invited|
-      number_of_guests += 1
-    end
-
+    number_of_guests = invited_users.count()
+    
+    #array_of_something = []
+    #vote_checker = 0
     #the voting type of event
+    
     if self.votetype?
 
-      @votes = Vote.where(event_id: self.id).order(:start).find_each
-      @votes.each do |vote|
+      votes = Vote.where(event_id: self.id).order(:start).find_each     
+      votes.each do |vote|
         times_voted_on = 0
-        chosen_vote = vote
-        @votes.each do |comparevote|
-          if vote.start = comparevote.start
-            times_voted_on +=1
-          end
-        end
+        times_voted_on = votes.count(start: vote.start)
+        some_votes = Vote.where(start: vote.start, event_id: self.id)
+        count = some_votes.count()
 
-        if times_voted_on = number_of_guests #if everyone agrees on the time
+        if count >= number_of_guests
+          #if everyone agrees on the time
+          
           best_times.push vote
         end
       end
 
       #the first come first serve type of event
     else
-      #uhhhhhhhhhhhh
+      #Don't need to worry about these ones
     end
     return best_times
   end
