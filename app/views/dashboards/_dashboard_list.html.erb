@@ -11,6 +11,7 @@
   <% @invitations.each do |invite| %>
   <tr>
     <% @event=Event.where(id: invite.event_id).first %>
+    <% if @event.start_datetime > DateTime.now %>
     <% @itinerary = @event.itinerary %>
 
   <td><%= @event.name %></td>
@@ -20,6 +21,7 @@
   <td><%= link_to 'Show Itinerary', @itinerary %></td>
     <td><%= link_to 'More Event Info', [@itinerary, @event] %></td>
    </tr>
+  <% end %>
   <% end %> 
 </table>
 
