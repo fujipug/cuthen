@@ -22,6 +22,40 @@ class Itinerary < ActiveRecord::Base
   end
   #autocomplete forms end
 
+  def figure_out_best_times(array_of_times)
+    #first, sort the array of votes (array_of_times) so that it's in order of start time
+    #since it's just an array, we can't user .order
+    
+    @best_votes = []
+    @event_order = []
+    #for each vote, build an array of times and events that lead to the greatest number of events included
+    array_of_times 
+    #select the first time
+    event_ids = []
+    #event_ids.push array_of_times[0].event_id
+    sort, ees = best_time_helper(array_of_times, array_of_times[0], 0, event_ids, [])
+    return sort, ees
+  end
+  
+  def best_time_helper(array_of_times, vote, vote_position, event_ids, votes)
+    event_ids.push  vote.event_id
+    if vote_position==array_of_times.length or vote.end_time > array_of_times[-1].start
+      return vote, event_ids
+    else
+      next_vote = vote
+      while vote_position < array_of_times.length
+        #if the next event comes after the current event and the event hasn't been included yet
+        if next_vote.start >= vote.end_time and !vote.event_id.in?(event_ids)
+          event_ids.push next_vote.event_id
+          votes.push best_time_helper(array_of_times, next_vote, vote_position, event_ids, votes)
+        end
+        vote_position += 1
+        next_vote = array_of_times[vote_position]
+      end
+    end
+ 
+  end
+  
   def datetime_to_datestring(datetime)
   	datetime.try(:strftime, "%m/%d/%Y %I:%M %p")
   end
