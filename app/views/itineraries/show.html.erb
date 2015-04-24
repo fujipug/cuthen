@@ -23,6 +23,8 @@
   <th>Duration     </th>
   <th>Time Ranges    </th>
   <th>Invited Users     </th>
+    
+    <% if @recommended!=nil %><th> Recommended Time for Event </th> <% end %>
     <th></th>
   </tr>
   <% @events.each do |event| %>
@@ -41,13 +43,18 @@
          <% end %>
        <% end %>
      </td>
+     <% if @recommended!=nil %>
+     <% @recommended.each do |votes| %> <% vote = Vote.find(votes) %> <% if vote.event_id == event.id %> <td><%= vote.start.strftime("%H:%M") %> -- <%= vote.end_time.strftime("%H:%M") %></td>
+     <% end %>
+     <% end %>
+     <td></td> <% end %>
      <td><%= link_to 'View Event', itinerary_event_path(@itinerary, event) %></td>
    </tr>
   <% end %>
     
 </table>
 
-<%= button_to 'Call Action', itinerary_determine_time_path(@itinerary), method: :post %>
+<%= button_to 'Recommend Times', itinerary_determine_time_path(@itinerary), method: :post %>
 <%= link_to 'Edit', edit_itinerary_path(@itinerary) %> |
 <%= link_to 'Back', itineraries_path %>
 <p><%= link_to "PDF Print Out", itinerary_path(@itinerary, :format => 'pdf') %></p>

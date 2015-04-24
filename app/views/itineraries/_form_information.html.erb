@@ -16,4 +16,54 @@
     <%= f.label :description, "Description" %>
     <%= f.text_area :description, class: "form-control input-lg", rows: "4", id: "initDesc" %>
   </div>
+
+  <%# Init Color %>
+  <div class="form-group">
+    <%= f.label :color, "Color" %>
+    <%= f.text_field :color, type: "hidden", class: "form-control input-lg", id: "color" %>
+    <div class="row">
+      <div id="CC0000" class="color" onclick="pick_color('CC0000')">
+        <div class="col-sm-1">
+          <%= image_tag("Red.png") %>
+          <%= image_tag("LightRed.png") %>
+        </div>
+      </div>
+      <div id="ED5F21" class="color" onclick="pick_color('ED5F21')">
+        <div class="col-sm-1">
+          <%= image_tag("Orange.png") %>
+          <%= image_tag("LightOrange.png") %>
+        </div>
+      </div>
+      <div id="FAE300" class="color" onclick="pick_color('FAE300')">
+        <div class="col-sm-1">
+          <%= image_tag("Yellow.png") %>
+          <%= image_tag("LightYellow.png") %>
+        </div>
+      </div>
+      <div id="5B9C0A" class="color" onclick="pick_color('5B9C0A')">
+        <div class="col-sm-1">
+          <%= image_tag("Green.png") %>
+          <%= image_tag("LightGreen.png") %>
+        </div>
+      </div>
+      <div id="0A0D9C" class="color" onclick="pick_color('0A0D9C')">
+        <div class="col-sm-1">
+          <%= image_tag("Blue.png") %>
+          <%= image_tag("LightBlue.png") %>
+        </div>
+      </div>
+      <div id="500A9C" class="color" onclick="pick_color('500A9C')">
+        <div class="col-sm-1">
+          <%= image_tag("Indigo.png") %>
+          <%= image_tag("LightIndigo.png") %>
+        </div>
+      </div>
+      <div id="990A9C" class="color" onclick="pick_color('990A9C')">
+        <div class="col-sm-1">
+          <%= image_tag("Violet.png") %>
+          <%= image_tag("LightViolet.png") %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

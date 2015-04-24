@@ -22,6 +22,38 @@ class Event < ActiveRecord::Base
   end
   #autocomplete forms end
   
+    def select_winning_votes
+    best_times = []
+    invited_users = EventInvitedUser.where(event_id: self.id)
+    number_of_guests = invited_users.count()
+    
+    #array_of_something = []
+    #vote_checker = 0
+    #the voting type of event
+    
+    if self.votetype?
+
+      votes = Vote.where(event_id: self.id).order(:start).find_each     
+      votes.each do |vote|
+        times_voted_on = 0
+        times_voted_on = votes.count(start: vote.start)
+        some_votes = Vote.where(start: vote.start, event_id: self.id)
+        count = some_votes.count()
+
+        if count >= number_of_guests
+          #if everyone agrees on the time
+          
+          best_times.push vote
+        end
+      end
+
+      #the first come first serve type of event
+    else
+      #Don't need to worry about these ones
+    end
+    return best_times
+  end
+  
   def datetime_to_datestring(datetime)
   	datetime.try(:strftime, "%m/%d/%Y %I:%M %p")
   end
@@ -55,6 +87,6 @@ class Event < ActiveRecord::Base
   end
 
   def as_json(options={})
-    {id: id, title: name, start: start_datetime, end: end_datetime, constraint: "itinerary_#{itinerary_id}", color: color}
+    {id: id, title: name, start: start_datetime, end: end_datetime, constraint: "itinerary_#{itinerary_id}", color: Itinerary.find(itinerary_id).color, editable: options[:editable]}
   end
 end

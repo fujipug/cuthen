@@ -1,7 +1,7 @@
 <%= form_for ([@itinerary, @event, @vote]) do |f| %>
 <%= @vote.errors.full_messages.first if @vote.errors.any? %>
    <div class="row">
-    <% while @slot < @event.end_datetime %>
+    <% while @slot+(@event.duration*60) <= @event.end_datetime %>
      <div><%= f.label :start, @slot.strftime("%H:%M")%> - <%= f.label :start, (@slot+@event.duration*60).strftime("%H:%M") %>
        <%= check_box_tag 'times[]', @slot, false, {multiple: true}%>
           </div>

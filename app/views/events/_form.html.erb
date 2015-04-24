@@ -1,9 +1,34 @@
-<%= form_for [@itinerary, @event] do |f| %>
+<% if @itinerary.startdate == nil %>
+<% strong_startdate = "nil" %>
+<% else %>
+<% strong_startdate = @itinerary.startdate %>
+<div id="strong_startdate" data="<%= strong_startdate %>"></div>
+<% end %>
+<% if @itinerary.enddate == nil %>
+<% strong_enddate = "nil" %>
+<% else %>
+<% strong_enddate = @itinerary.enddate %>
+<div id="strong_enddate" data="<%= strong_enddate %>"></div>
+<% end %>
 
+<% if @event.startdate == nil %>
+<% weak_startdate = "nil" %>
+<% else %>
+<% weak_startdate = @event.startdate %>
+<div id="weak_startdate" data="<%= weak_startdate %>"></div>
+<% end %>
+<% if @event.enddate == nil %>
+<% weak_enddate = "nil" %>
+<% else %>
+<% weak_enddate = @event.enddate %>
+<div id="weak_enddate" data="<%= weak_enddate %>"></div>
+<% end %>
+
+<%= form_for [@itinerary, @event] do |f| %>
   <%= render 'form_information', f: f %>
   <%= render 'form_duration', f: f %>
   <%= render 'form_invited', f: f %>
   <div class="actions">
-    <%= f.submit class: "btn btn-lg btn-success" %>
+    <%= f.submit class: "btn btn-lg" %>
   </div>
 <% end %>

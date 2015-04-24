@@ -1,5 +1,5 @@
 class ItinerariesController < ApplicationController
-  before_action :set_itinerary, only: [:name, :description, :duration, :startdate, :enddate]
+  before_action :set_itinerary, only: [:name, :description, :duration, :startdate, :enddate, :color]
 
   respond_to :json
   def calendar_data
@@ -16,7 +16,7 @@ class ItinerariesController < ApplicationController
     @events = Event.where(itinerary_id: params[:id])
     #@itineraries = Itinerary.all
     respond_to do |format|
-      format.json { render json: @itinerary.as_json + @events.as_json }
+      format.json { render json: @itinerary.as_json + @events.as_json(editable: false) }
     end
   end
 
@@ -29,42 +29,30 @@ class ItinerariesController < ApplicationController
     end
   end
   
-  def determine_time
+ def determine_time
     @itinerary = Itinerary.find(params[:itinerary_id])
-    @user = current_user
-    event = Event.where(itinerary_id: @itinerary.id).first
-    #@events.each do |event|
-      if event.votetype?
-        #do the pick best time thing
-        @votes = Vote.where(event_id: event.id).find_each
-        @chosen_vote = @votes.first
-        @times_voted = 0
-        @votes.each do |vote|
-          #for each vote, check start time, count how many times it's in the list of votes
-          #the start time with the most votes wins.  In the event of a tie, the earlier time wins.
-          #NEEDS TO EVENTUALLY TAKE INTO PREVIOUS EVENT TIMES
-          #Here it goes... may the lord have mercy on our souls.
-          @times = 0
-          @votes.each do |avote|
-            if vote.start == avote.start
-              @times += 1
-            end
-          end
-          
-          if @times>@times_voted
-            @times_voted = @times
-            @chosen_vote = vote
-          end 
-          
-        end
-      else
-        #do the first come first serve thing
-      end
-    #end
-    flash[:notice] = @chosen_vote.start
-    redirect_to(:action => 'show', :id => @itinerary.id)
-  end  
+    @events = Event.where(itinerary_id: @itinerary.id).order(:start_datetime).find_each
+    @best_times = []
+    #count number of voting events.  We need this because of a reason
+    #For every event, find all the times that work for everyone
+    @all_events = []
+    
+    @events.each do |event|
+      
+      votes = event.select_winning_votes
+      #@all_events.push holder
+       votes.each do |vote|
+          @best_times.push Vote.find(vote)
+          @all_events.push event.id
+        
+      end     
+    end
+    
+    #Now, take those times, figure out the best order for things
+    @times = @itinerary.figure_out_best_times(@best_times)
 
+    redirect_to(:action => 'show', :id => @itinerary.id, :votes => @times)
+  end  
 
   def index
     @itineraries = Itinerary.all
@@ -77,6 +65,8 @@ class ItinerariesController < ApplicationController
     @user = User.find(@itinerary.user_id)
     @events = Event.where "itinerary_id like ?", "%#{params[:id]}%"
     @allevent = Event.find_by "itinerary_id like ?", "%#{params[:id]}%"
+    @recommended = params[:votes]
+    
   end
 
 
@@ -130,6 +120,6 @@ private
 
   def itinerary_params
     params.require(:itinerary).permit(:name, :user_id, 
-      :description, :startdate, :enddate, itinerary_invited_users_attributes: [:id, :itinerary_id, :user_id])
+      :description, :startdate, :enddate, :color, itinerary_invited_users_attributes: [:id, :itinerary_id, :user_id])
   end
 end

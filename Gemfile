@@ -38,6 +38,8 @@ gem 'bootstrap3-datetimepicker-rails', '~> 4.0.0'
 # helps the autocomplete and typeahead for forms
 #gem 'twitter-typeahead-rails'
 #gem 'handlebars', '~> 0.7.0'
+#env  stuff
+gem 'dotenv-rails' ,            '2.0.1'
 
 #for pdf stuff
 gem 'prawn'
@@ -51,8 +53,8 @@ gem 'simple_form'
 gem 'therubyracer', :platform=>:ruby
 group :development do
   #helps follow ruby conventions
-  gem 'better_errors'
-  gem 'binding_of_caller', :platforms=>[:mri_21]
+  #gem 'better_errors'
+  gem 'binding_of_caller', :platform=>:mri#_21
   gem 'hub', :require=>nil
   gem 'rails_layout'
 end
