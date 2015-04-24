@@ -54,7 +54,7 @@ gem 'therubyracer', :platform=>:ruby
 group :development do
   #helps follow ruby conventions
   #gem 'better_errors'
-  gem 'binding_of_caller', :platform=>:mri
+  gem 'binding_of_caller', :platform=>:mri#_21
   gem 'hub', :require=>nil
   gem 'rails_layout'
 end
