@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150417023505) do
+ActiveRecord::Schema.define(version: 20150424024239) do
 
   create_table "auth_users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -61,17 +61,17 @@ ActiveRecord::Schema.define(version: 20150417023505) do
   add_index "event_time_ranges", ["event_id"], name: "index_event_time_ranges_on_event_id", using: :btree
 
   create_table "events", force: true do |t|
-    t.string   "name"
+    t.string   "name",              default: "nameless event", null: false
     t.integer  "itinerary_id"
     t.string   "description"
-    t.integer  "duration"
+    t.integer  "duration",          default: 0,                null: false
     t.datetime "start_datetime"
     t.datetime "end_datetime"
     t.datetime "deadline_datetime"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "votetype",          default: true
-    t.string   "color",             default: "#0A0D9C", null: false
+    t.string   "color",             default: "#0A0D9C",        null: false
   end
 
   add_index "events", ["itinerary_id"], name: "index_events_on_itinerary_id", using: :btree
@@ -141,16 +141,16 @@ ActiveRecord::Schema.define(version: 20150417023505) do
   add_index "user_event_votes", ["event_id"], name: "index_user_event_votes_on_event_id", using: :btree
 
   create_table "users", force: true do |t|
-    t.string   "name",                   default: ""
-    t.string   "email",                  default: "", null: false
-    t.string   "title"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "name",                   default: "no_name",  null: false
+    t.string   "email",                  default: "no_email", null: false
+    t.string   "title",                  default: ""
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
+    t.string   "encrypted_password",     default: "",         null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,          null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -159,11 +159,11 @@ ActiveRecord::Schema.define(version: 20150417023505) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
-    t.integer  "failed_attempts",        default: 0,  null: false
+    t.integer  "failed_attempts",        default: 0,          null: false
     t.string   "unlock_token"
     t.datetime "locked_at"
-    t.string   "work",                   default: "", null: false
-    t.string   "cell",                   default: "", null: false
+    t.string   "work",                   default: "",         null: false
+    t.string   "cell",                   default: "",         null: false
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree

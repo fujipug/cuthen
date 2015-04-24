@@ -39,6 +39,10 @@ var ready = function() {
     $("#datetimepicker2").on("dp.change", function (e) {
         $('#datetimepicker1').data("DateTimePicker").maxDate(e.date);
     });
+    selected_color = $('#color').attr("value");
+    if (selected_color != null) {
+        $(selected_color).attr("class", "picked-color");
+    }
 };
 $(document).ready(ready);
 $(document).on('page:load', ready);
@@ -52,4 +56,10 @@ function toggle_label_button(label, toggle) {
         //$(label).attr('aria-expanded', 'true');
         $(label).attr('onclick', 'toggle_label_button(\'' + label + '\', 0)');
     }
+}
+
+function pick_color(color) {
+    $('.picked-color').attr("class", "color");
+    $('#color').attr("value","#" + color);
+    $("#" + color).attr("class", "picked-color");
 }

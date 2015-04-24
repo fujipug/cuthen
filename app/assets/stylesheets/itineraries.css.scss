@@ -41,3 +41,13 @@ div.image-block {
     height: 32px;
 }
 
+.color {
+    .col-sm-1 {
+        border: 5px solid #ffffff;
+    }
+}
+.picked-color {
+    .col-sm-1 {
+        border: 5px solid #999999;
+    }
+}

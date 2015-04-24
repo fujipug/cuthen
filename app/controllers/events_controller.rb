@@ -24,8 +24,13 @@ class EventsController < ApplicationController
   end
 
   def new
-    @event = Event.new
+    
     @itinerary = Itinerary.find(params[:itinerary_id])
+    if @itinerary.start_datetime == nil || @itinerary.end_datetime == nil
+      redirect_to dashboard_path
+    end
+    @event = Event.new
+    @event.name = ""
     event_invited_users = @event.event_invited_users.build
   end
   

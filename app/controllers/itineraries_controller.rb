@@ -1,5 +1,5 @@
 class ItinerariesController < ApplicationController
-  before_action :set_itinerary, only: [:name, :description, :duration, :startdate, :enddate]
+  before_action :set_itinerary, only: [:name, :description, :duration, :startdate, :enddate, :color]
 
   respond_to :json
   def calendar_data
@@ -16,7 +16,7 @@ class ItinerariesController < ApplicationController
     @events = Event.where(itinerary_id: params[:id])
     #@itineraries = Itinerary.all
     respond_to do |format|
-      format.json { render json: @itinerary.as_json + @events.as_json }
+      format.json { render json: @itinerary.as_json + @events.as_json(editable: false) }
     end
   end
 
@@ -120,6 +120,6 @@ private
 
   def itinerary_params
     params.require(:itinerary).permit(:name, :user_id, 
-      :description, :startdate, :enddate, itinerary_invited_users_attributes: [:id, :itinerary_id, :user_id])
+      :description, :startdate, :enddate, :color, itinerary_invited_users_attributes: [:id, :itinerary_id, :user_id])
   end
 end

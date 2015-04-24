@@ -79,7 +79,11 @@ class Itinerary < ActiveRecord::Base
   end
 
   def string_to_datetime(string)
-  	DateTime.strptime(string, "%m/%d/%Y %I:%M %p")
+    if string == nil || string == ""
+      "no date"
+    else
+      DateTime.strptime(string, "%m/%d/%Y %I:%M %p")
+    end
   end
 
   def startdate
@@ -99,6 +103,10 @@ class Itinerary < ActiveRecord::Base
   end
 
   def as_json(options={})
-    {id: "itinerary_#{id}", start: start_datetime, end: end_datetime, rendering: 'background', color: color}
+    if start_datetime == nil || end_datetime == nil
+      {id: "itinerary_#{id}", start: updated_at, end: updated_at, rendering: 'background', color: color}
+    else
+      {id: "itinerary_#{id}", start: start_datetime, end: end_datetime, rendering: 'background', color: color}
+    end
   end
 end
