@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   
 
   devise_for :users, controllers: { sessions:     "users/sessions",
-                                    omniauth_callbacks:  "users/omniauth_callbacks" }
+                                    omniauth_callbacks:  "users/omniauth_callbacks",
+                                    #registrations: "users/registrations",
+                                    confirmations: "users/confirmations" }
   as :user do
     get "/users/edit" => "devise/registrations#edit"#, :as => 'edit_user_registration'
     put "/users"      => "devise/registrations#update"#, :as => 'user_registration'
@@ -12,6 +14,8 @@ Rails.application.routes.draw do
     post "/login"     => "users/sessions#create"
     get "/signup"     => "devise/registrations#new"
     delete "/logout"  => "users/sessions#destroy"
+    #get '/confirmation-to-root' => 'visitors/index', as: 'confirmation_to_root'
+
   end
 
   get "users/" => "users#index", as: :users_path
