@@ -19,29 +19,46 @@ class GroupsController < ApplicationController
   end
 
   def create
-     @group = Group.create(group_params)
+     @group = Group.create(group_params) 
      @group.user = current_user
      @group.save
      #puts group_params
 
       params[:members].each { |member|
        group_member = GroupMember.new
-       user = User.find(member)
-       group_member.user_id = user.id
-       group_member.group_id = @group.id
-       group_member.save
-       #@group.user.save
+       user = User.where(id: member)
+       if user
+         group_member.user_id = member # changed user.id to member 
+         group_member.group_id = @group.id
+         group_member.save
+         #@group.user.save
+       end
      }
      redirect_to groups_path
   end
 
   def edit
   	@group = Group.find(params[:id])
+
+    @group_members = GroupMember.where(group_id: @group.id)
+    @users = User.all
+    @member_names = @users.map{|u| { :name => u.name, :id => u.id }}
   end
 
   def update
     @group = Group.find(params[:id])
     @group.update!(group_params)
+    @group.group_members.destroy_all
+    params[:members].each { |member|
+       group_member = GroupMember.new
+       user = User.where(id: member)
+       if user
+         group_member.user_id = member # changed user.id to member 
+         group_member.group_id = @group.id
+         group_member.save
+         #@group.user.save
+       end
+     }
   	redirect_to @group
   end
 
