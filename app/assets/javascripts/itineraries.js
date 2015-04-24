@@ -18,9 +18,12 @@ var ready = function() {
         strong_startdate = $('#strong_startdate').attr("data");
         strong_enddate = $('#strong_enddate').attr("data");
         $('#datetimepicker1').data("DateTimePicker").minDate(strong_startdate);
+        $('#datetimepicker1').data("DateTimePicker").defaultDate(strong_startdate);
         $('#datetimepicker1').data("DateTimePicker").maxDate(strong_enddate);
         $('#datetimepicker2').data("DateTimePicker").minDate(strong_startdate);
+        $('#datetimepicker2').data("DateTimePicker").defaultDate(strong_enddate);
         $('#datetimepicker2').data("DateTimePicker").maxDate(strong_enddate);
+        $('#datetimepicker3').data("DateTimePicker").maxDate(strong_startdate);
     }
     if ($('#weak_startdate').length > 0) {
         weak_startdate = $('#weak_startdate').attr("data");
