@@ -16,7 +16,7 @@ class ItinerariesController < ApplicationController
     @events = Event.where(itinerary_id: params[:id])
     #@itineraries = Itinerary.all
     respond_to do |format|
-      format.json { render json: @itinerary.as_json + @events.as_json(editable: false) }
+      format.json { render json: @itinerary.as_json + @events.as_json(editable: true) }
     end
   end
 
