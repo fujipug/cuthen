@@ -2,8 +2,8 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "Cuthen" %></title>
-    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Cuthen" %>">
+    <title><%= content_for?(:title) ? yield(:title) : "Planif-i" %></title>
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Planif-i" %>">
     <%# <link rel='stylesheet' href='fullcalendar/fullcalendar.css' />
     <script src='lib/jquery.min.js'></script>
     <script src='lib/moment.min.js'></script>
@@ -12,6 +12,7 @@
     <%# What is defaults.js?  It's giving a 404 not found when the website is trying to load it, commented it out %>
 
     <%# javascript_include_tag :defaults %>
+    <%= favicon_link_tag 'fav_cuthen_logo.ico' %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
