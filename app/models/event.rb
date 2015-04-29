@@ -87,6 +87,12 @@ class Event < ActiveRecord::Base
   end
 
   def as_json(options={})
-    {id: id, title: name, start: start_datetime, end: end_datetime, constraint: "itinerary_#{itinerary_id}", color: Itinerary.find(itinerary_id).color, editable: options[:editable]}
+    
+    if (options[:editable] != nil)
+      editable = options[:editable]
+    else
+      editable = true
+    end
+    {id: id, title: name, start: start_datetime, end: end_datetime, constraint: "itinerary_#{itinerary_id}", color: Itinerary.find(itinerary_id).color, editable: editable}
   end
 end

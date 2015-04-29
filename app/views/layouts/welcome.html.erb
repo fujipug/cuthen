@@ -2,8 +2,9 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "Cuthen" %></title>
-    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Cuthen" %>">
+    <title><%= content_for?(:title) ? yield(:title) : "Planif-i" %></title>
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Planif-i" %>">
+    <%= favicon_link_tag 'fav_cuthen_logo.ico' %>
     <%= javascript_include_tag :defaults %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>

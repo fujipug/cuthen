@@ -39,7 +39,7 @@ Rails.application.routes.draw do
   get 'visitors/index'
   get 'visitors/welcome'
   resources :groups
-  get 'pages/about'
+  get 'pages/about' => 'pages#about'
 
   resources :itineraries
   get 'itinerary/:id/delete' => 'itineraries#delete', as: :itineraries_delete
