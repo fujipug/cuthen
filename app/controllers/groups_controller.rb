@@ -16,6 +16,7 @@ class GroupsController < ApplicationController
    	 @group = Group.new
      @users = User.all
      @member_names = @users.map{|u| { :name => u.name, :id => u.id }}
+     @group_members = GroupMember.where(group_id: @group.id)
   end
 
   def create
