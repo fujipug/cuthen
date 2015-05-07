@@ -43,10 +43,16 @@
          <% end %>
        <% end %>
      </td>
-     <% if @recommended!=nil %>
-     <% @recommended.each do |votes| %> <% vote = Vote.find(votes) %> <% if vote.event_id == event.id %> <td><%= vote.start.strftime("%H:%M") %> -- <%= vote.end_time.strftime("%H:%M") %></td>
-     <% end %>
-     <% end %>
+     <% if event.votetype? %>
+       <% if @recommended!=nil %>
+       <% @recommended.each do |votes| %> <% vote = Vote.find(votes) %> <% if vote.event_id == event.id %> <td><%= vote.start.strftime("%H:%M") %> -- <%= vote.end_time.strftime("%H:%M") %></td>
+     <% end %> <% end %> <% end %>
+     <% else %>
+     <td><% votes = Vote.where(event_id: event.id) %><% if votes.empty? %><% else %>
+       <% votes.each do |vote| %>
+       
+       <%= User.find(vote.user_id).email %>  - <%= vote.start.strftime('%H:%M') %><% end %>
+       <% end %>
      <td></td> <% end %>
      <td><%= link_to 'View Event', itinerary_event_path(@itinerary, event) %></td>
    </tr>
