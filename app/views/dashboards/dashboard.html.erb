@@ -27,23 +27,27 @@
 <% i = 0 %>
 <% @itineraries.each do |itinerary| %>
   <input type="checkbox" checked="true" id="itinerary_hide_toggle<%= itinerary.id %>" onclick="hide_itinerary(<%= itinerary.id %>)">
-  Itinerary: <%= itinerary.id %> | <%= itinerary.name %><br>
+  <a href="<%= itinerary_path(itinerary.id) %>">Itinerary: <%= itinerary.id %> | <%= itinerary.name %></a><br>
   <% @itinerary_event_count[i].times do |j| %>
     <input type="checkbox" checked="true" class="itinerary_hide_toggle<%= itinerary.id %>" id="event_hide_toggle<%= itinerary.id %>_<%= @events[j].id %>" onclick="hide_event(<%= itinerary.id %>, <%= @events[j].id %>)">
-    Event: <%= @events[j].id %> | <%= @events[j].name %><br>
+    <a href="<%= event_path(@events[j].id) %>">Event: <%= @events[j].id %> | <%= @events[j].name %></a><br>
   <% end %>
   <% i += 1 %>
 <% end %>
 <p>itinerary2</p>
 <% i = 0 %>
-<% @itineraries2.each do |itinerary| %>
-  <input type="checkbox" checked="true" id="itinerary_hide_toggle<%= itinerary.id %>" onclick="hide_itinerary(<%= itinerary.id %>)">
-  Itinerary: <%= itinerary.id %> | <%= itinerary.name %><br>
+<% @itineraries2.each do |itinerary2| %>
+  <input type="checkbox" checked="true" id="itinerary_hide_toggle<%= itinerary2.id %>" onclick="hide_itinerary(<%= itinerary2.id %>)">
+  Itinerary: <%= itinerary2.id %> | <%= itinerary2.name %><br>
   <% @itinerary_event_count2[i].times do |j| %>
-    <input type="checkbox" checked="true" class="itinerary_hide_toggle<%= itinerary.id %>" id="event_hide_toggle<%= itinerary.id %>_<%= @events2[j].id %>" onclick="hide_event(<%= itinerary.id %>, <%= @events2[j].id %>)">
+    <input type="checkbox" checked="true" class="itinerary_hide_toggle<%= itinerary2.id %>" id="event_hide_toggle<%= itinerary2.id %>_<%= @events2[j].id %>" onclick="hide_event(<%= itinerary2.id %>, <%= @events2[j].id %>)">
     Event: <%= @events2[j].id %> | <%= @events2[j].name %><br>
   <% end %>
   <% i += 1 %>
+<% end %>
+<% @events3.each do |i| %>
+    <input type="checkbox" checked="true" id="event_hide_toggle<%= i.itinerary_id %>_<%= i.id %>" onclick="hide_event(<%= i.itinerary_id %>, <%= i.id %>)">
+    Event: <%= i.id %> | <%= i.name %><br>
 <% end %>
 
 <%= render 'dashboard_list' %>

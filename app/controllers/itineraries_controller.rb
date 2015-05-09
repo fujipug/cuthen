@@ -3,10 +3,37 @@ class ItinerariesController < ApplicationController
 
   respond_to :json
   def calendar_data
-    @events = Event.all
-    @itineraries = Itinerary.all
+    @all_itineraries = Itinerary.all
+    #gets calendar data for the current user
+    @itineraries = Itinerary.where(user_id: current_user.id)
+    #then ones that the current user is involved in
+    @itineraries2 = []
+    itinerary_invited_users = ItineraryInvitedUser.where(user_id: current_user.id)
+    itinerary_invited_users.each do |f|
+      @itineraries2 += Itinerary.where(id: f.itinerary_id)
+    end
+    #then the events of both
+    @events = []
+    #@itinerary_event_count = []
+    @events2 = []
+    #@itinerary_event_count2 = []
+    @itineraries.each do |f|
+      current_events = Event.where(itinerary_id: f.id)
+      #@itinerary_event_count.push(current_events.length)
+      @events += current_events
+    end
+    @itineraries2.each do |f|
+      current_events = Event.where(itinerary_id: f.id)
+      #@itinerary_event_count2.push(current_events.length)
+      @events2 += current_events
+    end
+    @events3 = []
+    event_invited_users = EventInvitedUser.where(user_id: current_user.id)
+    event_invited_users.each do |f|
+      @events3 += Event.where(id: f.event_id)
+    end
     respond_to do |format|
-      format.json { render json: @itineraries.as_json + @events.as_json }
+      format.json { render json: @itineraries.as_json + @events.as_json(editable: true) + @itineraries2.as_json(editable: false) + @events2.as_json(editable: false) + @events3.as_json(editable: false) }
     end
   end
 
@@ -25,7 +52,7 @@ class ItinerariesController < ApplicationController
     @event = Event.find(params[:event_id])
     #@itineraries = Itinerary.all
     respond_to do |format|
-      format.json { render json: @event.as_json }
+      format.json { render json: @event.as_json(editable: true) }
     end
   end
   

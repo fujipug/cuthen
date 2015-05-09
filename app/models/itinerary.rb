@@ -103,10 +103,15 @@ class Itinerary < ActiveRecord::Base
   end
 
   def as_json(options={})
-    if start_datetime == nil || end_datetime == nil
-      {id: "itinerary_#{id}", start: updated_at, end: updated_at, rendering: 'background', color: color}
+    if (options[:editable] != nil)
+      editable = options[:editable]
     else
-      {id: "itinerary_#{id}", start: start_datetime, end: end_datetime, rendering: 'background', color: color}
+      editable = true
+    end
+    if start_datetime == nil || end_datetime == nil
+      {id: "itinerary_#{id}", start: updated_at, end: updated_at, rendering: 'background', color: color, editable: editable}
+    else
+      {id: "itinerary_#{id}", start: start_datetime, end: end_datetime, rendering: 'background', color: color, editable: editable}
     end
   end
 end

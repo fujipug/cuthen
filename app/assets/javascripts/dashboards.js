@@ -1,5 +1,5 @@
 var ready = function() {
-    $.get( $("#cal").data("url"), function( data ) {
+    $.get( "/calendar_data.json", function( data ) {
         // page is now ready, initialize the calendar...
         $('#calendar').fullCalendar({
             defaultView: 'agendaWeek',

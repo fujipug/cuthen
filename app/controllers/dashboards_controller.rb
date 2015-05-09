@@ -5,7 +5,7 @@ class DashboardsController < ApplicationController
     #get itineraries
     #ones created by signed in user
     @itineraries = Itinerary.where(user_id: @user.id)
-    #then ones that the signed in user is involved in
+    #then ones that the current user is involved in
     @itineraries2 = []
 		itinerary_invited_users = ItineraryInvitedUser.where(user_id: @user.id)
     itinerary_invited_users.each do |f|
@@ -26,7 +26,11 @@ class DashboardsController < ApplicationController
 			@itinerary_event_count2.push(current_events.length)
 			@events2 += current_events
     end
-
+    @events3 = []
+    event_invited_users = EventInvitedUser.where(user_id: current_user.id)
+    event_invited_users.each do |f|
+      @events3 += Event.where(id: f.event_id)
+    end
     #@itinerary_invited_users = ItineraryInvitedUser.where(user_id: @user.id)
     
     #@itinerary_invited_users.each do |f|

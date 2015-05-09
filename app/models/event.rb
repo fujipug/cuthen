@@ -59,7 +59,11 @@ class Event < ActiveRecord::Base
   end
 
   def string_to_datetime(string)
-  	DateTime.strptime(string, "%m/%d/%Y %I:%M %p")
+  	if string == nil || string == ""
+      "no date"
+    else
+      DateTime.strptime(string, "%m/%d/%Y %I:%M %p")
+    end
   end
 
   def startdate
